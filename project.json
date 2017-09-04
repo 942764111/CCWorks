@@ -62,6 +62,7 @@
     "src/resource.js",
     "src/HelloWorld.js",
     "src/jquery-2.2.1.min.js",
+    "src/reconnecting-websocket-master/reconnecting-websocket.js",
 
     "src/GameConfig/Constant.js",
     "src/GameConfig/Config.js",

@@ -5,8 +5,6 @@ var GameBeginScene = GM.SceneMage.SceneBase.extend({
 
             Network.getInstance().initNetwork();
           GV.UI['YXSM2'].show();
-     
-           
 
         },
         onExit:function() {
