@@ -1,6 +1,4 @@
-var WebSocket = WebSocket || window.WebSocket || window.MozWebSocket;
-
-var Network  = (function(){
+var Socket  = (function(){
     var instance = null;
     function getNetworkInstance (){
         var networkInstance = {
@@ -18,6 +16,7 @@ var Network  = (function(){
 
                 this.socket.onmessage = function(evt){
                     var data = evt.data;
+                    GN.Log(data);
                     cc.log('Network onmessage...');
                 };
 
