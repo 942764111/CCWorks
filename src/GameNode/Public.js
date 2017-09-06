@@ -483,4 +483,14 @@
     GN.Obj.instanceOf = function(o,type){
         return toString.apply(o) === ('[object ' + type + ']') || typeof o === type.toLowerCase();
     }
+
+    GN.Obj.toJSON = function(str){
+        var _json=null;
+        try{
+            _json = JSON.parse(str)
+        }catch(e){
+            GN.log('to JSON ERROR='+ str);
+        }
+        return _json;
+    };
 })();

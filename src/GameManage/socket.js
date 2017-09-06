@@ -5,40 +5,40 @@ var Socket  = (function(){
             socket:null,
             isInit:false,
             initNetwork:function(){
-                cc.log('Network initSocket...');
+                GN.log('Network initSocket...');
                 this.host = "ws://192.168.188.34:8080/com.cn/websocket";
                 this.socket = new ReconnectingWebSocket(this.host);
                 var self = this;
-                this.socket.onopen = function(evt){
-                    cc.log('Network onopen...');
+                this.socket.onopen = function(evt) {
+                    GN.log('Network onopen...');
                     self.isInit = true;
                 };
-
+    
                 this.socket.onmessage = function(evt){
-                    var data = evt.data;
+                    var data  = GN.Obj.toJSON(evt.data);
                     GN.Log(data);
-                    cc.log('Network onmessage...');
+                    GN.log('Network onmessage...');
                 };
 
                 this.socket.onerror = function(evt){
-                    cc.log('Network onerror...');
+                    GN.log('Network onerror...');
                     this.isInit = false;
                 };
 
                 this.socket.onclose = function(evt){
-                    cc.log('Network onclose...');
+                    GN.log('Network onclose...');
                     this.isInit = false;
                 };
             },
             send:function(data){
                 if (this.isInit){
-                    cc.log('Network send:'+data);
+                    GN.log('Network send:'+data);
                     this.socket.send(data);
                 }
             },
             close:function(){
                 if (this.socket){
-                    cc.log("Network close...");
+                    GN.log("Network close...");
                     this.socket.close();
                     this.socket = null;
                 }
