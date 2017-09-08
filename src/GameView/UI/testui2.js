@@ -14,7 +14,9 @@
         showed : function() {
             var me = this;
             me.ui['btn_bean'].touch(BC.CUIType.FL,function (touch,event) {
-                Socket.getInstance().send('getdata');
+                GM.Socket.send('getdata',{'id':1},function (data) {
+                    GN.Log(data);
+                });
             },me);
         }
         ,close: function(){

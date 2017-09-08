@@ -3,8 +3,10 @@ var GameBeginScene = GM.SceneMage.SceneBase.extend({
         onEnter: function () {
             this._super();
 
-            Socket.getInstance().initNetwork();
-             GV.UI['YXSM2'].show();
+            GM.Socket.send('test1',{'id':1},function (data) {
+                GN.Log(data);
+            });
+            GV.UI['YXSM2'].show();
 
         },
         onExit:function() {

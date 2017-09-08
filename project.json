@@ -71,11 +71,12 @@
     "src/GameNode/CCSFactory.js",
     "src/GameNode/ActionsNode.js",
     "src/GameNode/Public.js",
-    "src/GameManage/socket.js",
 
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
     "src/GameManage/RichTextManage.js",
+    "src/GameManage/socket.js",
+
 
     "src/GameView/UI/abstract.js",
     "src/GameView/UI/testUI.js",

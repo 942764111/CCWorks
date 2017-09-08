@@ -178,6 +178,10 @@
         }
         return "剩余时间"+d+"天 "+h+"小时 "+m+" 分钟"+s+" 秒";
     }
+
+    GN.Date.curtime = function(){
+        return Math.round(new Date().getTime());
+    };
 })();
 
 //Number
@@ -483,7 +487,7 @@
     GN.Obj.instanceOf = function(o,type){
         return toString.apply(o) === ('[object ' + type + ']') || typeof o === type.toLowerCase();
     }
-
+    //序列化
     GN.Obj.toJSON = function(str){
         var _json=null;
         try{
@@ -492,5 +496,11 @@
             GN.log('to JSON ERROR='+ str);
         }
         return _json;
+    };
+
+    //反序列化
+    GN.Obj.fmtData = function(Obj){
+        var data = JSON.stringify(Obj);
+        return data;
     };
 })();

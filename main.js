@@ -14,6 +14,7 @@ cc.game.onStart = function(){
     flax.init(cc.ResolutionPolicy.FIXED_HEIGHT);
 
   //  cc.view.resizeWithBrowserSize(true);
+    
     flax.registerScene("GameBegin", GameBeginScene, res_GameBegin);
 
     flax.replaceScene("GameBegin");
