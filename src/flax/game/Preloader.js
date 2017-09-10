@@ -46,27 +46,27 @@ flax._preloader = {
         }else{
             self.createLabel(centerPos);
         }
-        self.selectLoading();
+    //    self.selectLoading();
     },
     selectLoading:function(){
         var self = this;
-        cc.loader.load(res.loginimg, function(err, results){
-            if(err){
-                // cc.log("Failed to load %s.", res.loading2);
-                return;
-            }
-            var loginimg = new cc.Sprite(res.loginimg);
-            loginimg.setPosition(cc.winSize.width/2,cc.winSize.height/2);
-            self.addChild(loginimg);
-        });
+        //cc.loader.load(res.loginimg, function(err, results){
+        //    if(err){
+        //        // cc.log("Failed to load %s.", res.loading2);
+        //        return;
+        //    }
+        //    var loginimg = new cc.Sprite(res.loginimg);
+        //    loginimg.setPosition(cc.winSize.width/2,cc.winSize.height/2);
+        //    self.addChild(loginimg);
+        //});
 
-        cc.loader.load(res_music.move, function(err, results){
-            if(err){
-                // cc.log("Failed to load %s.", res.loading2);
-                return;
-            }
-
-        });
+        //cc.loader.load(res_music.move, function(err, results){
+        //    if(err){
+        //        // cc.log("Failed to load %s.", res.loading2);
+        //        return;
+        //    }
+        //
+        //});
 
     },
     createLabel:function(pos, fontSize){

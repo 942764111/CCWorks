@@ -9,9 +9,7 @@
  * Model 层
  * @type {{}}
  */
-    var GC = GC||{};
 
-    Object.freeze(GC)
 /**
  * 游戏管理层
  * @type {{}}

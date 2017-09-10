@@ -104,14 +104,63 @@
     if(_json!=null)ui.json(_json,type);
     return ui;
 };
-    GN.Log = function (log) {
-        if(BC.Debug)return;
-        console.log(log);
-    }
+
+GN.Log = function (log) {
+    if(BC.Debug)return;
+    console.log(log);
+};
 /*
  获取当前场景
  */
 GN.GetRunScene = function () {
     return new cc.Director._getInstance()._runningScene;
-}
-})()
+};
+
+    /**
+     *  基于flax框架  TileMap
+     * @param tileWidth 每一个格子的宽
+     * @param tileHeight 每一个格子的高
+     * @param rows 行
+     * @param cols 列
+     * @param pos 坐标 默认 0
+     * @returns {*}
+     */
+GN.initTileMap = function(tileWidth, tileHeight,rows,cols,pos){
+    var tileMap = new flax.TileMap();
+    tileMap.init(tileWidth, tileHeight);
+    tileMap.setMapSize(rows, cols);
+    pos = pos? pos : {x:0,y:0};
+    tileMap.setPosition(pos.x,pos.y);
+    tileMap.showDebugGrid();
+    return tileMap;
+};
+
+GN.loadUrlImage = function (url, node)
+{
+    if (url != null && url != undefined && url != "")
+    {
+        cc.loader.loadImg(url, {isCrossOrigin : true}, function(err,img){
+            if(err)
+            {
+                cc.log(err);
+            }
+            else
+            {
+                var texture;
+                if (cc.sys.isNative)
+                {
+                    texture = img;
+                }
+                else
+                {
+                    var texture2d = new cc.Texture2D();
+                    texture2d.initWithElement(img);
+                    texture2d.handleLoadedTexture();
+                    texture = texture2d;
+                }
+                node.setTexture(texture);
+            }
+        });
+    }
+};
+})();

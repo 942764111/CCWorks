@@ -157,6 +157,18 @@
     GN.Arr.removeArrayForValue = function(arr,val,type){
         arr.filter(function(item){return type==='%'?item.indexOf(val)!==-1:item!==val})
     }
+
+    /**
+     * 释放数组对象
+     */
+    GN.Arr.close = function(arrs){
+        if(arrs){
+            for(var i=0;i<arrs.length;i){
+                arrs.splice(i,1);
+            }
+        }
+    }
+
 })();
 
 
@@ -486,7 +498,7 @@
      */
     GN.Obj.instanceOf = function(o,type){
         return toString.apply(o) === ('[object ' + type + ']') || typeof o === type.toLowerCase();
-    }
+    };
     //序列化
     GN.Obj.toJSON = function(str){
         var _json=null;
@@ -496,6 +508,12 @@
             GN.log('to JSON ERROR='+ str);
         }
         return _json;
+    };
+
+    GN.Obj.getFileJSON = function(file){
+        var str = cc.loader.load(file);
+        var obj = X.toJSON(str);
+        return obj;
     };
 
     //反序列化

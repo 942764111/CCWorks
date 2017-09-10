@@ -16,8 +16,10 @@ cc.game.onStart = function(){
   //  cc.view.resizeWithBrowserSize(true);
     
     flax.registerScene("GameBegin", GameBeginScene, res_GameBegin);
+    flax.registerScene("GameMove", GameMoveScene, res_GameMove);
+    flax.registerScene("GamePopStars", GamePopStars, res_GameMove);
 
-    flax.replaceScene("GameBegin");
+    flax.replaceScene("GameMove");
 };
 cc.game.run();
 

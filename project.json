@@ -78,12 +78,12 @@
     "src/GameManage/socket.js",
 
 
-    "src/GameView/UI/abstract.js",
-    "src/GameView/UI/testUI.js",
-    "src/GameView/UI/testUI2.js",
+    "src/GameView/UI/GameMove.js",
     "src/GameView/UI/Public/tip_NB.js",
+    "src/GameView/UI/GamePopStars.js",
 
-    "src/GameView/Scene/GameBeginScene.js"
+    "src/GameView/Scene/GameBeginScene.js",
+    "src/GameView/Scene/GameMoveScene.js"
 
   ]
   
