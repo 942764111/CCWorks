@@ -34,12 +34,13 @@ flax.TileMapModule = {
     setTileMap:function(map)
     {
         if(map && !(map instanceof flax.TileMap)) map = flax.getTileMap(map);
-        if(this._tileMap == map) return;
+        // if(this._tileMap == map) return;
         if(this._tileMap) this._tileMap.removeObject(this);
         this._tileMap = map;
         if(this._tileMap == null) return;
 
         if(this.parent) {
+
             this.updateTile(true);
             //todo
 //            this._updateCollider();

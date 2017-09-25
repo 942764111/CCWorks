@@ -20,9 +20,9 @@
   "renderMode":0,
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
-    "cocos2d"
-    ,"extensions"
-    ,"ccui"
+    "cocos2d",
+    "extensions",
+    "ccui"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -63,28 +63,20 @@
     "src/HelloWorld.js",
     "src/jquery-2.2.1.min.js",
     "src/reconnecting-websocket-master/reconnecting-websocket.js",
-
     "src/GameConfig/Constant.js",
     "src/GameConfig/Config.js",
     "src/GameConfig/Lable.js",
-
     "src/GameNode/CCSFactory.js",
     "src/GameNode/ActionsNode.js",
     "src/GameNode/Public.js",
-
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
     "src/GameManage/RichTextManage.js",
     "src/GameManage/socket.js",
-
-
-    "src/GameView/UI/GameMove.js",
     "src/GameView/UI/Public/tip_NB.js",
-    "src/GameView/UI/GamePopStars.js",
-
+    "src/GameView/UI/RunGame.js",
     "src/GameView/Scene/GameBeginScene.js",
     "src/GameView/Scene/GameMoveScene.js"
-
   ]
   
 }

@@ -12,30 +12,9 @@ GC.MAP_CONFIG={
     –Œ◊¥≈‰÷√±Ì
  */
 GC.GRID_CONFIG={
-    'O':{
-     'id':'O',
-     'draw': {
-        '1':[{'x':4 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-1},{'x':4 ,'y':GC.MAP_CONFIG.COLS-2},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2}]
-    },
-    'flaxResid' : 'grid'
-    },
-    'Z':{
-        'id':'Z',
-        'draw': {
-        '1':[{'x':4 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2},{'x':6 ,'y':GC.MAP_CONFIG.COLS-2}],
-        '2':[{'x':5 ,'y':GC.MAP_CONFIG.COLS-3},{'x':6 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2},{'x':6 ,'y':GC.MAP_CONFIG.COLS-2}],
-    },
-    'flaxResid' : 'grid',
-    'showindex' : 1,
-    },
-    'T':{
-        'id':'T',
-        'draw':[{'x':4 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-1},{'x':6 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2}]},
-    'L':{'id':'L','draw':[{'x':5 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2},{'x':5 ,'y':GC.MAP_CONFIG.COLS-3},{'x':6 ,'y':GC.MAP_CONFIG.COLS-3}]},
-    //'J':{'id':'J','draw':[{'x':5 ,'y':COLS-1},{'x':5 ,'y':COLS-2},{'x':5 ,'y':COLS-3},{'x':6 ,'y':COLS-3}]},
-    'I':{'id':'I','draw':{
-        '1':[{'x':5 ,'y':GC.MAP_CONFIG.COLS-1},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2},{'x':5 ,'y':GC.MAP_CONFIG.COLS-3},{'x':5 ,'y':GC.MAP_CONFIG.COLS-4}],
-        '2':[{'x':4 ,'y':GC.MAP_CONFIG.COLS-2},{'x':5 ,'y':GC.MAP_CONFIG.COLS-2},{'x':6 ,'y':GC.MAP_CONFIG.COLS-2},{'x':7 ,'y':GC.MAP_CONFIG.COLS-2}]
-    }}
+    'S':{'flaxresID':'S'},
+    'I':{'flaxresID':'I'},
+    'T':{'flaxresID':'T'},
+    'L':{'flaxresID':'L'}
 };
 Object.freeze(GC);

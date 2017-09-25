@@ -27,7 +27,6 @@
                  GN.Log('Network onclose...');
                  this.isInit = false;
              };
-
          },
          /**
           *

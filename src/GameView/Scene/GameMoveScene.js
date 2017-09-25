@@ -4,7 +4,7 @@
 var GameMoveScene = GM.SceneMage.SceneBase.extend({
     onEnter: function () {
         this._super();
-        GV.UI['GameMove'].show();
+        GV.UI['RunGame'].show();
     },
     onExit:function() {
     }
