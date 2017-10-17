@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3a83ef37-6da2-4b7f-a6d1-fda97ddde761" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a74.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameBegin/a78.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameEnd.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameEnd.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/WQBJ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/anniu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/beijing.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/btimg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/button/button2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/chongzhi_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/chongzhi_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/chongzhi_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/chongzhi_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/chongzhi_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/dou.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/gaoshouyzimg1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/gaoshouyzimg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/gb.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/hd.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/jinjieyzimg1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/jinjieyzimg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/jy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/kong.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/mrfltile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/otherPeop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/prompt/activity.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/pukeBj.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/sy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tck.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/jrgljdz.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/kjjg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/lq.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/mrfl.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/qd.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/qdcg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/qss.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/qx.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/sx.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/tc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/tzje.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/tzjl.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/wdb.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/wdtz.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/ylq.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/textIMG/zjje.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tishiimg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/titleimg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tong1000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tong10000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tong2000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tong5000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/tong50000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/txtbj.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/wqkjtie.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/xin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/xinshouyzimg1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/xinshouyzimg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yxsmtie.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_1000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_2500.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_300.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yz_500.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yzimgai.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/IMG/yzimguser.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/beipai.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hei9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/heiA.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/heiJ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/heiK.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/heiQ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hong9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hongA.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hongJ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hongK.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hongQ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/hua9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/huaA.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/huaJ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/huaK.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/huaQ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuai9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuaiA.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuaiJ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuaiK.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/GameMove/pc/kuaiQ.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Promptbox.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Promptbox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Promptbox/a11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Promptbox/a4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Promptbox/a6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/activityhint.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/animation.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/animation.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhi.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhiitem.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhiitem.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhiitem/a1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhiitem/a4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhitishi.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhitishi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/chongzhitishi/a4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc/a30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc/a65.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc/a67.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc/a77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gaoshouc/img.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/gljdz.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec/a14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec/a30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec/a37.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec/a77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/jinjiec/yxsx_btn.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/mrfl.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/mrflitem.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/music/7903.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/music/bean.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/music/btn2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/music/win2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/touzhujilu.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/touzhujiluitem.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/touzhuneirong.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/wangqi.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/wangqiitem.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/a30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/a37.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/a37.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/a73.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/a77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/xinshouc/xinshouimg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/yxsm.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publish/html5/res/loginimg.png" afterPath="$PROJECT_DIR$/publish/html5/res/loginimg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publish/html5/res/logo.png" afterPath="$PROJECT_DIR$/publish/html5/res/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publish/html5/build.xml" afterPath="$PROJECT_DIR$/publish/html5/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publish/html5/game.min.js" afterPath="$PROJECT_DIR$/publish/html5/game.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publish/html5/index.html" afterPath="$PROJECT_DIR$/publish/html5/index.html" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="project.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/publish/html5/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Public.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameNode/Public.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="522" column="6" lean-forward="false" selection-start-line="522" selection-start-column="6" selection-end-line="522" selection-end-column="6" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testUI.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameView/UI/testUI.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testui2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameView/UI/testui2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunGame.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GameView/UI/RunGame.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/GameNode/Public.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1924" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CCWorks2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="F:/tool/node/nodejs/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="F:\tool\node\nodejs\node.exe" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a83ef37-6da2-4b7f-a6d1-fda97ddde761" name="Default" comment="" />
+      <created>1508139648056</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1508139648056</updated>
+      <workItem from="1508139653543" duration="66000" />
+      <workItem from="1508205130725" duration="937000" />
+      <workItem from="1508206102134" duration="501000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1504000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1924" height="1056" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResRetris/Json/GameMove.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/publish/html5/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameNode/Public.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="522" column="6" lean-forward="false" selection-start-line="522" selection-start-column="6" selection-end-line="522" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameView/UI/testUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameView/UI/testui2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameView/UI/RunGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
