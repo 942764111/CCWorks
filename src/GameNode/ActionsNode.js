@@ -301,7 +301,7 @@
     cc.AnimationFragement = Animation;
     cc.AnimationFragement.create = function(){
         return new cc.AnimationFragement();
-    }
+    };
 
     cc.Node.prototype.run = function(){
         var action = this.getAction();
@@ -313,3 +313,51 @@
     }
 
 })(this);
+
+//update Animation
+//在时间调度中使用封装
+(function () {
+    /**
+     * 追随者
+     * @param Goal 对象
+     * @param traceGoal  要追随的目标对象
+     * @param Sleep 时间
+     * @constructor
+     */
+    GN.UpdateMoveTo = function (Goal,traceGoal,Sleep) {
+        // 追踪对象.x = 追踪对象.x + (被追对象.x - 追踪对象.x) * 追踪对象速度 / Math.sqrt((被追对象.x - 追踪对象.x) * (被追对象.x - 追踪对象.x) + (被追对象.y - 追踪对象.y) * (被追对象.y - 追踪对象.y));
+        Goal.x = Goal.x + (traceGoal.x - Goal.x) * Sleep / Math.sqrt((traceGoal.x - Goal.x) * (traceGoal.x - Goal.x) + (traceGoal.y - Goal.y) * (traceGoal.y - Goal.y));
+
+        Goal.y = Goal.y + (traceGoal.y - Goal.y) * Sleep / Math.sqrt((traceGoal.x - Goal.x) * (traceGoal.x - Goal.x) + (traceGoal.y - Goal.y) * (traceGoal.y - Goal.y));
+    };
+
+    /**
+     * 旋转
+     * @param Goal  对象
+     * @param angle  旋转角度
+     * @param dt update date
+     * @constructor
+     */
+    GN.UpdateRotationBy = function (Goal,angle,dt) {
+        Goal.rotationX = Goal.rotationX + angle * dt;
+        Goal.rotationY = Goal.rotationY + angle * dt;
+    };
+
+    /**
+     * 跳跃
+     *  ySpeed<0   = 下降状态
+     *  ySpeed>0   = 上升状态
+     *
+     * @param Goal 对象
+     * @param Height 高度
+     * @param dt update date
+     * @returns {number}
+     * @constructor
+     */
+    GN.UpdateJump = function (Goal,Height,dt) {
+        var ySpeed = 0;
+        ySpeed -= Height * dt; //Height = 500;
+        Goal.y += ySpeed * dt;
+        return ySpeed;
+    }
+})();
