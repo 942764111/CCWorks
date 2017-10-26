@@ -467,7 +467,7 @@
     GN.Str.stringFormat = function(){
         if (arguments.length < 2) return;
         var str = arguments[0];
-        if (arguments.length == 2 && X.instanceOf(arguments[1],'Array')){
+        if (arguments.length == 2 && GN.Obj.instanceOf(arguments[1],'Array')){
             var args = arguments[1];
             for(var i = 1; i <= args.length; i++){
                 var regx = new RegExp('\\{' + i + '\\}','g');
@@ -480,6 +480,30 @@
             }
         }
         return str;
+    }
+
+    /**
+     * 	索引字符串中 指定的字符   如果未找到指定字符返回元字符
+     * @param str  1: 从前向后索引查找  2：反之亦然
+     * @param FindObj 要查找的对象为起点
+     * @param length 取截取后的字符串长度 默认是全部
+     * @returns {string}
+     * @constructor
+     */
+    GN.Str.SubStr = function(type,str,FindObj,length) {
+        if(str.indexOf(FindObj)==-1) return str;
+        switch(type){
+            case 1:
+                return str.substr(str.indexOf(FindObj),length)+1;
+                break;
+            case 2:
+                return str.substr(str.lastIndexOf(FindObj),length)+1;
+                break;
+            default :
+                return '';
+                break;
+        }
+
     }
 })();
 

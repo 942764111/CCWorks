@@ -31,7 +31,7 @@
         if(me.getComponent){
             node = me.getComponent(v);
             if(node!=null){
-                node = node.getNode()
+                node = node.getNode();
                 return node;
             }
         }
@@ -54,7 +54,7 @@
                 if(type==ccui.Widget.TOUCH_ENDED){
                     allTouchCallBack();
                 }
-                fun.call(me._touchCaller,sender,type);
+                fun&&fun.call(me._touchCaller,sender,type);
             };
             me.addTouchEventListener(me._touchFunction,me);
         }
@@ -62,7 +62,7 @@
         function addFLListener() {
             me._touchFunction = function(touch, event){
                 allTouchCallBack();
-                fun.call(this._touchCaller,touch, event);
+                fun&&fun.call(this._touchCaller,touch, event);
             };
             flax.inputManager.addListener(me,me._touchFunction,InputType.click,caller);
         }
@@ -82,17 +82,18 @@
     };
 
     //创建UI
-    GN.ccsUI = function(_json,id,type){
+    GN.ccsUI = function(_json,id,type,FLID){
     var ui = ui||{};
     if(id!=null)
         ui.json = function(v,type){
-            var node
+            var node;
             if(type==BC.CUIType.CC){
                 ui = new cc.Layer();
                 node = ccs.load(v).node;
                 ui.addChild(node);
             }else if(type==BC.CUIType.FL){
-                ui = flax.assetsManager.createDisplay(v, "BeginScene", {
+                FLID = FLID?FLID:"Layer";
+                ui = flax.assetsManager.createDisplay(v, FLID, {
                     x: cc.winSize.width/2,
                     y: cc.winSize.height/2
                 });
@@ -103,6 +104,33 @@
         };
     if(_json!=null)ui.json(_json,type);
     return ui;
+};
+
+    /**
+     * //创建游戏中的图片与文字标签
+     * 创建图片遵循先从plist图和缓存中查找，如果没有创建
+     * @param FrameName
+     * @param attr
+     * @returns {*}
+     */
+
+    GN.ccsSprite = function (FrameName,attr) {
+    var sprite = null,name=FrameName,SpriteFrame=null;
+    if(typeof name === 'string'){
+        if(name[0] === '@'){
+            sprite = cc.LabelTTF.create(name.slice(1),'微软雅黑',attr.FontSize,attr.FontColour);
+        }else{
+            SpriteFrame = cc.spriteFrameCache.getSpriteFrame(GN.Str.SubStr(2,FrameName,'/'));
+            FrameName = SpriteFrame?SpriteFrame:FrameName;
+            sprite = new cc.Sprite(FrameName);
+        }
+        if(sprite){
+            sprite.attr(attr)
+        }
+    }else{
+        throw new Error('type not Find');
+    }
+    return sprite;
 };
 
 GN.Log = function (log) {

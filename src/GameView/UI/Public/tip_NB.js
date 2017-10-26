@@ -42,7 +42,7 @@
                     var d = me._tips.shift();
 
                     var item = d.split('|');
-                    var color = '#ffffff';
+                    var color = '#009933';
                     var content = '';
                     if(item.length==1){
                         content = item[0];
@@ -51,7 +51,7 @@
                         item.shift();
                         content = item.join('|');
                     }
-                    var label = new cc.LabelTTF(content, '微软雅黑', 30)
+                    var label = new cc.LabelTTF(content, '微软雅黑', 80)
                     label.setFontFillColor(cc.color(color));
                     label.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
                     label.setVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
@@ -61,7 +61,7 @@
                     label.setOpacity(0);
 
                     //阴影
-                    var label2 = new cc.LabelTTF(content, '微软雅黑', 30);
+                    var label2 = new cc.LabelTTF(content, '微软雅黑', 80);
                     label2.setFontFillColor(cc.color(color));
                     label2.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
                     label2.setVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
@@ -71,12 +71,13 @@
                     label2.setOpacity(0);
 
                     var layout = new ccui.Layout();
-                    layout.setSize(cc.size(cc.winSize.width,40));
+                    layout.setSize(cc.size(cc.winSize.width,label2.getContentSize().height+2));
 
                     layout.addChild(label,2);
                     layout.addChild(label2,1);
 
-                    label.fadeIn(0.1).scaleTo(0.2,1,1).delay(3).fadeOut(0.3).then(function(){
+                    //  delay 2
+                    label.fadeIn(0.1).scaleTo(0.2,1,1).delay(2).fadeOut(0.3).then(function(){
                         var lens = me._listView.getChildren().length;
                         if(lens>5){
                             me._listView.removeItem(0);
@@ -88,7 +89,9 @@
                             }
                         }
                     }).run();
-                    label2.fadeIn(0.1).scaleTo(0.2,1,1).delay(3).fadeOut(0.3).run();
+
+                    //  delay 2
+                    label2.fadeIn(0.1).scaleTo(0.1,1,1).delay(2).fadeOut(0.3).run();
 
                     me._listView.pushBackCustomItem(layout);
                     me._listView.scrollToBottom(0.1,true);

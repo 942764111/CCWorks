@@ -7,7 +7,7 @@
     function getMaxZ(){
         var z=[0];
         for(var k in GM.UIMage.UIBase.openingFrame){
-            if(GV.UI[k] && GV.UI[k].ui && GV.UI[k].ui.getZOrder){
+            if(GV.UI[k] && GV.UI[k].ui && GV.UI[k].ui.getZOrder()){
                 z.push(GV.UI[k].ui.getZOrder());
             }
         }
@@ -36,10 +36,21 @@
         }
     }
 
-    GM.UIMage.closeAllFrame = function(){
+    GM.UIMage.closeAllFrame = function(isRemoveInterest){
         for(var k in GM.UIMage.UIBase.openingFrame){
             if(GV.UI[k].remove){
                 GV.UI[k].remove();
+            }
+        }
+        if(isRemoveInterest){
+            GM.UIMage.closeAllInterestUI();
+        }
+    };
+    //删除所有单例模式的UI
+    GM.UIMage.closeAllInterestUI = function(){
+        for(var obj in GV.UI){
+            if(GV.UI[obj]&&GV.UI[obj]['_instance']){
+                GV.UI[obj]['_instance'] = null
             }
         }
     };
@@ -61,10 +72,11 @@
         });
     }
     GM.UIMage.UIBase = cc.Class.extend({
-        ctor: function(json,id,type){
+        ctor: function(json,id,type,flid){
             this._json = json;
             this._id = id;
             this._type = type;
+            this._flid = flid;
             GM.UIMage.UIBase.openingFrame = GM.UIMage.UIBase.openingFrame || {};
         },
         changeJson : function(json){
@@ -85,7 +97,7 @@
             var me = this;
             if(!me.isOpen){
                 me.isOpen = true;
-                me.ui = GN.ccsUI(this._json,this._id,this._type);
+                me.ui = GN.ccsUI(this._json,this._id,this._type,this._flid);
                 GN.GetRunScene().addChild(this.ui);
                 callback && callback.call(me);
             }
@@ -106,34 +118,24 @@
 
             GN.Log('remove='+me._id);
             me.ui && me.ui.removeFromParent();
-            //me.ui && me.ui.hide(true);
 
             me.onclose && me.onclose();
             me.close && me.close();
 
             checkIfOnTop();
         },
-
-        resetZOrder : function(callback){
-            //重置层级和事件权重
-            var me = this;
-            if(me.ui){
-                me.ui.setZOrder(me._oldZOrder);
-                me.ui.setTouchEnabled(false);
-                me.ui.setTimeout(function(){
-                    me.ui.setTouchEnabled(true);
-                    callback && callback();
-                },0);
-            }
-        },
-
         goToTop : function(){
             //置于顶端
             var maxZ = getMaxZ();
             this._oldZOrder = this.ui.getZOrder();
 
             this.ui.setZOrder(maxZ+1);
-            this.isOnTop = true;
+
+            //单点触摸
+            if(this._type==BC.CUIType.FL){
+                this.ui.touch(BC.CUIType.FL,null,this);
+            }
+
             GM.UIMage.UIBase.openingFrame[this._id] = maxZ+1;
         }
     });

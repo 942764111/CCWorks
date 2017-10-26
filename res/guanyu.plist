@@ -2,25 +2,25 @@
   <dict>
     <key>frames</key>
     <dict>
-      <key>gamePopStars_0000</key>
+      <key>guanyu_0000</key>
       <dict>
         <key>frame</key>
-        <string>{{1,950},{284,80}}</string>
+        <string>{{1288,950},{284,80}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{284.00,80.00}</string>
       </dict>
-      <key>gamePopStars_0001</key>
+      <key>guanyu_0001</key>
       <dict>
         <key>frame</key>
-        <string>{{1,1032},{284,80}}</string>
+        <string>{{1,950},{1285,624}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
-        <string>{284.00,80.00}</string>
+        <string>{1285.00,624.00}</string>
       </dict>
-      <key>gamePopStars_0002</key>
+      <key>guanyu_0002</key>
       <dict>
         <key>frame</key>
         <string>{{1,1},{1517,947}}</string>
@@ -28,15 +28,6 @@
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{1517.00,947.00}</string>
-      </dict>
-      <key>gamePopStars_0003</key>
-      <dict>
-        <key>frame</key>
-        <string>{{1520,1},{138,330}}</string>
-        <key>offset</key>
-        <string>{0.00,0.00}</string>
-        <key>sourceSize</key>
-        <string>{138.00,330.00}</string>
       </dict>
     </dict>
     <key>metadata</key>
@@ -50,17 +41,17 @@
       <key>format</key>
       <integer>2</integer>
       <key>image</key>
-      <string>gamePopStars.png</string>
+      <string>guanyu.png</string>
       <key>realTextureFileName</key>
-      <string>gamePopStars.png</string>
+      <string>guanyu.png</string>
       <key>textureFileName</key>
-      <string>gamePopStars.png</string>
+      <string>guanyu.png</string>
       <key>size</key>
-      <string>{1720,1150}</string>
+      <string>{2120,1650}</string>
     </dict>
     <key>displays</key>
     <dict>
-      <key>a6</key>
+      <key>a11</key>
       <dict>
         <key>type</key>
         <string>button</string>
@@ -73,14 +64,14 @@
         <key>end</key>
         <integer>0</integer>
       </dict>
-      <key>a7</key>
+      <key>a10</key>
       <dict>
         <key>type</key>
-        <string>button</string>
+        <string>null</string>
         <key>anchorX</key>
         <real>0.50000</real>
         <key>anchorY</key>
-        <real>0.50000</real>
+        <real>0.49760</real>
         <key>start</key>
         <integer>1</integer>
         <key>end</key>
@@ -99,19 +90,6 @@
         <key>end</key>
         <integer>2</integer>
       </dict>
-      <key>a5</key>
-      <dict>
-        <key>type</key>
-        <string>null</string>
-        <key>anchorX</key>
-        <real>0.54710</real>
-        <key>anchorY</key>
-        <real>0.48939</real>
-        <key>start</key>
-        <integer>3</integer>
-        <key>end</key>
-        <integer>3</integer>
-      </dict>
     </dict>
     <key>mcs</key>
     <dict>
@@ -122,39 +100,39 @@
         <key>totalFrames</key>
         <integer>1</integer>
         <key>rect</key>
-        <string>0,0,1554.00,962.00</string>
+        <string>0,0,1554.00,972.00</string>
         <key>anchorX</key>
-        <real>0.48333</real>
+        <real>0.50000</real>
         <key>anchorY</key>
-        <real>0.50520</real>
+        <real>0.50514</real>
         <key>children</key>
         <dict>
-          <key>i4018665</key>
+          <key>i19353</key>
+          <dict>
+            <key>class</key>
+            <string>a10</string>
+            <key>zIndex</key>
+            <integer>1</integer>
+            <key>frames</key>
+            <string>777.00,491.00,0.00,1.00000,1.00000,1.00,1,0.00,0.00</string>
+          </dict>
+          <key>esc_btn</key>
+          <dict>
+            <key>class</key>
+            <string>a11</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>777.00,85.10,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
+          </dict>
+          <key>i19351</key>
           <dict>
             <key>class</key>
             <string>a4</string>
             <key>zIndex</key>
             <integer>0</integer>
             <key>frames</key>
-            <string>0.00,962.00,0.00,1.02438,1.01584,1.00,0,0.00,0.00</string>
-          </dict>
-          <key>gy_btn</key>
-          <dict>
-            <key>class</key>
-            <string>a7</string>
-            <key>zIndex</key>
-            <integer>2</integer>
-            <key>frames</key>
-            <string>227.35,118.25,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
-          </dict>
-          <key>i4018667</key>
-          <dict>
-            <key>class</key>
-            <string>a5</string>
-            <key>zIndex</key>
-            <integer>1</integer>
-            <key>frames</key>
-            <string>267.85,542.75,0.00,1.00000,1.00000,1.00,1,0.00,0.00</string>
+            <string>0.00,972.00,0.00,1.02438,1.02640,1.00,0,0.00,0.00</string>
           </dict>
         </dict>
       </dict>

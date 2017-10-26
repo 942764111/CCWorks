@@ -2,7 +2,11 @@
 var GameBeginScene = GM.SceneMage.SceneBase.extend({
         onEnter: function () {
             this._super();
-            GV.UI['YXSM2'].show();
+
+            var cache = cc.spriteFrameCache;
+            cache.addSpriteFrames(resGameBegin.IMG,resGameBegin.IMG_png);
+
+            GV.UI['GameBegin'].show();
 
         },
         onExit:function() {
