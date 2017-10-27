@@ -1,39 +1,50 @@
-var resGameMove={
-    downBtn:"res/Btn/downBtn.png",
-    leftBtn:"res/Btn/leftBtn.png",
-    rightBtn:"res/Btn/rightBtn.png",
-    rotateBtn:"res/Btn/rotateBtn.png",
-    GameMoveLayer:"res/img/GameMoveLayer.png",
-    tetrisborder:"res/img/tetrisborder.png",
-    tetrisLayer:"res/img/tetrisLayer.png",
-};
 
-var resGrid = {
-    grid : "res/img/grid/grid.png",
-    gridLayer : "res/img/grid/gridLayer.png"
-};
 
-var res = {
-    gamemove_json:"res/GameMove.json",
-    loginimg:'res/loginimg.png',
-    poppingStars:"res/gamePopStars.plist",
-    poppingStars_png:"res/gamePopStars.png"
-};
-
-var res_GameBegin = [
-];
-
-var res_GameMove = [
-];
-for(var json in res){
-    res_GameMove.push(res[json]);
+var  resGameBegin = {
+    GameState : 'res/gamePopStars.plist',
+    GameState_png : 'res/gamePopStars.png',
+    anniu : 'res/anniu.plist',
+    anniu_png : 'res/anniu.png',
+    bbxz : 'res/bbxz.plist',
+    bbxz_png : 'res/bbxz.png',
+    guanyu : 'res/guanyu.plist',
+    guanyu_png : 'res/guanyu.png',
+    IMG:'res/IMG.plist',
+    IMG_png:'res/IMG.png',
+    flash : 'res/flash.png'
 }
 
-for(var gamemove in resGameMove){
-    res_GameMove.push(resGameMove[gamemove]);
+var  resGameMove = {
+    gameMove : 'res/gameMove.plist',
+    gameMove_png : 'res/gameMove.png',
+    zanting : 'res/zanting.plist',
+    zanting_png : 'res/zanting.png',
+    zhu : 'res/zhu.ExportJson',
+    DemoLogin0 : 'res/DemoLogin0.png',
+    DemoLogin0_png : 'res/DemoLogin0.plist',
+    flash : 'res/flash.png',
+    zhuzi : 'res/gameMove/zhuzi.png',
+    dh : 'res/zhudh.plist',
+    dh_png : 'res/zhudh.png',
+    windh : 'res/chenggong.plist',
+    windh_png : 'res/chenggong.png',
+    kaishi :'res/kaishi.plist',
+    kaishi_png :'res/kaishi.png',
+    Over_png :'res/Over.png',
+    Over :'res/Over.plist'
+
+};
+
+var res_GameBegin = [];
+var res_GameMove = [];
+
+for(var obj in resGameBegin){
+    res_GameBegin.push(resGameBegin[obj]);
 }
 
-for(var Grid in resGrid){
-    res_GameMove.push(resGrid[Grid]);
+for(var move in resGameMove){
+    res_GameMove.push(resGameMove[move]);
 }
+
+
 

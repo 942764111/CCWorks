@@ -1,9 +1,9 @@
 {
-  "version":1.0,
+  "version":1.2,
   "gameId":"yyl",
-  "width":750,
-  "height":1334,
-  "landscape":false,
+  "width":1500,
+  "height":950,
+  "landscape":true,
   "rotateImg":"res/rotate.png",
   "language":"zh",
   "languageJson":false,
@@ -14,15 +14,14 @@
   ],
   "project_type":"javascript",
   "debugMode":1,
-  "showFPS":true,
+  "showFPS":false,
   "frameRate":60,
   "id":"gameCanvas",
   "renderMode":0,
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
     "cocos2d",
-    "extensions",
-    "ccui"
+    "extensions"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -72,11 +71,21 @@
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
     "src/GameManage/RichTextManage.js",
-    "src/GameManage/socket.js",
+
+
+
     "src/GameView/UI/Public/tip_NB.js",
-    "src/GameView/UI/RunGame.js",
+    "src/GameView/UI/Public/SliderBar.js",
+
+
+    "src/GameView/UI/GameBegin.js",
+    "src/GameView/UI/GameMove.js",
+    "src/GameView/UI/guanyu.js",
+    "src/GameView/UI/Pause.js",
+    "src/GameView/UI/Over.js",
     "src/GameView/Scene/GameBeginScene.js",
     "src/GameView/Scene/GameMoveScene.js"
+
   ]
   
 }

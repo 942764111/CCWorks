@@ -14,8 +14,6 @@
         showed : function() {
             var me = this;
 
-
-
             var sprite = GN.ccsSprite('@HelloWorld',{
                 x:cc.winSize.width/2,
                 y:cc.winSize.height/2,
