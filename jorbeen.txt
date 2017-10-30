@@ -1,0 +1,8 @@
+﻿阿里云服务地址:
+106.14.251.157
+账户:root
+密码:HXza12345678^
+部署磁盘路径:
+/home/html/game
+这个目录下创建文件夹，游戏，比如游戏名: aaa ，实际磁盘路径/home/html/game/aaa
+域名访问为: http://hg.hxwise.com/aaa
