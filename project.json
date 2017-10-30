@@ -60,7 +60,7 @@
     "src/flax/game/Color.js",
     "src/resource.js",
     "src/HelloWorld.js",
-    "src/jquery-2.2.1.min.js",
+
     "src/reconnecting-websocket-master/reconnecting-websocket.js",
     "src/GameConfig/Constant.js",
     "src/GameConfig/Config.js",
@@ -72,17 +72,12 @@
     "src/GameManage/SceneManage.js",
     "src/GameManage/RichTextManage.js",
 
-
-
     "src/GameView/UI/Public/tip_NB.js",
     "src/GameView/UI/Public/SliderBar.js",
 
 
     "src/GameView/UI/GameBegin.js",
-    "src/GameView/UI/GameMove.js",
-    "src/GameView/UI/guanyu.js",
-    "src/GameView/UI/Pause.js",
-    "src/GameView/UI/Over.js",
+    "src/GameView/UI/kernel.js",
     "src/GameView/Scene/GameBeginScene.js",
     "src/GameView/Scene/GameMoveScene.js"
 

@@ -4,12 +4,12 @@
 var GC = GC||{};
 
 GC.MAP_CONFIG={
-     COLS : 22,//列
-     ROWS : 11,//行
+     COLS : 22,//??
+     ROWS : 11,//??
      TILE_SIZE : 41// tile_Grid size
 };
 /*
-    形状配置表
+    ????????
  */
 GC.GRID_CONFIG={
     'S':{'flaxresID':'S'},
