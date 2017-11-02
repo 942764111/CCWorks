@@ -424,7 +424,7 @@ flax.TileMap = cc.Node.extend({
         var result = [];
         while(++i < this._mapHeight){
             if(returnObject === true) result = result.concat(this.getObjects(row, i));
-            else result = result.push({x:row, y:i});
+            else result.push({x:row, y:i});
         }
         return result;
     },
@@ -437,7 +437,7 @@ flax.TileMap = cc.Node.extend({
         var result = [];
         while(++i < this._mapWidth){
             if(returnObject === true) result = result.concat(this.getObjects(i, col));
-            else result = result.push({x:i, y:col});
+            else result.push({x:i, y:col});
         }
         return result;
     },

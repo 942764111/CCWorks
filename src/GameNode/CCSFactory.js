@@ -153,13 +153,13 @@ GN.GetRunScene = function () {
      * @param pos 坐标 默认 0
      * @returns {*}
      */
-GN.initTileMap = function(tileWidth, tileHeight,rows,cols,pos){
+GN.initTileMap = function(tileWidth, tileHeight,rows,cols,pos,debug){
     var tileMap = new flax.TileMap();
     tileMap.init(tileWidth, tileHeight);
     tileMap.setMapSize(rows, cols);
     pos = pos? pos : {x:0,y:0};
     tileMap.setPosition(pos.x,pos.y);
-    tileMap.showDebugGrid();
+    debug&&tileMap.showDebugGrid()
     return tileMap;
 };
 

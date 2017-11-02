@@ -3,6 +3,10 @@ var  resGameBegin = {
 }
 
 var  resGameMove = {
+    runGame : 'res/RunGame.plist',
+    runGame_png : 'res/RunGame.png',
+    GameOver : 'res/GameOver.plist',
+    GameOver_png : 'res/GameOver.png'
 };
 
 var res_GameBegin = [];

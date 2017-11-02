@@ -14,15 +14,15 @@ cc.game.onStart = function(){
     cc.view.enableRetina(true);
     cc.view.enableAutoFullScreen(false);
 
-    flax.init(cc.ResolutionPolicy.EXACT_FIT);
+    flax.init(cc.ResolutionPolicy.SHOW_ALL);
 
     cc.view.resizeWithBrowserSize(true);
 
 
-    flax.registerScene("GameBegin", GameBeginScene, res_GameBegin);
+    flax.registerScene("GameBegin", GameBeginScene, res_GameMove);
     flax.registerScene("GameMove", GameMoveScene, res_GameMove);
 
-    flax.replaceScene("GameMove");
+    flax.replaceScene("GameBegin");
 };
 cc.game.run();
 

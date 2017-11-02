@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<project name="Javascript compress project" basedir="F:\jorbeen\cocos2d\cocosproject\CCWorks2" default="compile">
+<project name="Javascript compress project" basedir="C:\xampp\htdocs\CCWorks" default="compile">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
-             classpath="F:\jorbeen\cocos2d\cocos2d-js-v3.6\tools\cocos2d-console\plugins\project_compile\build_web/bin/compiler-1.7.jar"/>
+             classpath="C:\Users\jor\cocos\cocos2d-js-v3.6\tools\cocos2d-console\plugins\project_compile\build_web/bin/compiler-1.7.jar"/>
 
     <target name="compile">
         <jscomp compilationLevel="simple" 
                 warning="quiet"
                 debug="false" 
-                output="F:\jorbeen\cocos2d\cocosproject\CCWorks2\publish\html5/game.min.js"
+                output="C:\xampp\htdocs\CCWorks\publish\html5/game.min.js"
                 languagein="ECMASCRIPT5"
                 
                 >
-            <sources dir="F:\jorbeen\cocos2d\cocosproject\CCWorks2\frameworks\cocos2d-html5">
+            <sources dir="C:\xampp\htdocs\CCWorks\frameworks\cocos2d-html5">
                 <file name="CCBoot.js"/>
                 <file name="CCDebugger.js"/>
                 <file name="cocos2d/core/utils/BinaryLoader.js"/>
@@ -286,6 +286,13 @@
                 <file name="extensions/spine/CCSkeletonCanvasRenderCmd.js"/>
                 <file name="extensions/spine/CCSkeletonWebGLRenderCmd.js"/>
                 <file name="extensions/ccpool/CCPool.js"/>
+                <file name="cocos2d/physics/CCPhysicsSprite.js"/>
+                <file name="cocos2d/physics/CCPhysicsDebugNode.js"/>
+                <file name="cocos2d/physics/CCPhysicsDebugNodeCanvasRenderCmd.js"/>
+                <file name="cocos2d/physics/CCPhysicsDebugNodeWebGLRenderCmd.js"/>
+                <file name="cocos2d/physics/CCPhysicsSpriteCanvasRenderCmd.js"/>
+                <file name="cocos2d/physics/CCPhysicsSpriteWebGLRenderCmd.js"/>
+                <file name="external/chipmunk/chipmunk.js"/>
 
             </sources>
             <sources dir="${basedir}">
@@ -325,7 +332,6 @@
                 <file name="src/flax/game/Color.js"/>
                 <file name="src/resource.js"/>
                 <file name="src/HelloWorld.js"/>
-                <file name="src/jquery-2.2.1.min.js"/>
                 <file name="src/reconnecting-websocket-master/reconnecting-websocket.js"/>
                 <file name="src/GameConfig/Constant.js"/>
                 <file name="src/GameConfig/Config.js"/>
@@ -336,9 +342,11 @@
                 <file name="src/GameManage/UIManage.js"/>
                 <file name="src/GameManage/SceneManage.js"/>
                 <file name="src/GameManage/RichTextManage.js"/>
-                <file name="src/GameManage/socket.js"/>
                 <file name="src/GameView/UI/Public/tip_NB.js"/>
-                <file name="src/GameView/UI/RunGame.js"/>
+                <file name="src/GameView/UI/Public/SliderBar.js"/>
+                <file name="src/GameView/UI/GameBegin.js"/>
+                <file name="src/GameView/UI/kernel.js"/>
+                <file name="src/GameView/UI/GameOver.js"/>
                 <file name="src/GameView/Scene/GameBeginScene.js"/>
                 <file name="src/GameView/Scene/GameMoveScene.js"/>
                 <file name="main.js"/>
