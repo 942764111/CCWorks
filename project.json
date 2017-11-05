@@ -14,7 +14,7 @@
   ],
   "project_type":"javascript",
   "debugMode":1,
-  "showFPS":false,
+  "showFPS":true,
   "frameRate":60,
   "id":"gameCanvas",
   "renderMode":2,
@@ -81,6 +81,7 @@
     "src/GameView/UI/kernel.js",
     "src/GameView/UI/GameOver.js",
     "src/GameView/UI/GameMove.js",
+    "src/GameView/UI/GameMove2.js",
     "src/GameView/Scene/GameBeginScene.js",
     "src/GameView/Scene/GameMoveScene.js"
 

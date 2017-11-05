@@ -2,10 +2,11 @@
  * Created by jorbeen on 2017/8/30.
  */
 (function(){
-    var ID = 'GameMove';
+    var ID = 'GameMove2';
 
     var fun = GM.UIMage.UIBase.extend({
         _GameVessel : null,
+        _ismove : false,
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -66,6 +67,8 @@
                 me._GameVessel._getTileMap.y+=40;
                 me.ui['map'].addChild( me._GameVessel._getTileMap);
             }
+
+
             //初始化游戏UI相关
             function initGameUIInfo() {
                 if(GN.GAME_PASS_INDEX>GN.MAX_GAME_PASS_INDEX){
@@ -92,7 +95,7 @@
                    // Grid.mepos = data[i]['info']['mepos'];
                     Grid.mepos = false;
                     Grid.id = data[i]['id'];
-
+                    me.ui['lev'+GN.GAME_PASS_INDEX]['test'].debugDraw();
                     function bindGridChildrenToMap() {
                         for(var j=0;j<Grid._children.length;j++){
                             var childindex = me._GameVessel._getTileMap.getTileIndex(Grid._children[j].parent.convertToWorldSpace(Grid._children[j]));
@@ -206,33 +209,28 @@
             //检测越界 并设置在范围中
             function updateScope() {
                 var obj = TouchGrid;
-                if (obj['direction'] == '0') {
-                    var gettileindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                    var miny = map.getTiledPosition(gettileindex.x,obj['scope']['min']);
-                    var maxy = map.getTiledPosition(gettileindex.x,obj['scope']['max']);
-                    //检测边界
-                    if(obj.y <miny.y){
-                        cc.log('obj.y <miny.y')
-                        obj.y = miny.y;
-                    }else if(obj.y >maxy.y){
-                        cc.log('obj.y >maxy.y')
-                        obj.y = maxy.y;
-                    }
-                } else if (obj['direction'] == '1') {
-                    var gettileindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                    var minx = map.getTiledPosition(obj['scope']['min'],gettileindex.y);
-                    var maxx = map.getTiledPosition(obj['scope']['max'],gettileindex.y);
-
-                    //检测边界
-                    if(obj.x <minx.x){
-                        cc.log('obj.x <minx.x')
-                        obj.x = minx.x;
-                    }else if(obj.x >maxx.x){
-                        cc.log('obj.x >minx.x')
-                        obj.x = maxx.x;
-                    }
+                function bionbox(a, b)
+                {
+                    var aRect = a.getBoundingBox();
+                    var bRect = b.getBoundingBox();
+                    return cc.rectIntersectsRect(aRect, bRect);
                 }
+
+                function ifTouched(a,b) {
+                    // a = a.parent.convertToWorldSpace(a);
+                    // b = b.parent.convertToWorldSpace(b);
+                    cc.log(a.getPosition());
+                    cc.log('========================');
+                    cc.log(b.getPosition());
+                    return flax.ifCollide(a,b)
+                }
+                if(ifTouched(obj,me.ui['lev'+GN.GAME_PASS_INDEX]['test'])){
+                    me._ismove = true;
+                   // return true;
+                }
+                return false;
             }
+
 
             //检测 砖块 是否成功
             function updateisWin(obj){
@@ -293,22 +291,37 @@
                     if(!ismove()){
                         TouchGrid.y = touchpos['move'].y;
                     }else{
+                        if(!TouchGrid['mepos'])return;
                         if(ismove()['direction']=='0'){
-                            TouchGrid.y = ismove()['data'].y-ismove()['data'].getBoundingBox().height*2;
+                            cc.log(TouchGrid['mepos']['0']);
+                            TouchGrid.y = TouchGrid['mepos']['0']==0?
+                                ismove()['data'].y-(ismove()['data'].height):
+                                ismove()['data'].y+(ismove()['data'].height*TouchGrid['mepos']['0'])
+
                         }else if(ismove()['direction']=='1'){
-                            TouchGrid.y = ismove()['data'].y+ismove()['data'].getBoundingBox().height*2;
+                            TouchGrid.y = TouchGrid['mepos']['1']==0?
+                                ismove()['data'].y-(ismove()['data'].height):
+                                ismove()['data'].y+(ismove()['data'].height*TouchGrid['mepos']['1'])
                         }
                     }
                 } else if (TouchGrid['direction'] == '1') {
-                    if(!ismove()){
+                    updateScope()
+                    if(!me._ismove){
                         TouchGrid.x = touchpos['move'].x;
                     }else{
-
-                        if(ismove()['direction']=='0'){
-                            TouchGrid.x = ismove()['data'].x-ismove()['data'].getBoundingBox().width*2;
-                        }else if(ismove()['direction']=='1'){
-                            TouchGrid.x = ismove()['data'].x+ismove()['data'].getBoundingBox().width;
-                        }
+                        // if(!TouchGrid['mepos'])return;
+                        // if(ismove()['direction']=='0'){
+                        //     ismove()['data'].x-(ismove()['data'].width*2)
+                        //
+                        //     // TouchGrid.x = TouchGrid['mepos']['0']==0?
+                        //     //     ismove()['data'].x-(ismove()['data'].width):
+                        //     //     ismove()['data'].x-(ismove()['data'].width*TouchGrid['mepos']['0'])
+                        // }else if(ismove()['direction']=='1'){
+                        //     ismove()['data'].x+(ismove()['data'].width*2)
+                        //     // TouchGrid.x = TouchGrid['mepos']['1']==0?
+                        //     //     ismove()['data'].x+(ismove()['data'].width):
+                        //     //     ismove()['data'].x+(ismove()['data'].width*TouchGrid['mepos']['1'])
+                        // }
                     }
                 }
             }
@@ -319,7 +332,7 @@
                     updateTile();
                     touchpos['begin'] = this.getPosition();
                     TouchGrid = this;
-
+                    TouchGrid.debugDraw();
                     for(var j = 0;j<this._children.length;j++){
                         this._children[j]['isme'] = true;
                         TouchGridChilds.push(this._children[j]);
@@ -332,15 +345,13 @@
                     touchpos['move']  = pos;
 
                     updateTouchGridPos();
-
-                    updateScope();
                 }
                 function upCallBack(touch) {
                     var pos = touch._point;
                     touchpos['move']  = pos;
                     updateTouchGridPos();
                     updateScope();
-                    
+
                     updateTile();
 
                     GN.Arr.close(me._GameVessel._GridTouchChildrenAll);
