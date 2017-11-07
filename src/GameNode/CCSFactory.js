@@ -118,7 +118,7 @@
     var sprite = null,name=FrameName,SpriteFrame=null;
     if(typeof name === 'string'){
         if(name[0] === '@'){
-            sprite = cc.LabelTTF.create(name.slice(1),'微软雅黑',attr.FontSize,attr.FontColour);
+            sprite = cc.LabelTTF.create(name.slice(1),'微软雅黑',attr['FontSize'],attr['FontColour']);
         }else{
             SpriteFrame = cc.spriteFrameCache.getSpriteFrame(GN.Str.SubStr(2,FrameName,'/'));
             FrameName = SpriteFrame?SpriteFrame:FrameName;
@@ -132,6 +132,7 @@
     }
     return sprite;
 };
+
 
 GN.Log = function (log) {
     if(BC.Debug)return;

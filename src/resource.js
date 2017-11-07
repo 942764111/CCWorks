@@ -6,7 +6,10 @@ var  resGameMove = {
     runGame : 'res/RunGame.plist',
     runGame_png : 'res/RunGame.png',
     GameOver : 'res/GameOver.plist',
-    GameOver_png : 'res/GameOver.png'
+    GameOver_png : 'res/GameOver.png',
+    gold_png:'res/GameMove/gold.png',
+    enemy_png:'res/GameMove/enemy.png',
+    heart_png:'res/GameMove/heart.png'
 };
 
 var res_GameBegin = [];

@@ -22,7 +22,7 @@ cc.game.onStart = function(){
     flax.registerScene("GameBegin", GameBeginScene, res_GameMove);
     flax.registerScene("GameMove", GameMoveScene, res_GameMove);
 
-    flax.replaceScene("GameBegin");
+    flax.replaceScene("GameMove");
 };
 cc.game.run();
 
