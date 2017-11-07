@@ -5,7 +5,6 @@
     var ID = 'GameMove';
 
     var fun = GM.UIMage.UIBase.extend({
-        _GameVessel : null,
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -14,363 +13,102 @@
         },
         showed : function() {
             var me = this;
-            me.SetGameController(1);
-            me.SetGameController(2);
+
+            me.GameControl(1);
+            me.ui.schedule(me.CreateEnemy,2);
         }
-        /**
-         *  游戏控制器
-         * @param state  1:初始化  2：开始   3：结束
-         * @constructor
-         */
-        ,SetGameController : function (state) {
+        ,GameControl : function (state) {
             var me = this;
-            switch(state){
-                case GC.GAME_STATE.INIT:
-                    me.init();
+            switch (state.toString()){
+                case GC.GAME_INIT:
+                    me.Gameinit();
                     break;
-                case GC.GAME_STATE.STATE:
-                    me.runGame();
+                case GC.GAME_RUN:
                     break;
-                case GC.GAME_STATE.OVER:
-                    me.GameOver();
-                    me.init('Variable');
-                    me._GameVessel = null;
+                case GC.GAME_PASS:
                     break;
-            }
-        }
-        /**
-         * 初始化 Type  : Variable  TileMap  UI
-         * @param initType
-         */
-        ,init : function (initType) {
-            var me = this;
-            //初始化变量
-            function initVariable() {
-                me._GameVessel  = {
-                    _getTileMap : null,
-                    _isWin:false,//是否赢了
-                    _touchPos:{},//记录触摸坐标
-                    _GridTouchChildrenAll:[],//触摸中的格子子对象
-                    _GridAll:[],//所有格子对象
-                    _GridTouch:null//当前格子对象
-                }
-
-                if(GN.GAME_PASS_INDEX>GN.MAX_GAME_PASS_INDEX){
-                    GN.GAME_PASS_INDEX = 1;
-                }
-            }
-            //初始化TileMap
-            function initTileMap() {
-                me._GameVessel._getTileMap = GN.initTileMap(53,53,6,6,null);
-                me._GameVessel._getTileMap.x+=33;
-                me._GameVessel._getTileMap.y+=40;
-                me.ui['map'].addChild( me._GameVessel._getTileMap);
-            }
-            //初始化游戏UI相关
-            function initGameUIInfo() {
-                if(GN.GAME_PASS_INDEX>GN.MAX_GAME_PASS_INDEX){
-                    GN.GAME_PASS_INDEX = 1;
-                }
-                me.ui['scoreTxt0'].text = GN.GAME_PASS_INDEX;
-            }
-            //初始化Grid到地图中
-            function initGameGridToTileMap() {
-                var Grid = null,GridAll=me._GameVessel._GridAll;
-                var data = GC.GAME_PASS[GN.GAME_PASS_INDEX];
-                for(var lev = 1;lev<=GN.MAX_GAME_PASS_INDEX;lev++){
-                    if(lev!=GN.GAME_PASS_INDEX){
-                        me.ui['lev'+lev].setVisible(false);
-                    }else{
-                        me.ui['lev'+lev].setVisible(true);
-                    }
-                }
-
-                for(var i=0;i<data.length;i++){
-                    Grid = me.ui['lev'+GN.GAME_PASS_INDEX]['test'+data[i]['id']];
-                    Grid.direction = data[i]['direction'];
-                    Grid.scope = data[i]['info']['scope'];
-                   // Grid.mepos = data[i]['info']['mepos'];
-                    Grid.mepos = false;
-                    Grid.id = data[i]['id'];
-
-                    function bindGridChildrenToMap() {
-                        for(var j=0;j<Grid._children.length;j++){
-                            var childindex = me._GameVessel._getTileMap.getTileIndex(Grid._children[j].parent.convertToWorldSpace(Grid._children[j]));
-                            Grid._children[j]['isme'] = false;
-                            me._GameVessel._getTileMap.snapToTile(Grid._children[j],childindex.x,childindex.y,true);
-                        }
-                    }
-
-                    bindGridChildrenToMap();
-
-                    GridAll.push(Grid);
-                }
-            }
-            switch(initType){
-                case 'Variable':
-                    initVariable();
-                    break;
-                case 'TileMap':
-                    initTileMap();
-                    break;
-                case 'UI':
-                    initGameUIInfo();
-                    break;
-                case 'Grid':
-                    initGameGridToTileMap();
+                case GC.GAME_OVER:
                     break;
                 default:
-                    initVariable();
-                    initTileMap();
-                    initGameUIInfo();
-                    initGameGridToTileMap();
+                    me.Gameinit();
                     break
             }
         }
-        ,runGame : function () {
-            var me = this
-                ,GridAll = me._GameVessel._GridAll
-                ,TouchGridChilds = me._GameVessel._GridTouchChildrenAll
-                ,TouchGrid = me._GameVessel._GridTouch
-                ,map = me._GameVessel._getTileMap
-                ,touchpos = me._GameVessel._touchPos
+        ,Gameinit : function(type){
+            var me = this;
+            function variables() {
 
-            function bindGridEvent() {
-                var obj;
-                for (var i = 0; i < GridAll.length; i++) {
-                    obj = GridAll[i];
-                    flax.inputManager.addListener(obj,GridCallBacks('press'),InputType.press, obj);
-                    flax.inputManager.addListener(obj,GridCallBacks('move'),InputType.move, obj);
-                    flax.inputManager.addListener(obj,GridCallBacks('up'),InputType.up, obj);
+            }
+            function initHero() {
+                function addEvent() {
+                    var pos;
+                    function MoveCallBack(touch) {
+                        pos = touch._point;
+                        this.y = pos.y;
+                    }
+                    flax.inputManager.addListener(me.ui['Hero'],MoveCallBack,InputType.move,me.ui['Hero']);
+                }
+                addEvent();
+            }
+            function initEnemy() {
+                
+                var gold;
+                var goldAll = [];
+
+                function initGold() {
+                    for(var i=0;i<20;i++){
+                        gold = new me.CreateSprite(SPGold);
+                        cc.pool.putInPool(gold);
+                    }
+                }
+                initGold();
+                for(var j=0;j<10;j++){
+                    gold = me.CreateSprite(SPGold);
+                    gold.x = cc.winSize.width/2;
+                    gold.y = GN.Num.randomNumber(0,cc.winSize.height);
+                    me.ui.addChild(gold)
                 }
             }
-            //判断是否能走
-            /**
-             *  return bool = false     bool = {'data':getObject[0].parent,'direction':'0'} ;
-             *  y : 上：0  下：1   x: 右：0 左：1
-             * @returns {boolean}
-             */
-            function ismove() {
-                var obj,bool=false;
-                for(var i=0;i<TouchGridChilds.length;i++) {
-                    obj = TouchGridChilds[i];
-                    var childindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                    //↑
-                    if(touchpos['move'].y>touchpos['begin'].y&&TouchGrid['direction']=='0'){
-                        //是否有人
-                        var isEmpty = map.isEmptyTile(childindex.x, childindex.y+1);
-                        var getObject = map.getObjects(childindex.x, childindex.y+1);
-                        var test = !isEmpty&&getObject.length>0&&!getObject[0]['isme']
-                        if(test){
-                            bool = {'data':getObject[0].parent,'direction':'0'} ;
-                            break;
-                        }
-                    }
-                    //↓
-                    else if(touchpos['move'].y<touchpos['begin'].y&&TouchGrid['direction']=='0'){
-                        //是否有人
-                        var isEmpty = map.isEmptyTile(childindex.x, childindex.y-1)
-                        var getObject = map.getObjects(childindex.x, childindex.y-1);
-                        var test = !isEmpty&&getObject.length>0&&!getObject[0]['isme']
-                        if(test){
+            function Map() {
 
-                            bool =  {'data':getObject[0].parent,'direction':'1'} ;
-                            break;
-                        }
-                    }
-                    //→
-                    if(touchpos['move'].x>touchpos['begin'].x&&TouchGrid['direction']=='1'){
-
-                        var isEmpty = map.isEmptyTile(childindex.x+1, childindex.y)
-                        var getObject = map.getObjects(childindex.x+1, childindex.y);
-                        var test = !isEmpty&&getObject.length>0&&!getObject[0]['isme']
-                        if(test){
-                            bool = {'data':getObject[0].parent,'direction':'0'} ;
-                            break;
-                        }
-                    }
-                    //←
-                    else if(touchpos['move'].x<touchpos['begin'].x&&TouchGrid['direction']=='1') {
-                        var isEmpty = map.isEmptyTile(childindex.x - 1, childindex.y)
-                        var getObject = map.getObjects(childindex.x - 1, childindex.y);
-                        var test = !isEmpty && getObject.length > 0 && !getObject[0]['isme']
-                        if (test) {
-                            bool = {'data':getObject[0].parent,'direction':'1'} ;
-                            break;
-                        }
-                    }
-
-                }
-                return bool;
             }
-            //检测越界 并设置在范围中
-            function updateScope() {
-                var obj = TouchGrid;
-                if (obj['direction'] == '0') {
-                    var gettileindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                    var miny = map.getTiledPosition(gettileindex.x,obj['scope']['min']);
-                    var maxy = map.getTiledPosition(gettileindex.x,obj['scope']['max']);
-                    //检测边界
-                    if(obj.y <miny.y){
-                        cc.log('obj.y <miny.y')
-                        obj.y = miny.y;
-                    }else if(obj.y >maxy.y){
-                        cc.log('obj.y >maxy.y')
-                        obj.y = maxy.y;
-                    }
-                } else if (obj['direction'] == '1') {
-                    var gettileindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                    var minx = map.getTiledPosition(obj['scope']['min'],gettileindex.y);
-                    var maxx = map.getTiledPosition(obj['scope']['max'],gettileindex.y);
-
-                    //检测边界
-                    if(obj.x <minx.x){
-                        cc.log('obj.x <minx.x')
-                        obj.x = minx.x;
-                    }else if(obj.x >maxx.x){
-                        cc.log('obj.x >minx.x')
-                        obj.x = maxx.x;
-                    }
-                }
+            switch (type){
+                case 'variables':break;
+                case 'Hero':
+                    initHero();
+                    break;
+                case 'Enemy':
+                    initEnemy();
+                    break;
+                case 'Map':break;
+                default :
+                    variables();
+                    Map();
+                    initHero();
+                    initEnemy();
+                    break;
             }
-
-            //检测 砖块 是否成功
-            function updateisWin(obj){
-                var getcolobj,obj = obj;
-                if(obj['id']=='0') {
-                    for(var i=0;i<TouchGridChilds.length;i++){
-                        var gettileindex = map.getTileIndex(TouchGridChilds[i].parent.convertToWorldSpace(TouchGridChilds[i]));
-                        for(var col = 0;col<map.getCol(gettileindex.y).length;col++){
-                            getcolobj = map.getCol(gettileindex.y)[col];
-                            //过滤掉自己
-                            if(!map.isEmptyTile(getcolobj.x,getcolobj.y)&&
-                                map.getObjects(getcolobj.x,getcolobj.y)[0]['isme']||
-                                getcolobj.x<gettileindex.x){
-                                continue;
-                            }else if(!map.isEmptyTile(getcolobj.x,getcolobj.y)){
-                                me._GameVessel._isWin = false;
-                                break;
-                            }else if(map.isEmptyTile(getcolobj.x,getcolobj.y)){
-                                me._GameVessel._isWin = true;
-                            }
-                        }
-                        break;
-                    }
-
-                    if(me._GameVessel._isWin){
-                        me.GameOver();
-                        obj.runAction(
-                            new cc.sequence(cc.moveTo(0.5,cc.p(me.ui['chukou'].x-30,me.ui['chukou'].y)),
-                                new cc.CallFunc(function () {
-                                    obj.setVisible(false);
-                                    GV.UI['GameOver'].show();
-                                },obj)
-                            )
-                        );
-                    }
-
-                }
-            }
-            /**
-             * 更新格子在tileMap中的位置
-             */
-            function updateTile() {
-                var obj;
-                for(var i=0;i<TouchGridChilds.length;i++){
-                    obj = TouchGridChilds[i];
-                    if(obj) {
-                        obj['isme'] = false;
-                        var childindex = map.getTileIndex(obj.parent.convertToWorldSpace(obj));
-                        map.snapToTile(obj, childindex.x, childindex.y, true);
-                    }
-                }
-            }
-            
-            function updateTouchGridPos() {
-
-                if (TouchGrid['direction'] == '0') {
-
-                    if(!ismove()){
-                        TouchGrid.y = touchpos['move'].y;
-                    }else{
-                        if(ismove()['direction']=='0'){
-                            TouchGrid.y = ismove()['data'].y-ismove()['data'].getBoundingBox().height*2;
-                        }else if(ismove()['direction']=='1'){
-                            TouchGrid.y = ismove()['data'].y+ismove()['data'].getBoundingBox().height*2;
-                        }
-                    }
-                } else if (TouchGrid['direction'] == '1') {
-                    if(!ismove()){
-                        TouchGrid.x = touchpos['move'].x;
-                    }else{
-
-                        if(ismove()['direction']=='0'){
-                            TouchGrid.x = ismove()['data'].x-ismove()['data'].getBoundingBox().width*2;
-                        }else if(ismove()['direction']=='1'){
-                            TouchGrid.x = ismove()['data'].x+ismove()['data'].getBoundingBox().width;
-                        }
-                    }
-                }
-            }
-            function GridCallBacks(InputType) {
-                function pressCallBack(touch) {
-                    var pos = touch._point;
-
-                    updateTile();
-                    touchpos['begin'] = this.getPosition();
-                    TouchGrid = this;
-
-                    for(var j = 0;j<this._children.length;j++){
-                        this._children[j]['isme'] = true;
-                        TouchGridChilds.push(this._children[j]);
-                    }
-                    updateisWin(this);
-                }
-                function moveCallBack(touch) {
-
-                    var pos = touch._point;
-                    touchpos['move']  = pos;
-
-                    updateTouchGridPos();
-
-                    updateScope();
-                }
-                function upCallBack(touch) {
-                    var pos = touch._point;
-                    touchpos['move']  = pos;
-                    updateTouchGridPos();
-                    updateScope();
-                    
-                    updateTile();
-
-                    GN.Arr.close(me._GameVessel._GridTouchChildrenAll);
-                }
-
-                switch (InputType){
-                    case 'press':
-                        return pressCallBack;
-                    case 'move':
-                        return moveCallBack;
-                    case 'up':
-                        return upCallBack;
-                }
-            }
-
-            bindGridEvent();
         }
-        ,GameOver : function () {
-            var me = this
-                ,GridAll = me._GameVessel._GridAll
-                ,obj = null
-            for(var i=0;i<GridAll.length;i++){
-                obj = GridAll[i];
-                flax.inputManager.removeAllTouchListeners();
+        ,CreateSprite : function(SpriteClass){
+            if(cc.pool.hasObject(SpriteClass))   //判断缓冲池里 是否存在 Hero对象
+            {
+                GN.Log('取出');
+                return cc.pool.getFromPool(SpriteClass);   // 从缓冲池里取出 Hero对象
             }
+            else
+            {
+                GN.Log('新创建');
+                return new SpriteClass();
+            }
+        }
+        ,CreateEnemy : function () {
+            cc.log('123');
+        }
+        ,init : function () {
+
         }
         ,close: function(){
-            var me = this;
-            me.init('Variable');
-            me._GameVessel = null;
+
         }
     });
 

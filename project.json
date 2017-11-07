@@ -1,5 +1,5 @@
 {
-  "version":1.4,
+  "version":1.0,
   "gameId":"yyl",
   "width":960,
   "height":640,
@@ -17,12 +17,11 @@
   "showFPS":true,
   "frameRate":60,
   "id":"gameCanvas",
-  "renderMode":2,
+  "renderMode":0,
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
     "cocos2d",
-    "extensions",
-    "chipmunk"
+    "extensions"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -74,14 +73,14 @@
     "src/GameManage/RichTextManage.js",
 
     "src/GameView/UI/Public/tip_NB.js",
-    "src/GameView/UI/Public/SliderBar.js",
 
 
     "src/GameView/UI/GameBegin.js",
-    "src/GameView/UI/kernel.js",
+
     "src/GameView/UI/GameOver.js",
     "src/GameView/UI/GameMove.js",
-    "src/GameView/UI/GameMove2.js",
+    "src/GameView/UI/Sprite/SPGold.js",
+
     "src/GameView/Scene/GameBeginScene.js",
     "src/GameView/Scene/GameMoveScene.js"
 
