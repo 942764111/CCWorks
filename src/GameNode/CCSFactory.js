@@ -132,6 +132,21 @@
     }
     return sprite;
 };
+    /**
+     * 先从缓存池查找
+     * @param SpriteClass
+     * @returns {*}
+     */
+    GN.ccsSpriteByClass = function (SpriteClass) {
+        if(cc.pool.hasObject(SpriteClass))   //判断缓冲池里
+        {
+            return cc.pool.getFromPool(SpriteClass);   // 从缓冲池里取出
+        }
+        else
+        {
+            return new SpriteClass()
+        }
+    }
 
 GN.Log = function (log) {
     if(BC.Debug)return;
