@@ -5,6 +5,7 @@
     var ID = 'GameMove';
 
     var fun = GM.UIMage.UIBase.extend({
+        _Vessel : null,//全局引用容器
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -14,98 +15,119 @@
         showed : function() {
             var me = this;
 
-            me.GameControl(1);
-            me.ui.schedule(me.CreateEnemy,2);
+            me.GameControl();
         }
         ,GameControl : function (state) {
             var me = this;
-            switch (state.toString()){
+            switch (state||0&&state.toString()){
                 case GC.GAME_INIT:
-                    me.Gameinit();
+                    me.init();
                     break;
                 case GC.GAME_RUN:
+                    me.RunGame();
                     break;
                 case GC.GAME_PASS:
                     break;
                 case GC.GAME_OVER:
                     break;
                 default:
-                    me.Gameinit();
+                    me.init();
+                    me.RunGame();
                     break
             }
         }
-        ,Gameinit : function(type){
+        ,init : function(type){
             var me = this;
             function variables() {
-
-            }
-            function initHero() {
-                function addEvent() {
-                    var pos;
-                    function MoveCallBack(touch) {
-                        pos = touch._point;
-                        this.y = pos.y;
-                    }
-                    flax.inputManager.addListener(me.ui['Hero'],MoveCallBack,InputType.move,me.ui['Hero']);
-                }
-                addEvent();
-            }
-            function initEnemy() {
-                
-                var gold;
-                var goldAll = [];
-
-                function initGold() {
-                    for(var i=0;i<20;i++){
-                        gold = new me.CreateSprite(SPGold);
-                        cc.pool.putInPool(gold);
-                    }
-                }
-                initGold();
-                for(var j=0;j<10;j++){
-                    gold = me.CreateSprite(SPGold);
-                    gold.x = cc.winSize.width/2;
-                    gold.y = GN.Num.randomNumber(0,cc.winSize.height);
-                    me.ui.addChild(gold)
+                me._Vessel = {
+                        _TileMap : null,
+                        _TileElements : []
                 }
             }
             function Map() {
-
+                var map = GN.initTileMap(GC.MAP.TILE_WIDTH,
+                    GC.MAP.TILE_HEIGHT,
+                    GC.MAP.ROWS,
+                    GC.MAP.COLS,null,1)
+                map.x =cc.winSize.width/5
+                map.y = cc.winSize.height/3;
+                map.setAnchorPoint(cc.p(0,0));
+                me.ui.addChild(map);
+                me._Vessel['_TileMap'] = map;
+                
+                function bindElementToTileMap() {
+                    var child = me.ui._children,childName = '';
+                    for(var i=0;i<child.length;i++){
+                        //addToTileMap
+                        childName = child[i]['name']||'';
+                        if(GN.Str.countStr(childName,'index_')){
+                            var setpos = me._Vessel['_TileMap'].getTileIndex(child[i]);
+                            me._Vessel['_TileMap'].snapToTile(child[i],setpos.x,setpos.y,true);
+                            child[i]['isCollision'] = false;
+                            child[i]['TileIndex'] = setpos;
+                            me._Vessel['_TileElements'].push(child[i])
+                        }
+                    }
+                }
+                bindElementToTileMap();
             }
             switch (type){
                 case 'variables':break;
-                case 'Hero':
-                    initHero();
-                    break;
-                case 'Enemy':
-                    initEnemy();
-                    break;
                 case 'Map':break;
                 default :
                     variables();
                     Map();
-                    initHero();
-                    initEnemy();
                     break;
             }
         }
-        ,CreateSprite : function(SpriteClass){
-            if(cc.pool.hasObject(SpriteClass))   //判断缓冲池里 是否存在 Hero对象
-            {
-                GN.Log('取出');
-                return cc.pool.getFromPool(SpriteClass);   // 从缓冲池里取出 Hero对象
-            }
-            else
-            {
-                GN.Log('新创建');
-                return new SpriteClass();
-            }
-        }
-        ,CreateEnemy : function () {
-            cc.log('123');
-        }
-        ,init : function () {
+        ,RunGame : function () {
+            var me = this
+                    ,TileMap =  me._Vessel['_TileMap']
+                    ,Tiles =  me._Vessel['_TileElements']
+                    ,TouchObjtarget = null
 
+
+
+            function BindElementTileEvent() {
+
+                function CallBake(touch,event) {
+                    TouchObjtarget = event['target']
+                    var all = null;
+                    TouchObjtarget.setMouseEnabled(false);
+
+                    TouchObjtarget.rotateBy(0.2,90).then(function () {
+                        function getRoundTile(TileObj) {
+                            var obj = TileObj,pos = obj['TileIndex']
+                            return [
+                                TileMap.getObjects(pos.x-1,pos.y)[0]||null,
+                                TileMap.getObjects(pos.x+1,pos.y)[0]||null,
+                                TileMap.getObjects(pos.x,pos.y-1)[0]||null,
+                                TileMap.getObjects(pos.x,pos.y+1)[0]||null
+                            ];
+                        }
+                        all = getRoundTile(TouchObjtarget);
+
+                        for(var i=0;i<all.length;i++){
+                            if(all[i]&&GN.collide(TouchObjtarget,all[i])){
+                                GN.Log(all[i]['name']);
+                            }
+                        }
+                        TouchObjtarget.setMouseEnabled(true);
+                    },TouchObjtarget).run();
+                }
+
+                var obj;
+                for(var i=0;i<Tiles.length;i++){
+                    obj = Tiles[i];
+                    if(obj){
+                        obj.touch(BC.CUIType.FL,function (touch,event) {
+                            CallBake(touch,event);
+                        },obj);
+                    }
+                }
+            }
+
+            BindElementTileEvent();
         }
         ,close: function(){
 

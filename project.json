@@ -1,8 +1,8 @@
 {
   "version":1.0,
   "gameId":"yyl",
-  "width":960,
-  "height":640,
+  "width":1920,
+  "height":1200,
   "landscape":true,
   "rotateImg":"res/rotate.png",
   "language":"zh",
