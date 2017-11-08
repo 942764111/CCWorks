@@ -207,4 +207,12 @@ GN.loadUrlImage = function (url, node)
         });
     }
 };
+
+
+    GN.collide = function (a,b) {
+        var aRect = a.getBoundingBox();
+        var bRect = b.getBoundingBox();
+        return cc.rectIntersectsRect(aRect, bRect);
+    }
+
 })();
