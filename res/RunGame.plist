@@ -200,16 +200,7 @@
             <key>frames</key>
             <string>764.80,805.45,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
           </dict>
-          <key>index_5</key>
-          <dict>
-            <key>class</key>
-            <string>a16</string>
-            <key>zIndex</key>
-            <integer>1</integer>
-            <key>frames</key>
-            <string>526.80,805.45,0.00,1.00000,1.00000,1.00,1,0.00,0.00</string>
-          </dict>
-          <key>i14773</key>
+          <key>i25232</key>
           <dict>
             <key>class</key>
             <string>a2</string>
@@ -235,6 +226,15 @@
             <integer>5</integer>
             <key>frames</key>
             <string>1002.80,569.65,0.00,1.00000,1.00000,1.00,5,0.00,0.00</string>
+          </dict>
+          <key>index_5</key>
+          <dict>
+            <key>class</key>
+            <string>a16</string>
+            <key>zIndex</key>
+            <integer>1</integer>
+            <key>frames</key>
+            <string>526.80,805.45,0.00,1.00000,1.00000,1.00,1,0.00,0.00</string>
           </dict>
           <key>index_2</key>
           <dict>
