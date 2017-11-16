@@ -1,8 +1,12 @@
 
 var  resGameBegin = {
+    img : 'res/IMG.plist',
+    img_png : 'res/IMG.png'
 }
 
 var  resGameMove = {
+    img : 'res/IMG.plist',
+    img_png : 'res/IMG.png',
     runGame : 'res/RunGame.plist',
     runGame_png : 'res/RunGame.png',
     GameOver : 'res/GameOver.plist',

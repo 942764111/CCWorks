@@ -19,7 +19,7 @@ cc.game.onStart = function(){
     cc.view.resizeWithBrowserSize(true);
 
 
-    flax.registerScene("GameBegin", GameBeginScene, res_GameMove);
+    flax.registerScene("GameBegin", GameBeginScene, res_GameBegin);
     flax.registerScene("GameMove", GameMoveScene, res_GameMove);
 
     flax.replaceScene("GameMove");

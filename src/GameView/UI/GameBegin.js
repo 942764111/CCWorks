@@ -27,33 +27,6 @@
             });
             this.ui.addChild(dou,10);
 
-
-            var bbxz = flax.assetsManager.createDisplay(resGameBegin.bbxz, "layer", {
-                x: cc.winSize.width/2,
-                y: cc.winSize.height/2+150
-            });
-            bbxz.autoStopWhenOver = true;
-            bbxz.fps = 20;
-            bbxz.play();
-            me.ui.addChild(bbxz);
-
-
-            var btn = flax.assetsManager.createDisplay(resGameBegin.anniu, "begin_btn", {
-                x: cc.winSize.width/2,
-                y: cc.winSize.height/2-280
-            });
-            me.ui.addChild(btn);
-
-            btn.play();
-            btn.fps = 10;
-            btn.touch(BC.CUIType.FL,function (touch,event) {
-                GM.SceneMage.replaceScene("GameMove");
-            },me);
-
-            me.ui['gy_btn'].touch(BC.CUIType.FL,function (touch,event) {
-                GV.UI['guanyu'].show();
-            },me);
-
         }
         ,close: function(){
 

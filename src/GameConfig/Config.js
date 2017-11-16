@@ -11,7 +11,7 @@ GC.GAME_PASS = '3'
 GC.MAP = {
     ROWS:7,
     COLS:2,
-    TILE_WIDTH:220,
+    TILE_WIDTH:230,
     TILE_HEIGHT:230
 }
 
