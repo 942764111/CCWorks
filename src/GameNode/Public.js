@@ -198,9 +198,22 @@
         return "剩余时间"+d+"天 "+h+"小时 "+m+" 分钟"+s+" 秒";
     }
 
+    //获取当前时间戳
     GN.Date.curtime = function(){
         return Math.round(new Date().getTime());
     };
+
+    //格式化时间
+    // 20171116   return 2017/11/16
+    GN.Date.fmtData = function (strfmt) {
+        var date = '';
+        if(!GN.Obj.instanceOf(strfmt,'undefined')&&strfmt&&GN.Str.trim(1,strfmt)!=""&&strfmt.length==8){
+            date=strfmt.substring(0,4)+'/';
+            date+=strfmt.substring(4,6)+'/';
+            date+=strfmt.substring(6,8)+'/';
+        }
+        return date;
+    }
 })();
 
 //Number
