@@ -41,11 +41,9 @@
     //这一块的封装，主要是针对数字类型的数组
     //求和
     GN.Arr.sumArr = function(arr){
-        var sumText=0;
-        for(var i=0,len=arr.length;i<len;i++){
-            sumText+=arr[i];
-        }
-        return sumText
+        return arr.reduce(function(res, cur) {
+            return res+cur;
+        },0)
     }
 
     //平均值,小数点可能会有很多位，这里不做处理，处理了使用就不灵活了！
@@ -167,6 +165,15 @@
                 arrs.splice(i,1);
             }
         }
+    }
+
+
+    GN.Arr.passArray = function (Obj) {
+        var arr = [];
+        for(var i in Obj){
+            arr.push(Obj[i])
+        }
+        return arr;
     }
 
 })();
@@ -494,13 +501,16 @@
         if(str.indexOf(FindObj)==-1) return str;
         switch(type){
             case 1:
-                return str.substr(str.indexOf(FindObj),length)+1;
+                return str.substr(str.indexOf(FindObj),length);
                 break;
             case 2:
-                return str.substr(str.lastIndexOf(FindObj),length)+1;
+                return str.substr(str.lastIndexOf(FindObj),length);
+                break;
+            case 3:
+                return str.substr(FindObj.length,length);
                 break;
             default :
-                return '';
+                return str;
                 break;
         }
 
@@ -529,14 +539,14 @@
         try{
             _json = JSON.parse(str)
         }catch(e){
-            GN.log('to JSON ERROR='+ str);
+            GN.ErrorLog('to JSON ERROR='+ str);
         }
         return _json;
     };
 
     GN.Obj.getFileJSON = function(file){
         var str = cc.loader.load(file);
-        var obj = X.toJSON(str);
+        var obj = GN.Obj.toJSON(str);
         return obj;
     };
 

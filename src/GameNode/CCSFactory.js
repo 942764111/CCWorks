@@ -35,8 +35,7 @@
                 return node;
             }
         }
-
-        GN.Log('致命错误!! find子对象时 '+ v + ' 未找到');
+        GN.ErrorLog('致命错误!! find子对象时 '+ v + ' 未找到')
     };
 
     //点击事件
@@ -75,7 +74,7 @@
                 addFLListener();
                 break;
             default :
-                throw new Error('未匹配UI类型');
+                GN.ErrorLog('未匹配UI类型');
                 break
         }
 
@@ -98,7 +97,7 @@
                     y: cc.winSize.height/2
                 });
             }else{
-                throw new Error('type not Find');
+                GN.ErrorLog('type not Find');
             }
 
         };
@@ -120,7 +119,7 @@
         if(name[0] === '@'){
             sprite = cc.LabelTTF.create(name.slice(1),'微软雅黑',attr['FontSize'],attr['FontColour']);
         }else{
-            SpriteFrame = cc.spriteFrameCache.getSpriteFrame(GN.Str.SubStr(2,FrameName,'/'));
+            SpriteFrame = cc.spriteFrameCache.getSpriteFrame(GN.Str.SubStr(2,FrameName,FrameName[FrameName.lastIndexOf('/')+1]));
             FrameName = SpriteFrame?SpriteFrame:FrameName;
             sprite = new cc.Sprite(FrameName);
         }
@@ -128,7 +127,7 @@
             sprite.attr(attr)
         }
     }else{
-        throw new Error('type not Find');
+        GN.ErrorLog('type not Find');
     }
     return sprite;
 };
@@ -152,6 +151,10 @@
 GN.Log = function (log) {
     if(BC.Debug)return;
     console.log(log);
+};
+GN.ErrorLog = function (log) {
+    if(BC.Debug)return;
+    throw new Error(log);
 };
 /*
  获取当前场景
@@ -186,7 +189,7 @@ GN.loadUrlImage = function (url, node)
         cc.loader.loadImg(url, {isCrossOrigin : true}, function(err,img){
             if(err)
             {
-                cc.log(err);
+                GN.ErrorLog(err);
             }
             else
             {
@@ -208,11 +211,17 @@ GN.loadUrlImage = function (url, node)
     }
 };
 
-
     GN.collide = function (a,b) {
         var aRect = a.getBoundingBox();
         var bRect = b.getBoundingBox();
-        return cc.rectIntersectsRect(aRect, bRect);
-    }
-
+        return function (ra,rb) {
+            var raworldpos =a.parent.convertToWorldSpace(ra);
+            var rbworldpos =b.parent.convertToWorldSpace(rb);
+            var maxax = raworldpos.x + ra.width,
+                maxay = raworldpos.y + ra.height,
+                maxbx = rbworldpos.x + rb.width,
+                maxby = rbworldpos.y + rb.height;
+            return !(maxax <= rbworldpos.x || maxbx <= raworldpos.x || maxay <= rbworldpos.y || maxby <= raworldpos.y);
+        }(aRect,bRect)
+    };
 })();
