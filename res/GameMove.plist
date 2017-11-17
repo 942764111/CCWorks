@@ -5,13 +5,31 @@
       <key>GameMove_0000</key>
       <dict>
         <key>frame</key>
+        <string>{{1,336},{119,47}}</string>
+        <key>offset</key>
+        <string>{0.00,0.00}</string>
+        <key>sourceSize</key>
+        <string>{119.00,47.00}</string>
+      </dict>
+      <key>GameMove_0001</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1,287},{119,47}}</string>
+        <key>offset</key>
+        <string>{0.00,0.00}</string>
+        <key>sourceSize</key>
+        <string>{119.00,47.00}</string>
+      </dict>
+      <key>GameMove_0002</key>
+      <dict>
+        <key>frame</key>
         <string>{{1,1},{663,40}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{663.00,40.00}</string>
       </dict>
-      <key>GameMove_0001</key>
+      <key>GameMove_0003</key>
       <dict>
         <key>frame</key>
         <string>{{225,43},{27,895}}</string>
@@ -20,7 +38,7 @@
         <key>sourceSize</key>
         <string>{27.00,895.00}</string>
       </dict>
-      <key>GameMove_0002</key>
+      <key>GameMove_0004</key>
       <dict>
         <key>frame</key>
         <string>{{1,184},{185,101}}</string>
@@ -29,7 +47,7 @@
         <key>sourceSize</key>
         <string>{185.00,101.00}</string>
       </dict>
-      <key>GameMove_0003</key>
+      <key>GameMove_0005</key>
       <dict>
         <key>frame</key>
         <string>{{1,43},{222,139}}</string>
@@ -38,46 +56,28 @@
         <key>sourceSize</key>
         <string>{222.00,139.00}</string>
       </dict>
-      <key>GameMove_0004</key>
+      <key>GameMove_0006</key>
       <dict>
         <key>frame</key>
-        <string>{{1,287},{104,133}}</string>
+        <string>{{1,385},{104,133}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{104.00,133.00}</string>
       </dict>
-      <key>GameMove_0005</key>
+      <key>GameMove_0007</key>
       <dict>
         <key>frame</key>
-        <string>{{1,702},{48,48}}</string>
+        <string>{{1,800},{48,48}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{48.00,48.00}</string>
       </dict>
-      <key>GameMove_0006</key>
-      <dict>
-        <key>frame</key>
-        <string>{{1,646},{54,54}}</string>
-        <key>offset</key>
-        <string>{0.00,0.00}</string>
-        <key>sourceSize</key>
-        <string>{54.00,54.00}</string>
-      </dict>
-      <key>GameMove_0007</key>
-      <dict>
-        <key>frame</key>
-        <string>{{1,590},{54,54}}</string>
-        <key>offset</key>
-        <string>{0.00,0.00}</string>
-        <key>sourceSize</key>
-        <string>{54.00,54.00}</string>
-      </dict>
       <key>GameMove_0008</key>
       <dict>
         <key>frame</key>
-        <string>{{1,422},{54,54}}</string>
+        <string>{{1,520},{54,54}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
@@ -86,7 +86,7 @@
       <key>GameMove_0009</key>
       <dict>
         <key>frame</key>
-        <string>{{1,534},{54,54}}</string>
+        <string>{{1,576},{54,54}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
@@ -95,7 +95,25 @@
       <key>GameMove_0010</key>
       <dict>
         <key>frame</key>
-        <string>{{1,478},{54,54}}</string>
+        <string>{{1,688},{54,54}}</string>
+        <key>offset</key>
+        <string>{0.00,0.00}</string>
+        <key>sourceSize</key>
+        <string>{54.00,54.00}</string>
+      </dict>
+      <key>GameMove_0011</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1,744},{54,54}}</string>
+        <key>offset</key>
+        <string>{0.00,0.00}</string>
+        <key>sourceSize</key>
+        <string>{54.00,54.00}</string>
+      </dict>
+      <key>GameMove_0012</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1,632},{54,54}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
@@ -123,6 +141,37 @@
     </dict>
     <key>displays</key>
     <dict>
+      <key>AI</key>
+      <dict>
+        <key>type</key>
+        <string>null</string>
+        <key>anchorX</key>
+        <real>0.50000</real>
+        <key>anchorY</key>
+        <real>0.50000</real>
+        <key>start</key>
+        <integer>0</integer>
+        <key>end</key>
+        <integer>0</integer>
+        <key>colliders</key>
+        <dict>
+          <key>AI</key>
+          <string>Rect,59.50,23.50,119.00,47.00,0.00</string>
+        </dict>
+      </dict>
+      <key>a1</key>
+      <dict>
+        <key>type</key>
+        <string>null</string>
+        <key>anchorX</key>
+        <real>0.00000</real>
+        <key>anchorY</key>
+        <real>1.00000</real>
+        <key>start</key>
+        <integer>1</integer>
+        <key>end</key>
+        <integer>1</integer>
+      </dict>
       <key>asset1</key>
       <dict>
         <key>type</key>
@@ -132,9 +181,9 @@
         <key>anchorY</key>
         <real>0.50125</real>
         <key>start</key>
-        <integer>0</integer>
+        <integer>2</integer>
         <key>end</key>
-        <integer>0</integer>
+        <integer>2</integer>
       </dict>
       <key>asset2</key>
       <dict>
@@ -145,9 +194,9 @@
         <key>anchorY</key>
         <real>0.49994</real>
         <key>start</key>
-        <integer>1</integer>
+        <integer>3</integer>
         <key>end</key>
-        <integer>1</integer>
+        <integer>3</integer>
       </dict>
       <key>asset3</key>
       <dict>
@@ -158,9 +207,9 @@
         <key>anchorY</key>
         <real>0.76089</real>
         <key>start</key>
-        <integer>2</integer>
+        <integer>4</integer>
         <key>end</key>
-        <integer>2</integer>
+        <integer>4</integer>
       </dict>
       <key>asset4</key>
       <dict>
@@ -171,9 +220,9 @@
         <key>anchorY</key>
         <real>0.44568</real>
         <key>start</key>
-        <integer>3</integer>
+        <integer>5</integer>
         <key>end</key>
-        <integer>3</integer>
+        <integer>5</integer>
       </dict>
       <key>asset6</key>
       <dict>
@@ -184,9 +233,9 @@
         <key>anchorY</key>
         <real>0.44286</real>
         <key>start</key>
-        <integer>4</integer>
+        <integer>6</integer>
         <key>end</key>
-        <integer>4</integer>
+        <integer>6</integer>
         <key>anchors</key>
         <dict>
           <key>shoot</key>
@@ -202,9 +251,9 @@
         <key>anchorY</key>
         <real>0.76979</real>
         <key>start</key>
-        <integer>5</integer>
+        <integer>7</integer>
         <key>end</key>
-        <integer>5</integer>
+        <integer>7</integer>
       </dict>
       <key>b0</key>
       <dict>
@@ -215,9 +264,9 @@
         <key>anchorY</key>
         <real>0.50926</real>
         <key>start</key>
-        <integer>6</integer>
+        <integer>8</integer>
         <key>end</key>
-        <integer>6</integer>
+        <integer>8</integer>
         <key>colliders</key>
         <dict>
           <key>main</key>
@@ -233,9 +282,9 @@
         <key>anchorY</key>
         <real>0.51111</real>
         <key>start</key>
-        <integer>7</integer>
+        <integer>9</integer>
         <key>end</key>
-        <integer>7</integer>
+        <integer>9</integer>
         <key>colliders</key>
         <dict>
           <key>main</key>
@@ -251,9 +300,9 @@
         <key>anchorY</key>
         <real>0.49907</real>
         <key>start</key>
-        <integer>8</integer>
+        <integer>10</integer>
         <key>end</key>
-        <integer>8</integer>
+        <integer>10</integer>
         <key>colliders</key>
         <dict>
           <key>main</key>
@@ -267,15 +316,15 @@
         <key>anchorX</key>
         <real>0.50463</real>
         <key>anchorY</key>
-        <real>0.48889</real>
+        <real>0.49537</real>
         <key>start</key>
-        <integer>9</integer>
+        <integer>11</integer>
         <key>end</key>
-        <integer>9</integer>
+        <integer>11</integer>
         <key>colliders</key>
         <dict>
           <key>main</key>
-          <string>Circle,27.25,26.40,51.00,51.00,0.00</string>
+          <string>Circle,25.50,29.50,51.00,51.00,0.00</string>
         </dict>
       </dict>
       <key>b4</key>
@@ -287,9 +336,9 @@
         <key>anchorY</key>
         <real>0.48981</real>
         <key>start</key>
-        <integer>10</integer>
+        <integer>12</integer>
         <key>end</key>
-        <integer>10</integer>
+        <integer>12</integer>
         <key>colliders</key>
         <dict>
           <key>main</key>
@@ -328,8 +377,6 @@
           <string>Rect,331.50,66.55,648.00,32.00,0.00</string>
           <key>topBar</key>
           <string>Rect,331.50,860.50,648.00,32.00,0.00</string>
-          <key>AI</key>
-          <string>Rect,340.25,719.15,104.00,47.00,0.00</string>
           <key>rightBar</key>
           <string>Rect,635.05,424.90,22.00,840.00,0.00</string>
           <key>leftBar</key>
@@ -337,6 +384,24 @@
         </dict>
         <key>children</key>
         <dict>
+          <key>i493251</key>
+          <dict>
+            <key>class</key>
+            <string>asset1</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>330.65,861.35,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
+          </dict>
+          <key>i493256</key>
+          <dict>
+            <key>class</key>
+            <string>asset1</string>
+            <key>zIndex</key>
+            <integer>6</integer>
+            <key>frames</key>
+            <string>336.60,67.40,0.00,1.00000,1.00000,1.00,6,0.00,0.00</string>
+          </dict>
           <key>gun</key>
           <dict>
             <key>class</key>
@@ -360,36 +425,18 @@
             <key>class</key>
             <string>asset2</string>
             <key>zIndex</key>
-            <integer>4</integer>
+            <integer>3</integer>
             <key>frames</key>
-            <string>27.20,447.55,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
-          </dict>
-          <key>i216670</key>
-          <dict>
-            <key>class</key>
-            <string>asset1</string>
-            <key>zIndex</key>
-            <integer>7</integer>
-            <key>frames</key>
-            <string>336.60,67.40,0.00,1.00000,1.00000,1.00,7,0.00,0.00</string>
+            <string>27.20,447.55,0.00,1.00000,1.00000,1.00,3,0.00,0.00</string>
           </dict>
           <key>rightEdge</key>
           <dict>
             <key>class</key>
             <string>asset2</string>
             <key>zIndex</key>
-            <integer>5</integer>
+            <integer>4</integer>
             <key>frames</key>
-            <string>635.40,447.55,0.00,1.00000,1.00000,1.00,5,0.00,0.00</string>
-          </dict>
-          <key>i216665</key>
-          <dict>
-            <key>class</key>
-            <string>asset1</string>
-            <key>zIndex</key>
-            <integer>3</integer>
-            <key>frames</key>
-            <string>330.65,861.35,0.00,1.00000,1.00000,1.00,3,0.00,0.00</string>
+            <string>635.40,447.55,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
           </dict>
         </dict>
       </dict>
@@ -407,7 +454,7 @@
         <real>0.47484</real>
         <key>children</key>
         <dict>
-          <key>i216699</key>
+          <key>i493285</key>
           <dict>
             <key>class</key>
             <string>asset7</string>

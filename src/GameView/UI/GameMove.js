@@ -52,7 +52,25 @@
                 me.ui.addPhysicsShape("leftBar", 1, 0.3, 0.5);
                 me.ui.addPhysicsShape("rightBar", 1, 0.3, 0.5);
                 me.ui.addPhysicsShape("downBar", 1, 0.3, 0.5);
-                me.ui.addPhysicsShape("AI", 1, 0.3, 0.5);
+
+                var AI = flax.assetsManager.createDisplay(resGameMove.GameMove, 'AI', {parent:me.ui, zIndex: 99}, true);
+                AI.x = me.ui.width/2;
+                AI.y = me.ui.height/2+300;
+                AI.createPhysics(flax.physicsTypeKinematic);
+                AI.addPhysicsShape("AI", 1, 0.3, 0.7);
+
+                AI.x+=300;
+                //  var v = flax.getPointOnCircle(AI.getPosition(),0,0);
+                //
+                // AI.physicsBody.SetPosition(AI.physicsBody.GetPosition().x+=5,AI.physicsBody.GetPosition().y);
+                // GN.Log(AI.physicsBody.GetPosition().x);
+                // me.ui.schedule(function () {
+                //     var raworldpos =AI.parent.convertToWorldSpace(AI);
+                //
+                //     if(raworldpos.x<=350){
+                //      //   AI.physicsBody.SetLinearVelocity({x: v.x/30,y:0});
+                //     }
+                // },0.01);
             }
             function initBindEvents() {
                 me.gun = me.ui['gun'];
@@ -87,14 +105,14 @@
             var v = flax.getPointOnCircle(cc.p(), 2000, rot);
             ball.physicsBody.SetLinearVelocity({x: v.x/PTM_RATIO, y: v.y/PTM_RATIO});
 
-            flax.clearDraw();
-            var pos1 = flax.getPointOnCircle(pos, 600, rot);
-            flax.physicsRaycast(function(collider,collisionPoint, endPoint, fraction){
-                if(collider.name != "leftBar" && collider.name != "rightBar") return;
-                flax.drawLine(pos, collisionPoint, 1, cc.color(0, 255, 0));
-                flax.drawDot(collisionPoint);
-                flax.drawLine(collisionPoint, endPoint);
-            }, pos, pos1, 24);
+            // flax.clearDraw();
+            // var pos1 = flax.getPointOnCircle(pos, 600, rot);
+            // flax.physicsRaycast(function(collider,collisionPoint, endPoint, fraction){
+            //     if(collider.name != "leftBar" && collider.name != "rightBar") return;
+            //     flax.drawLine(pos, collisionPoint, 1, cc.color(0, 255, 0));
+            //     flax.drawDot(collisionPoint);
+            //     flax.drawLine(collisionPoint, endPoint);
+            // }, pos, pos1, 24);
         }
         ,RunGame : function () {
             var me = this;
