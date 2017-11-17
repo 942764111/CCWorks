@@ -59,8 +59,6 @@
     "src/flax/game/LinkFinder.js",
     "src/flax/game/Color.js",
     "src/resource.js",
-    "src/HelloWorld.js",
-
     "src/reconnecting-websocket-master/reconnecting-websocket.js",
     "src/GameConfig/Constant.js",
     "src/GameConfig/Config.js",
@@ -70,20 +68,7 @@
     "src/GameNode/Public.js",
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
-    "src/GameManage/RichTextManage.js",
-
-    "src/GameView/UI/Public/tip_NB.js",
-
-
-    "src/GameView/UI/GameBegin.js",
-
-    "src/GameView/UI/GameOver.js",
-    "src/GameView/UI/GameMove.js",
-    "src/GameView/UI/Sprite/SPGold.js",
-
-    "src/GameView/Scene/GameBeginScene.js",
-    "src/GameView/Scene/GameMoveScene.js"
-
+    "src/GameManage/RichTextManage.js"
   ]
   
 }

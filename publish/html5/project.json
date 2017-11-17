@@ -1,1 +1,0 @@
-{"languageJson": false, "gameId": "yyl", "version": 1.4, "language": "zh", "domainAllowed": [], "preloader": "flax.Preloader", "frameRate": 60, "height": 640, "width": 960, "rotateImg": "res/rotate.png", "loading": "res/logo.png", "project_type": "javascript", "id": "gameCanvas", "debugMode": 1, "renderMode": 2, "showFPS": false, "landscape": true}
