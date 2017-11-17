@@ -1,8 +1,8 @@
 {
   "version":1.0,
   "gameId":"yyl",
-  "width":1920,
-  "height":1200,
+  "width":640,
+  "height":880,
   "landscape":true,
   "rotateImg":"res/rotate.png",
   "language":"zh",
@@ -21,7 +21,8 @@
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
     "cocos2d",
-    "extensions"
+    "extensions",
+    "box2d"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -82,7 +83,8 @@
     "src/GameView/UI/Sprite/SPGold.js",
 
     "src/GameView/Scene/GameBeginScene.js",
-    "src/GameView/Scene/GameMoveScene.js"
+    "src/GameView/Scene/GameMoveScene.js",
+    "src/GameView/Scene/GamePhysics.js"
 
   ]
   

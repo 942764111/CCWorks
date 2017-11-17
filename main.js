@@ -21,6 +21,7 @@ cc.game.onStart = function(){
 
     flax.registerScene("GameBegin", GameBeginScene, res_GameMove);
     flax.registerScene("GameMove", GameMoveScene, res_GameMove);
+    flax.registerScene("GamePhysics", GamePhysics, res_GameMove);
 
     flax.replaceScene("GameMove");
 };

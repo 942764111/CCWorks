@@ -15,6 +15,7 @@
         showed : function() {
             var me = this;
 
+            me.ui.setAnchorPoint(0.5,0.5);
             me.GameControl();
         }
         ,GameControl : function (state) {
@@ -40,99 +41,68 @@
             var me = this;
             function variables() {
                 me._Vessel = {
-                        _TileMap : null,
-                        _TileElements : []
                 }
             }
-            function Map() {
-                var map = GN.initTileMap(GC.MAP.TILE_WIDTH,
-                    GC.MAP.TILE_HEIGHT,
-                    GC.MAP.ROWS,
-                    GC.MAP.COLS,null,1)
-                map.x =cc.winSize.width/5
-                map.y = cc.winSize.height/3;
-                map.setAnchorPoint(cc.p(0,0));
-                me.ui.addChild(map);
-                me._Vessel['_TileMap'] = map;
-                
-                function bindElementToTileMap() {
-                    var child = me.ui._children,childName = '';
-                    for(var i=0;i<child.length;i++){
-                        //addToTileMap
-                        childName = child[i]['name']||'';
-                        if(GN.Str.countStr(childName,'index_')){
-                            var setpos = me._Vessel['_TileMap'].getTileIndex(child[i]);
-                            me._Vessel['_TileMap'].snapToTile(child[i],setpos.x,setpos.y,true);
-                            child[i]['isCollision'] = false;
-                            child[i]['TileIndex'] = setpos;
-                            me._Vessel['_TileElements'].push(child[i])
-                        }
-                    }
-                }
-                bindElementToTileMap();
+            function initPhysics() {
+                flax.createPhysicsWorld({x:0, y:0});
+                flax.startPhysicsWorld();
+
+                me.ui.createPhysics(flax.physicsTypeStatic);
+                me.ui.addPhysicsShape("topBar", 1, 0.3, 0.5);
+                me.ui.addPhysicsShape("leftBar", 1, 0.3, 0.5);
+                me.ui.addPhysicsShape("rightBar", 1, 0.3, 0.5);
+                me.ui.addPhysicsShape("downBar", 1, 0.3, 0.5);
+                me.ui.addPhysicsShape("AI", 1, 0.3, 0.5);
+            }
+            function initBindEvents() {
+                me.gun = me.ui['gun'];
+                flax.inputManager.addListener(me.ui['back'], me.onClick, InputType.click, me);
             }
             switch (type){
                 case 'variables':break;
-                case 'Map':break;
+                case 'Physics':break;
                 default :
                     variables();
-                    Map();
+                    initPhysics();
+                    initBindEvents();
                     break;
             }
         }
+        ,onClick : function (touch, event) {
+            var pos = touch.getLocation();
+            var rot = flax.getAngle(this.gun.getPosition(), pos);
+            if(rot > 180) rot -= 360;
+            rot = Math.max(-65, rot);
+            rot = Math.min(65, rot);
+            this.gun.rotation = rot;
+
+            var anchor = this.gun.getAnchor("shoot");
+            pos = cc.p(anchor.x, anchor.y);
+            pos = this.gun.convertToWorldSpace(pos);
+
+            var ball = flax.assetsManager.createDisplay(resGameMove.GameMove, "b" + flax.randInt(0, 5), {parent:this.ui, zIndex: 99}, true);
+            ball.setPosition(pos);
+            ball.createPhysics(flax.physicsTypeDynamic, false, true);
+            ball.addPhysicsShape("main", 1, 0.3, 0.7);
+            var v = flax.getPointOnCircle(cc.p(), 2000, rot);
+            ball.physicsBody.SetLinearVelocity({x: v.x/PTM_RATIO, y: v.y/PTM_RATIO});
+
+            flax.clearDraw();
+            var pos1 = flax.getPointOnCircle(pos, 600, rot);
+            flax.physicsRaycast(function(collider,collisionPoint, endPoint, fraction){
+                if(collider.name != "leftBar" && collider.name != "rightBar") return;
+                flax.drawLine(pos, collisionPoint, 1, cc.color(0, 255, 0));
+                flax.drawDot(collisionPoint);
+                flax.drawLine(collisionPoint, endPoint);
+            }, pos, pos1, 24);
+        }
         ,RunGame : function () {
-            var me = this
-                    ,TileMap =  me._Vessel['_TileMap']
-                    ,Tiles =  me._Vessel['_TileElements']
-                    ,TouchObjtarget = null
-
-
-
-            function BindElementTileEvent() {
-
-                function CallBake(touch,event) {
-                    TouchObjtarget = event['target']
-                    var all = null;
-                    TouchObjtarget.setMouseEnabled(false);
-
-                    TouchObjtarget.rotateBy(0.2,90).then(function () {
-                        function getRoundTile(TileObj) {
-                            var obj = TileObj,pos = obj['TileIndex']
-                            return [
-                                TileMap.getObjects(pos.x-1,pos.y)[0]||null,
-                                TileMap.getObjects(pos.x+1,pos.y)[0]||null,
-                                TileMap.getObjects(pos.x,pos.y-1)[0]||null,
-                                TileMap.getObjects(pos.x,pos.y+1)[0]||null
-                            ];
-                        }
-                        all = getRoundTile(TouchObjtarget);
-
-                        for(var i=0;i<all.length;i++){
-                            if(all[i]&&GN.collide(TouchObjtarget,all[i])){
-                                GN.Log(all[i]['name']);
-                            }
-                        }
-                        TouchObjtarget.setMouseEnabled(true);
-                    },TouchObjtarget).run();
-                }
-
-                var obj;
-                for(var i=0;i<Tiles.length;i++){
-                    obj = Tiles[i];
-                    if(obj){
-                        obj.touch(BC.CUIType.FL,function (touch,event) {
-                            CallBake(touch,event);
-                        },obj);
-                    }
-                }
-            }
-
-            BindElementTileEvent();
+            var me = this;
         }
         ,close: function(){
 
         }
     });
 
-    GM.UIMage.BindUIByID(ID,new fun(resGameMove.runGame,ID,BC.CUIType.FL));
+    GM.UIMage.BindUIByID(ID,new fun(resGameMove.GameMove,ID,BC.CUIType.FL));
 })();
