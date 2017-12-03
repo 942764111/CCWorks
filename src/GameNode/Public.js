@@ -288,6 +288,21 @@
         }
         return color;
     }
+    /**
+     * 通过字符串转换数字类型
+     * @param Type
+     * @param strObj
+     * @returns {number}
+     */
+    GN.Num.passNum = function (Type,strObj) {
+        switch (Type){
+            case 'int':
+                return ~~strObj;
+            case 'float':
+                return 1 * strObj;
+            default : GN.ErrorLog(Type +'Not Find')
+        }
+    }
 
 })();
 

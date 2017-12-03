@@ -13,7 +13,7 @@ cc.game.onStart = function(){
 
     cc.view.enableRetina(true);
     cc.view.enableAutoFullScreen(false);
-
+    cc.view.resizeWithBrowserSize(true);
     flax.init(cc.ResolutionPolicy.SHOW_ALL);
 
     cc.view.resizeWithBrowserSize(true);
