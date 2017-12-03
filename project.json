@@ -1,9 +1,9 @@
 {
-  "version":1.0,
+  "version":1.2,
   "gameId":"yyl",
-  "width":1920,
-  "height":1200,
-  "landscape":true,
+  "width":640,
+  "height":1136,
+  "landscape":false,
   "rotateImg":"res/rotate.png",
   "language":"zh",
   "languageJson":false,
@@ -20,8 +20,7 @@
   "renderMode":0,
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
-    "cocos2d",
-    "extensions"
+    "cocos2d"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -68,7 +67,10 @@
     "src/GameNode/Public.js",
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
-    "src/GameManage/RichTextManage.js"
+    "src/GameManage/RichTextManage.js",
+
+    "src/GameView/Scene/LoginScene.js",
+    "src/GameView/UI/Login.js"
   ]
   
 }
