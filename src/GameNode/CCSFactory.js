@@ -48,22 +48,22 @@
             // if(!noSound)X.audio.playEffect('res/sound/click.mp3');
         }
         function addCCListener() {
-            me._touchFunction = function(sender,type){
+            function _touchFunction(sender,type) {
                 //公共点击处理
                 if(type==ccui.Widget.TOUCH_ENDED){
                     allTouchCallBack();
                 }
-                fun&&fun.call(me._touchCaller,sender,type);
-            };
-            me.addTouchEventListener(me._touchFunction,me);
+                fun&&fun.call(this,sender,type);
+            }
+            me.addTouchEventListener(_touchFunction,me._touchCaller);
         }
 
         function addFLListener() {
-            me._touchFunction = function(touch, event){
+            function _touchFunction(touch, event) {
                 allTouchCallBack();
-                fun&&fun.call(this._touchCaller,touch, event);
-            };
-            flax.inputManager.addListener(me,me._touchFunction,InputType.click,caller);
+                fun&&fun.call(this,touch, event);
+            }
+            flax.inputManager.addListener(me,_touchFunction,InputType.click,me._touchCaller);
         }
 
         switch (Type){

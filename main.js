@@ -13,7 +13,7 @@ cc.game.onStart = function(){
 
     cc.view.enableRetina(true);
     cc.view.enableAutoFullScreen(false);
-
+    cc.view.resizeWithBrowserSize(true);
     flax.init(cc.ResolutionPolicy.SHOW_ALL);
 
     cc.view.resizeWithBrowserSize(true);
@@ -21,6 +21,7 @@ cc.game.onStart = function(){
 
     flax.registerScene("GameBegin", GameBeginScene, res_GameMove);
     flax.registerScene("GameMove", GameMoveScene, res_GameMove);
+    flax.registerScene("GamePhysics", GamePhysics, res_GameMove);
 
     flax.replaceScene("GameMove");
 };
