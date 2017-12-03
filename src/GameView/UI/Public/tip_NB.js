@@ -39,7 +39,7 @@
             this._sel = function(){
 
                 if (me._tips.length > 0) {
-                    var d = me._tips.shift();
+                    var d = me._tips.shift()+"";
 
                     var item = d.split('|');
                     var color = '#009933';
@@ -56,8 +56,8 @@
                     label.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
                     label.setVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
                     label.setPosition(cc.winSize.width/2,25);
-                    label.setScaleX(10);
-                    label.setScaleY(1.5);
+                    label.setScaleX(30);
+                    label.setScaleY(2);
                     label.setOpacity(0);
 
                     //阴影
@@ -66,8 +66,8 @@
                     label2.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
                     label2.setVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
                     label2.setPosition(cc.winSize/2+2,27);
-                    label2.setScaleX(10);
-                    label2.setScaleY(1.5);
+                    label2.setScaleX(30);
+                    label2.setScaleY(2);
                     label2.setOpacity(0);
 
                     var layout = new ccui.Layout();

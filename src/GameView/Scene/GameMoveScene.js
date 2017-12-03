@@ -6,6 +6,7 @@ var GameMoveScene = GM.SceneMage.SceneBase.extend({
             // var cache = cc.spriteFrameCache;
             // cache.addSpriteFrames(resGameBegin.IMG,resGameBegin.IMG_png);
 
+
             GV.UI['GameMove'].show();
         }
         ,onExit:function() {

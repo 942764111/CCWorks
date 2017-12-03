@@ -14,13 +14,40 @@
         },
         showed : function() {
             var me = this;
+            function xins() {
+                me.ui["xinshou"]["Tile"].runAction(
+                    cc.repeatForever(cc.sequence(
+                        cc.scaleTo(1,0.5,0.5),
+                        cc.scaleTo(1,1,1)
+                    ))
+                );
+                function CallBack() {
+                    this.removeFromParent();
+                    var index = 3;
+                    function schedCallBack() {
+                        if(index<=0){
+                            GV.UI.tip_NB.show("游戏开始");
+                            me.ui.unschedule(schedCallBack);
+                            me.ui.scheduleOnce(function () {
+                                me.GameControl(GC.GAME_RUN)
+                            },4)
+                        }else{
+                            GV.UI.tip_NB.show(index);
+                            index-=1;
+                        }
+                    }
+                    me.ui.schedule(schedCallBack,1)
+                }
+                me.ui["xinshou"].touch(BC.CUIType.FL,CallBack);
+            }
 
-            me.ui.setAnchorPoint(0.5,0.5);
-            me.GameControl();
+            me.GameControl(GC.GAME_INIT)
+            xins();
+
         }
         ,GameControl : function (state) {
             var me = this;
-            switch (state||0&&state.toString()){
+            switch (state||'0'){
                 case GC.GAME_INIT:
                     me.init();
                     break;
@@ -30,6 +57,7 @@
                 case GC.GAME_PASS:
                     break;
                 case GC.GAME_OVER:
+                    flax.inputManager.removeAllTouchListeners();
                     break;
                 default:
                     me.init();
@@ -41,81 +69,219 @@
             var me = this;
             function variables() {
                 me._Vessel = {
+                    _Heros :{},
+                    _isWin:false
                 }
+            }
+            function initSpriteElement() {
+                var Heros = me._Vessel["_Heros"];
+                function initHero() {
+                    var i = 0,Heroflaxres = GC["SPRITE_HERO"],data,obj;
+                    for(;i<Heroflaxres.length;i++){
+                        data = Heroflaxres[i];
+                        obj = flax.assetsManager.createDisplay(resanimations[data["flaxres"]], data["flaxres"], {parent:me.ui, x:me.ui[data["flaxres"]].x, y:me.ui[data["flaxres"]].y});
+                        obj["id"] = data["id"];
+                        Heros[data["id"]] = obj;
+                    }
+                    me.debugDraw(false);
+                    Heros['1']["collide"].setVisible(true);
+                    me.ui["shuttlecock"].setVisible(false);
+                }
+                function initshuttlecock() {
+                }
+                initHero();
+                initshuttlecock();
             }
             function initPhysics() {
                 flax.createPhysicsWorld({x:0, y:0});
                 flax.startPhysicsWorld();
 
                 me.ui.createPhysics(flax.physicsTypeStatic);
-                me.ui.addPhysicsShape("topBar", 1, 0.3, 0.5);
-                me.ui.addPhysicsShape("leftBar", 1, 0.3, 0.5);
-                me.ui.addPhysicsShape("rightBar", 1, 0.3, 0.5);
                 me.ui.addPhysicsShape("downBar", 1, 0.3, 0.5);
 
-                var AI = flax.assetsManager.createDisplay(resGameMove.GameMove, 'AI', {parent:me.ui, zIndex: 99}, true);
-                AI.x = me.ui.width/2;
-                AI.y = me.ui.height/2+300;
-                AI.createPhysics(flax.physicsTypeKinematic);
-                AI.addPhysicsShape("AI", 1, 0.3, 0.7);
-
-                AI.x+=300;
-                //  var v = flax.getPointOnCircle(AI.getPosition(),0,0);
-                //
-                // AI.physicsBody.SetPosition(AI.physicsBody.GetPosition().x+=5,AI.physicsBody.GetPosition().y);
-                // GN.Log(AI.physicsBody.GetPosition().x);
-                // me.ui.schedule(function () {
-                //     var raworldpos =AI.parent.convertToWorldSpace(AI);
-                //
-                //     if(raworldpos.x<=350){
-                //      //   AI.physicsBody.SetLinearVelocity({x: v.x/30,y:0});
-                //     }
-                // },0.01);
-            }
-            function initBindEvents() {
-                me.gun = me.ui['gun'];
-                flax.inputManager.addListener(me.ui['back'], me.onClick, InputType.click, me);
+                me.ui.getCollider("downBar").debugDraw();
             }
             switch (type){
                 case 'variables':break;
-                case 'Physics':break;
+                case 'Sprite': initSpriteElement();break;
                 default :
                     variables();
-                    initPhysics();
-                    initBindEvents();
+                   // initPhysics();
+                    initSpriteElement();
                     break;
             }
         }
-        ,onClick : function (touch, event) {
-            var pos = touch.getLocation();
-            var rot = flax.getAngle(this.gun.getPosition(), pos);
-            if(rot > 180) rot -= 360;
-            rot = Math.max(-65, rot);
-            rot = Math.min(65, rot);
-            this.gun.rotation = rot;
-
-            var anchor = this.gun.getAnchor("shoot");
-            pos = cc.p(anchor.x, anchor.y);
-            pos = this.gun.convertToWorldSpace(pos);
-
-            var ball = flax.assetsManager.createDisplay(resGameMove.GameMove, "b" + flax.randInt(0, 5), {parent:this.ui, zIndex: 99}, true);
-            ball.setPosition(pos);
-            ball.createPhysics(flax.physicsTypeDynamic, false, true);
-            ball.addPhysicsShape("main", 1, 0.3, 0.7);
-            var v = flax.getPointOnCircle(cc.p(), 2000, rot);
-            ball.physicsBody.SetLinearVelocity({x: v.x/PTM_RATIO, y: v.y/PTM_RATIO});
-
-            // flax.clearDraw();
-            // var pos1 = flax.getPointOnCircle(pos, 600, rot);
-            // flax.physicsRaycast(function(collider,collisionPoint, endPoint, fraction){
-            //     if(collider.name != "leftBar" && collider.name != "rightBar") return;
-            //     flax.drawLine(pos, collisionPoint, 1, cc.color(0, 255, 0));
-            //     flax.drawDot(collisionPoint);
-            //     flax.drawLine(collisionPoint, endPoint);
-            // }, pos, pos1, 24);
-        }
         ,RunGame : function () {
-            var me = this;
+            var me = this,
+                Heros = me._Vessel["_Heros"],
+                shuttlecock = me.ui["shuttlecock"],
+                getActiveHero,
+                getClientHero = Heros["1"];
+            function RandomObjAndPlay(MoveToObj) {
+                function initElement() {
+                    function RandomObj() {
+                        var hero;
+                        do{
+                            hero = Heros[GN.Num.randomNumber(1,3)+""]
+                        }while(getActiveHero&&hero['id']==getActiveHero['id']);
+                        return hero
+                    }
+                        if(!getActiveHero){
+                            getActiveHero = Heros[GN.Num.randomNumber(1,3)]
+                            if(getActiveHero["id"]==getClientHero["id"]){
+                                getActiveHero.fps = 60;
+                            }
+
+                            getActiveHero.gotoAndPlay("attack");
+                            getActiveHero.onAnimationOver.add(function (sprite) {
+                                this.gotoAndStop("attack");
+                            }, getActiveHero);
+
+                            me.ui["shuttlecock"].setVisible(true);
+                        }
+                    MoveToObj = MoveToObj?MoveToObj:RandomObj();
+
+                    var AHworldpos =getActiveHero["pos"].parent.convertToWorldSpace(getActiveHero["pos"]);
+                    shuttlecock.setPosition(cc.p(AHworldpos.x,AHworldpos.y));
+
+                    if(getActiveHero["id"]==Heros["2"]["id"]){
+                        shuttlecock.setScale(0.6);
+                    }
+
+                    var rot = flax.getAngle(shuttlecock.getPosition(), MoveToObj);
+                    if(rot > 180) rot -= 360;
+                    rot = Math.max(-65, rot);
+                    rot = Math.min(65, rot);
+                    shuttlecock.setRotation(rot)
+                }
+                function PlayAction() {
+                    //Action    parameter
+                    function GetAction(){
+                        function setRotateBy() {
+                            return cc.rotateBy(1,200);
+                        }
+                        function setBezierTo() {
+                            var controlPoints;
+                            var raworldpos =MoveToObj["pos"].parent.convertToWorldSpace(MoveToObj["pos"]);
+                            var AHworldpos =getActiveHero["pos"].parent.convertToWorldSpace(getActiveHero["pos"]);
+                                controlPoints = [cc.p(AHworldpos.x,cc.winSize.height),
+                                    cc.p(Math.abs(AHworldpos.x+raworldpos.x)/2, cc.winSize.height),
+                                    cc.p(raworldpos.x, raworldpos.y)]
+                            return cc.bezierTo(1, controlPoints)
+                        }
+                        function setScaleTo() {
+                            if(MoveToObj["id"]==Heros["2"]["id"]){
+                                return cc.scaleTo(1,0.6);
+                            }
+                            return cc.scaleTo(1,1);
+                        }
+                        function setDelayTime() {
+                            return cc.delayTime(0.1);
+                        }
+                        function setCallFunc(type) {
+                            switch(type){
+                                case "Action":
+                                   return new cc.CallFunc(function () {
+                                        function CallBack() {
+                                            if(MoveToObj["collide"]&& flax.ifCollide(shuttlecock,MoveToObj["collide"])){
+                                                function playA() {
+                                                    MoveToObj.gotoAndPlay("attack");
+                                                    MoveToObj.onAnimationOver.add(function (sprite) {
+                                                        this.gotoAndStop("attack");
+                                                    }, MoveToObj);
+                                                }
+                                                    if(MoveToObj["id"]==getClientHero["id"]){
+                                                        clientPlay();
+                                                    }else{
+                                                        playA();
+                                                    }
+                                                me.ui.unschedule(CallBack);
+                                            }
+                                        }
+                                        me.ui.schedule(CallBack,0.05)
+                                    })
+                                case "Over":
+                                   return new cc.CallFunc(function () {
+                                       getActiveHero = MoveToObj;
+                                       if(!me._Vessel._isWin&&MoveToObj["id"]==getClientHero["id"]){
+                                           me.GameControl(GC.GAME_OVER);
+                                           GV.UI.tip_NB.show("游戏失败..请等待");
+                                           me.ui.scheduleOnce(function () {
+                                               GM.SceneMage.replaceScene("GameMove");
+                                           },3)
+                                       }else{
+                                           AIPlay();
+                                       }
+                                       me._Vessel._isWin = false;
+                                       // PlayShuttlecock(MoveToObj);
+                                })
+                                default :GN.ErrorLog(type+":type not Find")
+                            }
+
+                        }
+                        return{
+                            "rotateBy":setRotateBy(),
+                            "BezierTo":setBezierTo(),
+                            "scaleTo":setScaleTo(),
+                            "delayTime":setDelayTime(),
+                            "playOverCall":setCallFunc("Over"),
+                            "playActionCall":setCallFunc("Action")
+                        }
+                    }
+
+                    var getA = GetAction();
+                    shuttlecock.runAction(
+                        new cc.sequence(cc.spawn(
+                            getA["BezierTo"]
+                            ,getA["rotateBy"]
+                            ,getA["scaleTo"]
+                            ,getA["playActionCall"]
+                            ),getA["delayTime"]
+                            ,getA["playOverCall"])
+                    );
+                }
+                initElement();
+                PlayAction();
+            }
+            function clientPlay() {
+                function CallBackEvents(touch,event) {
+                    var pos = touch.getLocation(),self = this;
+                    if(getClientHero["collide"]&&flax.ifCollide(shuttlecock,getClientHero["collide"])){
+                        me._Vessel._isWin = true;
+                        getClientHero.fps=60;
+                        getClientHero.gotoAndPlay("attack");
+                        getClientHero.onAnimationOver.add(function (sprite) {
+                            this.gotoAndStop("attack");
+                        }, getClientHero);
+                        flax.inputManager.removeAllTouchListeners();
+                    }
+                }
+                me.ui.touch(BC.CUIType.FL,CallBackEvents,getClientHero);
+
+            }
+            function AIPlay() {
+                RandomObjAndPlay();
+            }
+             function PlayShuttlecock(Type) {
+                 switch(Type&&Type["id"]||""){
+                     case getClientHero["id"]:
+                         clientPlay();
+                         break;
+                     default :
+                         AIPlay()
+                         break;
+                 }
+             }
+            PlayShuttlecock();
+        }
+        ,debugDraw :function (isVisible) {
+            var me = this,Heros = me._Vessel["_Heros"];
+            for(var obj in Heros){
+                if(obj){
+                    Heros[obj]["pos"].setVisible(isVisible);
+                    Heros[obj]["collide"].setVisible(isVisible);
+                }
+            }
         }
         ,close: function(){
 

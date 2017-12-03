@@ -292,7 +292,7 @@
                 <file name="cocos2d/physics/CCPhysicsDebugNodeWebGLRenderCmd.js"/>
                 <file name="cocos2d/physics/CCPhysicsSpriteCanvasRenderCmd.js"/>
                 <file name="cocos2d/physics/CCPhysicsSpriteWebGLRenderCmd.js"/>
-                <file name="external/chipmunk/chipmunk.js"/>
+                <file name="external/box2d/box2d.js"/>
 
             </sources>
             <sources dir="${basedir}">
@@ -343,12 +343,13 @@
                 <file name="src/GameManage/SceneManage.js"/>
                 <file name="src/GameManage/RichTextManage.js"/>
                 <file name="src/GameView/UI/Public/tip_NB.js"/>
-                <file name="src/GameView/UI/Public/SliderBar.js"/>
                 <file name="src/GameView/UI/GameBegin.js"/>
-                <file name="src/GameView/UI/kernel.js"/>
                 <file name="src/GameView/UI/GameOver.js"/>
+                <file name="src/GameView/UI/GameMove.js"/>
+                <file name="src/GameView/UI/Sprite/SPGold.js"/>
                 <file name="src/GameView/Scene/GameBeginScene.js"/>
                 <file name="src/GameView/Scene/GameMoveScene.js"/>
+                <file name="src/GameView/Scene/GamePhysics.js"/>
                 <file name="main.js"/>
 
             </sources>
