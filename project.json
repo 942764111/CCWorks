@@ -70,7 +70,9 @@
     "src/GameManage/RichTextManage.js",
 
     "src/GameView/Scene/LoginScene.js",
-    "src/GameView/UI/Login.js"
+    "src/GameView/Scene/HallScene.js",
+    "src/GameView/UI/Login.js",
+    "src/GameView/UI/hall.js"
   ]
   
 }

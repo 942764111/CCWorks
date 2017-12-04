@@ -26,9 +26,9 @@
             _GetHero = function (MovieClipName) {
                 var _getMovieClipName =  MovieClipName;
                 var _MovieClipNameData =  [
-                    {"id":"LoginMain","res":"DL"},
-                    {"id":"PhoneLogin","res":"SJDL"},
-                    {"id":"Register","res":"ZC"}
+                        {"id":"LoginMain","res":"DL"},
+                        {"id":"PhoneLogin","res":"SJDL"},
+                        {"id":"Register","res":"ZC"}
                     ];
                 function _GetMovieClipHero() {
                     var i=0,arr = _MovieClipNameData,hero;
