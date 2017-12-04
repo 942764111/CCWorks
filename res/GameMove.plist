@@ -398,11 +398,38 @@
         <key>rect</key>
         <string>0,0,1977.95,1272.00</string>
         <key>anchorX</key>
-        <real>0.50714</real>
+        <real>0.50001</real>
         <key>anchorY</key>
-        <real>0.48958</real>
+        <real>0.50000</real>
         <key>children</key>
         <dict>
+          <key>hero3</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>3</integer>
+            <key>frames</key>
+            <string>1721.70,176.90,0.00,2.00861,2.00854,0.00,3,0.00,0.00</string>
+          </dict>
+          <key>shuttlecock</key>
+          <dict>
+            <key>class</key>
+            <string>shuttlecock</string>
+            <key>zIndex</key>
+            <integer>4</integer>
+            <key>frames</key>
+            <string>947.20,1066.10,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
+          </dict>
+          <key>hero2</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>989.00,186.30,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
+          </dict>
           <key>hero1</key>
           <dict>
             <key>class</key>
@@ -410,7 +437,7 @@
             <key>zIndex</key>
             <integer>1</integer>
             <key>frames</key>
-            <string>285.40,160.60,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
+            <string>271.30,173.85,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
           </dict>
           <key>xinshou</key>
           <dict>
@@ -421,41 +448,14 @@
             <key>frames</key>
             <string>989.00,636.00,0.00,1.00000,1.00000,0.70,5,0.00,0.00</string>
           </dict>
-          <key>i243925566</key>
+          <key>i142431</key>
           <dict>
             <key>class</key>
             <string>GameMoveLayer</string>
             <key>zIndex</key>
             <integer>0</integer>
             <key>frames</key>
-            <string>43.10,1222.75,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
-          </dict>
-          <key>hero3</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>3</integer>
-            <key>frames</key>
-            <string>1735.80,163.65,0.00,2.00862,2.00856,0.00,3,0.00,0.00</string>
-          </dict>
-          <key>hero2</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>2</integer>
-            <key>frames</key>
-            <string>988.55,159.40,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
-          </dict>
-          <key>shuttlecock</key>
-          <dict>
-            <key>class</key>
-            <string>shuttlecock</string>
-            <key>zIndex</key>
-            <integer>4</integer>
-            <key>frames</key>
-            <string>961.30,1052.85,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
+            <string>29.00,1236.00,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
           </dict>
         </dict>
       </dict>
@@ -473,7 +473,7 @@
         <real>0.50000</real>
         <key>children</key>
         <dict>
-          <key>i243925603</key>
+          <key>i142468</key>
           <dict>
             <key>class</key>
             <string>a5</string>
@@ -481,6 +481,15 @@
             <integer>0</integer>
             <key>frames</key>
             <string>0.00,1272.00,0.00,20.82069,13.97783,1.00,0,0.00,0.00</string>
+          </dict>
+          <key>Tile</key>
+          <dict>
+            <key>class</key>
+            <string>a7</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>1030.55,238.40,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
           </dict>
           <key>text</key>
           <dict>
@@ -494,15 +503,6 @@
             <string>当毽子接近司马光时，玩家点击屏幕任意位置，踢出毽子！！</string>
             <key>input</key>
             <false/>
-          </dict>
-          <key>Tile</key>
-          <dict>
-            <key>class</key>
-            <string>a7</string>
-            <key>zIndex</key>
-            <integer>2</integer>
-            <key>frames</key>
-            <string>1030.55,238.40,0.00,1.00000,1.00000,1.00,2,0.00,0.00</string>
           </dict>
         </dict>
       </dict>

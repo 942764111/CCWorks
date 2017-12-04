@@ -82,9 +82,9 @@
                         obj = flax.assetsManager.createDisplay(resanimations[data["flaxres"]], data["flaxres"], {parent:me.ui, x:me.ui[data["flaxres"]].x, y:me.ui[data["flaxres"]].y});
                         obj["id"] = data["id"];
                         Heros[data["id"]] = obj;
+                        obj.gotoAndPlay("idle");
+                        me.debugDraw(obj,false);
                     }
-                    me.debugDraw(false);
-                    Heros['1']["collide"].setVisible(true);
                     me.ui["shuttlecock"].setVisible(false);
                 }
                 function initshuttlecock() {
@@ -132,10 +132,7 @@
                                 getActiveHero.fps = 60;
                             }
 
-                            getActiveHero.gotoAndPlay("attack");
-                            getActiveHero.onAnimationOver.add(function (sprite) {
-                                this.gotoAndStop("attack");
-                            }, getActiveHero);
+                            me.playAttack(getActiveHero);
 
                             me.ui["shuttlecock"].setVisible(true);
                         }
@@ -158,7 +155,7 @@
                     //Action    parameter
                     function GetAction(){
                         function setRotateBy() {
-                            return cc.rotateBy(1,200);
+                            return cc.rotateBy(1.5,200);
                         }
                         function setBezierTo() {
                             var controlPoints;
@@ -167,13 +164,13 @@
                                 controlPoints = [cc.p(AHworldpos.x,cc.winSize.height),
                                     cc.p(Math.abs(AHworldpos.x+raworldpos.x)/2, cc.winSize.height),
                                     cc.p(raworldpos.x, raworldpos.y)]
-                            return cc.bezierTo(1, controlPoints)
+                            return cc.bezierTo(1.5, controlPoints)
                         }
                         function setScaleTo() {
                             if(MoveToObj["id"]==Heros["2"]["id"]){
-                                return cc.scaleTo(1,0.6);
+                                return cc.scaleTo(1.5,0.6);
                             }
-                            return cc.scaleTo(1,1);
+                            return cc.scaleTo(1.5,1);
                         }
                         function setDelayTime() {
                             return cc.delayTime(0.1);
@@ -185,10 +182,7 @@
                                         function CallBack() {
                                             if(MoveToObj["collide"]&& flax.ifCollide(shuttlecock,MoveToObj["collide"])){
                                                 function playA() {
-                                                    MoveToObj.gotoAndPlay("attack");
-                                                    MoveToObj.onAnimationOver.add(function (sprite) {
-                                                        this.gotoAndStop("attack");
-                                                    }, MoveToObj);
+                                                    me.playAttack(MoveToObj);
                                                 }
                                                     if(MoveToObj["id"]==getClientHero["id"]){
                                                         clientPlay();
@@ -198,13 +192,19 @@
                                                 me.ui.unschedule(CallBack);
                                             }
                                         }
-                                        me.ui.schedule(CallBack,0.05)
+                                        me.ui.schedule(CallBack,0.1)
                                     })
                                 case "Over":
                                    return new cc.CallFunc(function () {
                                        getActiveHero = MoveToObj;
                                        if(!me._Vessel._isWin&&MoveToObj["id"]==getClientHero["id"]){
                                            me.GameControl(GC.GAME_OVER);
+                                           shuttlecock.runAction(
+                                               cc.spawn(
+                                                   cc.moveBy(0.1,0,-(Math.abs(shuttlecock.y-getClientHero.y))+10)
+                                                   ,cc.rotateTo(0.1,65)
+                                               )
+                                           );
                                            GV.UI.tip_NB.show("游戏失败..请等待");
                                            me.ui.scheduleOnce(function () {
                                                GM.SceneMage.replaceScene("GameMove");
@@ -236,8 +236,8 @@
                             ,getA["rotateBy"]
                             ,getA["scaleTo"]
                             ,getA["playActionCall"]
-                            ),getA["delayTime"]
-                            ,getA["playOverCall"])
+                            )
+                            ,getA["delayTime"],getA["playOverCall"])
                     );
                 }
                 initElement();
@@ -249,10 +249,7 @@
                     if(getClientHero["collide"]&&flax.ifCollide(shuttlecock,getClientHero["collide"])){
                         me._Vessel._isWin = true;
                         getClientHero.fps=60;
-                        getClientHero.gotoAndPlay("attack");
-                        getClientHero.onAnimationOver.add(function (sprite) {
-                            this.gotoAndStop("attack");
-                        }, getClientHero);
+                        me.playAttack(getClientHero);
                         flax.inputManager.removeAllTouchListeners();
                     }
                 }
@@ -274,14 +271,23 @@
              }
             PlayShuttlecock();
         }
-        ,debugDraw :function (isVisible) {
-            var me = this,Heros = me._Vessel["_Heros"];
-            for(var obj in Heros){
-                if(obj){
-                    Heros[obj]["pos"].setVisible(isVisible);
-                    Heros[obj]["collide"].setVisible(isVisible);
+        ,debugDraw :function (hero,isVisible) {
+            var me = this;
+            hero["collide"].setVisible(isVisible);
+            hero["pos"].setVisible(isVisible);
+        }
+        ,playAttack : function (hero,fun) {
+            var me = this;
+            hero.gotoAndPlay("attack");
+            me.debugDraw(hero,false);
+            hero.onAnimationOver.add(function (sprite) {
+                if(hero["id"]=="1"){
+                    this.fps = 30;
                 }
-            }
+                this.gotoAndPlay("idle");
+                me.debugDraw(this,false);
+                fun&&fun();
+            }, hero);
         }
         ,close: function(){
 
