@@ -63,6 +63,7 @@
                 allTouchCallBack();
                 fun&&fun.call(this,touch, event);
             }
+            flax.removeListener(me,_touchFunction,InputType.click);
             flax.inputManager.addListener(me,_touchFunction,InputType.click,me._touchCaller);
         }
 

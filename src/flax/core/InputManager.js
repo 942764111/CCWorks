@@ -237,15 +237,15 @@ flax.InputManager = cc.Node.extend({
                         }
                     }
                 }
-                if(calls.length == 0 || (!func && !type)){
+                // if(calls.length == 0 || (!func && !type)){
                     delete this._callbacks[target.__instanceId];
                     var listener = this._touchListeners[target.__instanceId];
                     if(listener){
                         //todo,3.5 cause Invalid native object error!
-//                        cc.eventManager.removeListener(listener);
+                        cc.eventManager.removeListener(listener);
                         delete this._touchListeners[target.__instanceId];
                     }
-                }
+               // }
 //            },0.01);
         }
         if(func && (type == null || type == InputType.keyPress || type == InputType.keyUp)){
