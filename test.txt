@@ -1,1 +1,6 @@
 cocos compile -p web -m release
+
+
+flax.js:  声乐模块：scene about
+          工具模块：utils
+          场景模块：scene about
