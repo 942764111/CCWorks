@@ -59,7 +59,7 @@
                     })
                     //快速登陆
                     Hero["ksdlbtn"].touch(BC.CUIType.FL,function () {
-                        GV.UI.tip_NB.show('[快速登陆]待开发。。');
+                        GM.SceneMage.replaceScene("HallScene");
                         GN.Log("ksdlbtn");
                     })
                     //账号注册

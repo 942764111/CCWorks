@@ -21,7 +21,7 @@ cc.game.onStart = function(){
 
     flax.registerScene("LoginScene", LoginScene, res_Login);
     flax.registerScene("HallScene", HallScene, res_hall);
-    flax.replaceScene("HallScene");
+    flax.replaceScene("LoginScene");
 };
 cc.game.run();
 

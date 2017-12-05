@@ -20,7 +20,8 @@
   "renderMode":0,
   "engineDir":"frameworks/cocos2d-html5",
   "modules":[
-    "cocos2d"
+    "cocos2d",
+    "extensions"
   ],
   "jsList":[
     "src/flax/Flax.js",
@@ -68,9 +69,11 @@
     "src/GameManage/UIManage.js",
     "src/GameManage/SceneManage.js",
     "src/GameManage/RichTextManage.js",
+    "src/GameView/UI/Public/tip_NB.js",
 
     "src/GameView/Scene/LoginScene.js",
     "src/GameView/Scene/HallScene.js",
+    "src/GameView/UI/Login.js",
     "src/GameView/UI/Login.js",
     "src/GameView/UI/hall.js"
   ]
