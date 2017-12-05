@@ -19,44 +19,64 @@
         ,init : function(){
             var me = this;
 
+            me.initBindinUIButton();
+        }
+        ,initBindinUIButton : function(){
+            var me  = this;
+
+            function _ChangCallBack(selected){
+                switch(selected.name){
+                    case "myc_btn":
+
+                        break;
+                    case "cyc_btn":
+
+                        break;
+                    case "tyc_btn":
+
+                        break;
+                }
+            }
+            function _GameTypeCallBack(selected){
+                switch(selected.name){
+                    case "pj_btn":
+                        me.ui["pj"].setSource(reshall.hall, "pj");
+                        me.ui["pj"]["GType"] = "pj";
+                        break;
+                    case "nn_btn":
+                        me.ui["pj"].setSource(reshall.hall, "nn");
+                        me.ui["pj"]["GType"] = "nn";
+                        break;
+                    case "sg_btn":
+                        me.ui["pj"].setSource(reshall.hall, "sg");
+                        me.ui["pj"]["GType"] = "sg";
+                        break;
+                }
+            }
+
             //Bind Button
             var group = new flax.ButtonGroup();
             group.addButton(me.ui["chang"]['myc_btn'], me.ui["chang"]['cyc_btn'], me.ui["chang"]['tyc_btn']);
-            group.onSelected.add(me._ChangCallBack,me);
+            group.onSelected.add(_ChangCallBack,me);
             me.ui["chang"]['myc_btn'].selected = true;
 
             var group2 = new flax.ButtonGroup();
             group2.addButton(me.ui["GameType"]['pj_btn'], me.ui["GameType"]['nn_btn'], me.ui["GameType"]['sg_btn']);
-            group2.onSelected.add(me._GameTypeCallBack,me);
+            group2.onSelected.add(_GameTypeCallBack,me);
             me.ui["GameType"]['pj_btn'].selected = true;
-        }
-        ,_ChangCallBack : function(selected){
-            var me = this;
-            switch(selected.name){
-                case "myc_btn":
 
-                    break;
-                case "cyc_btn":
-
-                    break;
-                case "tyc_btn":
-
-                    break;
-            }
-        }
-        ,_GameTypeCallBack : function(selected){
-            var me = this;
-            switch(selected.name){
-                case "pj_btn":
-                    me.ui["pj"].setSource(reshall.hall, "pj");
-                    break;
-                case "nn_btn":
-                    me.ui["pj"].setSource(reshall.hall, "nn");
-                    break;
-                case "sg_btn":
-                    me.ui["pj"].setSource(reshall.hall, "sg");
-                    break;
-            }
+            me.ui["pj"].touch(BC.CUIType.FL,function(){
+                var GType = this["GType"]||"pj";
+                switch(GType){
+                    case "pj":
+                        GM.SceneMage.replaceScene("RacingScene");
+                        break;
+                    case "nn":
+                        break;
+                    case "sg":
+                        break;
+                }
+            })
         }
         ,close: function(){
 

@@ -73,9 +73,10 @@
 
     "src/GameView/Scene/LoginScene.js",
     "src/GameView/Scene/HallScene.js",
+    "src/GameView/Scene/RacingScene.js",
     "src/GameView/UI/Login.js",
-    "src/GameView/UI/Login.js",
-    "src/GameView/UI/hall.js"
+    "src/GameView/UI/hall.js",
+    "src/GameView/UI/Racing.js"
   ]
   
 }
