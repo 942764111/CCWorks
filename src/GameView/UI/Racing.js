@@ -32,7 +32,7 @@
             function _BindTopButton(){
                 //返回
                 uiTop["back_btn"].touch(BC.CUIType.FL,function () {
-
+                    GM.SceneMage.replaceScene("HallScene");
                 })
                 //结算
                 uiTop["result_btn"].touch(BC.CUIType.FL,function () {
