@@ -6,6 +6,7 @@
 
     var fun = GM.UIMage.UIBase.extend({
         _Vessel : null,//全局引用容器
+        _isGuide:false,
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -14,61 +15,9 @@
         },
         showed : function() {
             var me = this;
-            function xins() {
-                me.ui["xinshou"]["Tile"].runAction(
-                    cc.repeatForever(cc.sequence(
-                        cc.scaleTo(1,0.5,0.5),
-                        cc.scaleTo(1,1,1)
-                    ))
-                );
-                function CallBack() {
-                    this.removeFromParent();
-                    var index = 3;
-                    function schedCallBack() {
-                        if(index<=0){
-                            GV.UI.tip_NB.show("游戏开始");
-                            me.ui.unschedule(schedCallBack);
-                            me.ui.scheduleOnce(function () {
-                                me.GameControl(GC.GAME_RUN)
-                            },4)
-                        }else{
-                            GV.UI.tip_NB.show(index);
-                            index-=1;
-                        }
-                    }
-                    me.ui.schedule(schedCallBack,1)
-                }
-                me.ui["xinshou"].touch(BC.CUIType.FL,CallBack);
-            }
-            me.ui["xinshou"].removeFromParent();
             me.GameControl(GC.GAME_INIT)
-         //   xins();
+            me.GameControl(GC.GAME_RUN)
         }
-            /**
-             * 显示遮罩层
-             */
-        ,guide: function(objs) {
-             var me = this,obj;
-            var stencil;
-            if (!this._clipper) {
-                me.ui["xinshouLable"].setLocalZOrder(999);
-                stencil = new cc.LayerColor();//cc.DrawNode();
-                var clipper = new cc.ClippingNode();
-                clipper.stencil = stencil;
-                me.ui.addChild(clipper, 888);
-                clipper.setInverted(true);
-                var content = new cc.LayerColor(cc.color("#0000"),cc.winSize.width+100,cc.winSize.height+100);
-                content.setOpacity(150);
-                clipper.addChild(content,999);
-                this._clipper = clipper;
-            } else {
-                stencil = this._clipper.stencil;
-            }
-            this._clipper.setVisible(true);
-            stencil.setContentSize(250, 350);
-            var AHworldpos =objs.parent.convertToWorldSpace(objs);
-            stencil.setPosition(AHworldpos.x-100, AHworldpos.y);
-         }
         ,GameControl : function (state) {
             var me = this;
             switch (state||'0'){
@@ -96,6 +45,7 @@
                     _Heros :{},
                     _isWin:false
                 }
+
             }
             function initSpriteElement() {
                 var Heros = me._Vessel["_Heros"];
@@ -110,7 +60,8 @@
                         me.debugDraw(obj,false);
                     }
                     me.ui["shuttlecock"].setVisible(false);
-                    me.guide(Heros["1"]);
+                    me.ui["xstouch"].setVisible(false);
+                    me.ui["xinshou"].setVisible(false);
                 }
                 function initshuttlecock() {
                 }
@@ -136,6 +87,177 @@
                     break;
             }
         }
+        ,GuideManage : function (GUIDEindex,fun) {
+            var me = this,
+                GUIDEindex = GUIDEindex,
+                Heros = me._Vessel["_Heros"];
+                me.ui["xinshouLable"].setLocalZOrder(1000);
+                me.ui["xinshouLable2"].setLocalZOrder(1000);
+                me.ui["xstouch"].setLocalZOrder(1000);
+
+                function touchLayer() {
+
+                    function CallBackEvents() {
+                        flax.inputManager.removeAllTouchListeners();
+                        overGuide();
+                        fun&&fun();
+                    }
+                    me.ui.touch(BC.CUIType.FL,CallBackEvents,me);
+                }
+            /**
+             * 显示遮罩层
+             */
+            function showMask(objs,isshow) {
+                var stencil;
+                if (!isshow) {
+                    if (me._clipper) {
+                        me._clipper.setVisible(false);
+                    }
+                    return;
+                }
+
+                if (!me._clipper) {
+                    stencil = new cc.LayerColor();//cc.DrawNode();
+                    var clipper = new cc.ClippingNode();
+                    clipper.stencil = stencil;
+                    me.ui.addChild(clipper, 888);
+                    clipper.setInverted(true);
+                    var content = new cc.LayerColor(cc.color("#0000"),cc.winSize.width+100,cc.winSize.height+100);
+                    content.setOpacity(150);
+                    clipper.addChild(content,999);
+                    me._clipper = clipper;
+                } else {
+                    stencil = me._clipper.stencil;
+                }
+                me._clipper.setVisible(true);
+                stencil.setContentSize(250, 350);
+                var AHworldpos =objs.parent.convertToWorldSpace(objs);
+                stencil.setPosition(AHworldpos.x-100, AHworldpos.y);
+            }
+            function showTouch(isshow) {
+                me.ui["xinshouLable2"].setVisible(isshow);
+                if(isshow){
+                    me.ui["xinshouLable2"].text ="点击任意位置继续";
+                }else{
+                    me.ui["xinshouLable2"].text ="";
+                }
+            }
+            function showTouchAdmin(isshow) {
+                me.ui["xstouch"].setVisible(isshow);
+                if(isshow){
+                    me.ui["xstouch"].play();
+                }else{
+                    me.ui["xstouch"].stop();
+                }
+            }
+            function overGuide() {
+                showTouch(false);
+                showMask(null,false);
+                showTouchAdmin(false);
+                me.ui["xinshouLable"].text = ""
+            }
+            //执行步揍方法
+            function Two() {
+                me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                me.ui["xinshouLable"].setVisible(false)
+                var index = 1
+                function scheduleCallBack() {
+                    index  = index>3?1:index;
+                    showMask(Heros[index],true);
+                    me.ui["xinshouLable"].setVisible(true);
+                    index++;
+                }
+                function scheduleOnceCallBack() {
+                    me.ui.unschedule(scheduleCallBack)
+                    showMask(Heros[3],true);
+                    showTouch(true);
+                    touchLayer();
+                }
+                me.ui.schedule(scheduleCallBack,1.5)
+                me.ui.scheduleOnce(scheduleOnceCallBack,8)
+
+            }
+            function Three() {
+                me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                me.ui["xinshouLable"].setVisible(true)
+                showMask(Heros[2],true);
+                function scheduleOnceCallBack2() {
+                    me.ui.unschedule(scheduleOnceCallBack2)
+                    showTouch(true);
+                    touchLayer();
+                }
+                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+
+            }
+            function For() {
+                me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                me.ui["xinshouLable"].setVisible(true)
+                showMask(Heros[1],true);
+                function scheduleOnceCallBack2() {
+                    me.ui.unschedule(scheduleOnceCallBack2)
+                    showTouchAdmin(true);
+                    touchLayer();
+                }
+                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+
+            }
+            function Five() {
+                me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                me.ui["xinshouLable"].setVisible(true)
+                showMask(Heros[1],true);
+                function scheduleOnceCallBack2() {
+                    me.ui.unschedule(scheduleOnceCallBack2)
+                    showTouch(true);
+                    touchLayer();
+                }
+                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+            }
+            function Six() {
+                me.ui["xinshou"].setVisible(true);
+                function xins() {
+                    var index = 3;
+                    me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                    me.ui["xinshou"]["time"].text = index;
+                    function schedCallBack() {
+                        if(index<=0){
+                            me.ui["xinshouLable"].text = "游戏开始";
+                            me.ui.unschedule(schedCallBack);
+                            me.ui.scheduleOnce(function () {
+                                overGuide();
+                                me.ui["xinshou"].removeFromParent();
+                                fun&&fun();
+                            },1)
+                        }else{
+                            me.ui["xinshou"]["time"].text = index;
+                            index-=1;
+                        }
+                    }
+                    me.ui.scheduleOnce(function () {
+                        me.ui.schedule(schedCallBack,1)
+                    },1.5)
+                }
+                xins();
+            }
+            switch(GUIDEindex){
+                case 1:
+                    break;
+                case 2:
+                    Two();
+                    break;
+                case 3:
+                    Three();
+                    break;
+                case 4:
+                    For();
+                    break;
+                case 5:
+                    Five();
+                    break;
+                case 6:
+                    Six();
+                    break;
+            }
+        }
         ,RunGame : function () {
             var me = this,
                 Heros = me._Vessel["_Heros"],
@@ -152,7 +274,7 @@
                         return hero
                     }
                         if(!getActiveHero){
-                            getActiveHero = Heros[GN.Num.randomNumber(1,3)]
+                            getActiveHero = me._isGuide?Heros[GN.Num.randomNumber(1,3)]:Heros["3"]
                             if(getActiveHero["id"]==getClientHero["id"]){
                                 getActiveHero.fps = 60;
                             }
@@ -209,9 +331,9 @@
                                                 function playA() {
                                                     me.playAttack(MoveToObj);
                                                 }
-                                                    if(MoveToObj["id"]==getClientHero["id"]){
+                                                    if(MoveToObj["id"]==getClientHero["id"]&&me._isGuide){
                                                         clientPlay();
-                                                    }else{
+                                                    }else if(!(MoveToObj["id"]==getClientHero["id"])){
                                                         playA();
                                                     }
                                                 me.ui.unschedule(CallBack);
@@ -223,19 +345,43 @@
                                    return new cc.CallFunc(function () {
                                        getActiveHero = MoveToObj;
                                        if(!me._Vessel._isWin&&MoveToObj["id"]==getClientHero["id"]){
-                                           me.GameControl(GC.GAME_OVER);
-                                           shuttlecock.runAction(
-                                               cc.spawn(
-                                                   cc.moveBy(0.1,0,-(Math.abs(shuttlecock.y-getClientHero.y))+10)
-                                                   ,cc.rotateTo(0.1,65)
-                                               )
-                                           );
-                                           GV.UI.tip_NB.show("游戏失败..请等待");
-                                           me.ui.scheduleOnce(function () {
-                                               GM.SceneMage.replaceScene("GameMove");
-                                           },3)
+
+                                           if(!me._isGuide){
+                                               MoveToObj.stop();
+                                               shuttlecock.stopAllActions();
+                                               me.GuideManage(4,function () {
+                                                   me.GuideManage(5,function () {
+                                                       me.GuideManage(6,function(){
+                                                           GM.SceneMage.replaceScene("GameMove");
+                                                       })
+                                                   })
+                                               })
+
+                                           }else{
+                                               me.GameControl(GC.GAME_OVER);
+                                               shuttlecock.runAction(
+                                                   cc.spawn(
+                                                       cc.moveBy(0.1,0,-(Math.abs(shuttlecock.y-getClientHero.y))+10)
+                                                       ,cc.rotateTo(0.1,65)
+                                                   )
+                                               );
+                                               GV.UI.tip_NB.show("游戏失败..请等待");
+                                               me.ui.scheduleOnce(function () {
+                                                   GM.SceneMage.replaceScene("GameMove");
+                                               },3)
+                                           }
                                        }else{
-                                           AIPlay();
+                                           if(!me._isGuide){
+                                               MoveToObj.stop();
+                                               shuttlecock.stopAllActions();
+                                               me.GuideManage(3,function () {
+                                                   MoveToObj.play();
+                                                   cc.director.resume();
+                                                   RandomObjAndPlay(Heros["1"]);
+                                               })
+                                           }else {
+                                               AIPlay();
+                                           }
                                        }
                                        me._Vessel._isWin = false;
                                        // PlayShuttlecock(MoveToObj);
@@ -271,14 +417,17 @@
             function clientPlay() {
                 function CallBackEvents(touch,event) {
                     var pos = touch.getLocation(),self = this;
-                    if(getClientHero["collide"]&&flax.ifCollide(shuttlecock,getClientHero["collide"])){
-                        me._Vessel._isWin = true;
-                        getClientHero.fps=60;
-                        me.playAttack(getClientHero);
-                        flax.inputManager.removeAllTouchListeners();
+                    function playHeroAdmin() {
+                        if (me._isGuide&&getClientHero["collide"] && flax.ifCollide(shuttlecock, getClientHero["collide"])) {
+                            me._Vessel._isWin = true;
+                            getClientHero.fps = 60;
+                            me.playAttack(getClientHero);
+                            flax.inputManager.removeAllTouchListeners();
+                        }
                     }
+                    playHeroAdmin();
                 }
-                me.ui.touch(BC.CUIType.FL,CallBackEvents,getClientHero);
+                me.ui.touch(BC.CUIType.FL,CallBackEvents,me);
 
             }
             function AIPlay() {
@@ -294,7 +443,19 @@
                          break;
                  }
              }
-            PlayShuttlecock();
+            if(me._isGuide){
+                me.ui.scheduleOnce(function () {
+                    PlayShuttlecock();
+                },2)
+                GV.UI.tip_NB.show("游戏开始");
+            } else{
+                me.GuideManage(2,function () {
+                    RandomObjAndPlay(Heros["2"]);
+                })
+            }
+
+
+          //  clientPlay();
         }
         ,debugDraw :function (hero,isVisible) {
             var me = this;
@@ -315,7 +476,13 @@
             }, hero);
         }
         ,close: function(){
-
+            var me = this;
+            me._clipper = null;
+            me._Vessel = {
+                _Heros :{},
+                _isWin:false,
+            }
+            me._isGuide = true
         }
     });
 
