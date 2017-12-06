@@ -40,11 +40,35 @@
                 }
                 me.ui["xinshou"].touch(BC.CUIType.FL,CallBack);
             }
-
+            me.ui["xinshou"].removeFromParent();
             me.GameControl(GC.GAME_INIT)
-            xins();
-
+         //   xins();
         }
+            /**
+             * 显示遮罩层
+             */
+        ,guide: function(objs) {
+             var me = this,obj;
+            var stencil;
+            if (!this._clipper) {
+                me.ui["xinshouLable"].setLocalZOrder(999);
+                stencil = new cc.LayerColor();//cc.DrawNode();
+                var clipper = new cc.ClippingNode();
+                clipper.stencil = stencil;
+                me.ui.addChild(clipper, 888);
+                clipper.setInverted(true);
+                var content = new cc.LayerColor(cc.color("#0000"),cc.winSize.width+100,cc.winSize.height+100);
+                content.setOpacity(150);
+                clipper.addChild(content,999);
+                this._clipper = clipper;
+            } else {
+                stencil = this._clipper.stencil;
+            }
+            this._clipper.setVisible(true);
+            stencil.setContentSize(250, 350);
+            var AHworldpos =objs.parent.convertToWorldSpace(objs);
+            stencil.setPosition(AHworldpos.x-100, AHworldpos.y);
+         }
         ,GameControl : function (state) {
             var me = this;
             switch (state||'0'){
@@ -86,6 +110,7 @@
                         me.debugDraw(obj,false);
                     }
                     me.ui["shuttlecock"].setVisible(false);
+                    me.guide(Heros["1"]);
                 }
                 function initshuttlecock() {
                 }
@@ -259,7 +284,7 @@
             function AIPlay() {
                 RandomObjAndPlay();
             }
-             function PlayShuttlecock(Type) {
+            function PlayShuttlecock(Type) {
                  switch(Type&&Type["id"]||""){
                      case getClientHero["id"]:
                          clientPlay();

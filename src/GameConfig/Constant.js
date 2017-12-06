@@ -80,7 +80,7 @@
  * @type {{Debug: number, CUIType: {CC: string, FL: string}}}
  */
     var BC = {
-        Debug   :   1,//  1:正式   0:调试
+        Debug   :   0,//  1:正式   0:调试
         CUIType :   {CC:'CC',FL:'FL'}, //cocosstudio 模式
     }
 

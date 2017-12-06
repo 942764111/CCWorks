@@ -5,7 +5,7 @@
       <key>GameMove_0000</key>
       <dict>
         <key>frame</key>
-        <string>{{1,308},{116,111}}</string>
+        <string>{{303,308},{116,111}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
@@ -32,263 +32,461 @@
       <key>GameMove_0003</key>
       <dict>
         <key>frame</key>
-        <string>{{1,160},{175,146}}</string>
+        <string>{{1,160},{300,360}}</string>
+        <key>offset</key>
+        <string>{0.00,0.00}</string>
+        <key>sourceSize</key>
+        <string>{300.00,360.00}</string>
+      </dict>
+      <key>GameMove_0004</key>
+      <dict>
+        <key>frame</key>
+        <string>{{303,160},{175,146}}</string>
         <key>offset</key>
         <string>{0.00,0.00}</string>
         <key>sourceSize</key>
         <string>{175.00,146.00}</string>
       </dict>
-      <key>GameMove_0004</key>
-      <dict>
-        <key>frame</key>
-        <string>{{1479,264},{93,104}}</string>
-        <key>offset</key>
-        <string>{-1.00,1.50}</string>
-        <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
-      </dict>
       <key>GameMove_0005</key>
       <dict>
         <key>frame</key>
-        <string>{{1074,160},{103,105}}</string>
+        <string>{{1787,330},{93,104}}</string>
         <key>offset</key>
-        <string>{-1.00,1.00}</string>
+        <string>{-2.00,1.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0006</key>
       <dict>
         <key>frame</key>
-        <string>{{1074,267},{102,100}}</string>
+        <string>{{1265,267},{103,105}}</string>
         <key>offset</key>
-        <string>{-1.50,-0.50}</string>
+        <string>{-2.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0007</key>
       <dict>
         <key>frame</key>
-        <string>{{333,267},{105,106}}</string>
+        <string>{{1580,265},{102,100}}</string>
         <key>offset</key>
-        <string>{-1.00,0.50}</string>
+        <string>{-2.50,-0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0008</key>
       <dict>
         <key>frame</key>
-        <string>{{711,160},{104,105}}</string>
+        <string>{{480,160},{105,106}}</string>
         <key>offset</key>
-        <string>{-0.50,1.00}</string>
+        <string>{-2.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0009</key>
       <dict>
         <key>frame</key>
-        <string>{{1381,266},{96,102}}</string>
+        <string>{{1159,160},{104,105}}</string>
         <key>offset</key>
-        <string>{-0.50,0.50}</string>
+        <string>{-1.50,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0010</key>
       <dict>
         <key>frame</key>
-        <string>{{1382,160},{96,102}}</string>
+        <string>{{1786,439},{96,102}}</string>
         <key>offset</key>
-        <string>{-0.50,-0.50}</string>
+        <string>{-1.50,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0011</key>
       <dict>
         <key>frame</key>
-        <string>{{392,160},{105,105}}</string>
+        <string>{{1787,226},{96,102}}</string>
         <key>offset</key>
-        <string>{0.00,1.00}</string>
+        <string>{-1.50,-0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0012</key>
       <dict>
         <key>frame</key>
-        <string>{{1178,267},{101,105}}</string>
+        <string>{{421,308},{105,105}}</string>
         <key>offset</key>
-        <string>{0.00,1.00}</string>
+        <string>{-1.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0013</key>
       <dict>
         <key>frame</key>
-        <string>{{178,268},{26,38}}</string>
+        <string>{{1684,226},{101,105}}</string>
         <key>offset</key>
-        <string>{-27.50,-28.50}</string>
+        <string>{-1.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0014</key>
       <dict>
         <key>frame</key>
-        <string>{{226,268},{105,103}}</string>
+        <string>{{103,522},{26,38}}</string>
         <key>offset</key>
-        <string>{-1.00,0.00}</string>
+        <string>{-28.50,-28.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0015</key>
       <dict>
         <key>frame</key>
-        <string>{{969,265},{103,105}}</string>
+        <string>{{849,160},{105,103}}</string>
         <key>offset</key>
-        <string>{-1.00,1.00}</string>
+        <string>{-2.00,0.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0016</key>
       <dict>
         <key>frame</key>
-        <string>{{178,160},{105,106}}</string>
+        <string>{{1371,160},{103,105}}</string>
         <key>offset</key>
-        <string>{1.00,0.50}</string>
+        <string>{-2.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0017</key>
       <dict>
         <key>frame</key>
-        <string>{{922,160},{103,103}}</string>
+        <string>{{839,370},{105,106}}</string>
         <key>offset</key>
-        <string>{-1.00,1.00}</string>
+        <string>{0.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0018</key>
       <dict>
         <key>frame</key>
-        <string>{{1179,160},{100,104}}</string>
+        <string>{{1476,160},{103,103}}</string>
         <key>offset</key>
-        <string>{-0.50,-0.50}</string>
+        <string>{-2.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0019</key>
       <dict>
         <key>frame</key>
-        <string>{{285,160},{105,105}}</string>
+        <string>{{1684,439},{100,104}}</string>
         <key>offset</key>
-        <string>{1.00,1.00}</string>
+        <string>{-1.50,-0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0020</key>
       <dict>
         <key>frame</key>
-        <string>{{119,308},{105,104}}</string>
+        <string>{{946,265},{105,105}}</string>
         <key>offset</key>
-        <string>{0.00,0.50}</string>
+        <string>{0.00,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0021</key>
       <dict>
         <key>frame</key>
-        <string>{{653,267},{104,104}}</string>
+        <string>{{625,374},{105,104}}</string>
         <key>offset</key>
-        <string>{0.50,0.50}</string>
+        <string>{-1.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0022</key>
       <dict>
         <key>frame</key>
-        <string>{{605,160},{104,105}}</string>
+        <string>{{1053,160},{104,104}}</string>
         <key>offset</key>
-        <string>{0.50,1.00}</string>
+        <string>{-0.50,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0023</key>
       <dict>
         <key>frame</key>
-        <string>{{1281,266},{98,102}}</string>
+        <string>{{1053,372},{104,105}}</string>
         <key>offset</key>
-        <string>{-1.50,-0.50}</string>
+        <string>{-0.50,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0024</key>
       <dict>
         <key>frame</key>
-        <string>{{864,266},{103,103}}</string>
+        <string>{{1685,121},{98,102}}</string>
         <key>offset</key>
-        <string>{0.00,0.00}</string>
+        <string>{-2.50,-0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0025</key>
       <dict>
         <key>frame</key>
-        <string>{{1281,160},{99,104}}</string>
+        <string>{{1475,267},{103,103}}</string>
         <key>offset</key>
-        <string>{-1.00,0.50}</string>
+        <string>{-1.00,0.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0026</key>
       <dict>
         <key>frame</key>
-        <string>{{499,160},{104,105}}</string>
+        <string>{{1758,14},{99,104}}</string>
         <key>offset</key>
-        <string>{1.50,1.00}</string>
+        <string>{-2.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0027</key>
       <dict>
         <key>frame</key>
-        <string>{{440,267},{105,104}}</string>
+        <string>{{1159,267},{104,105}}</string>
         <key>offset</key>
-        <string>{-1.00,0.50}</string>
+        <string>{0.50,1.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0028</key>
       <dict>
         <key>frame</key>
-        <string>{{759,267},{103,104}}</string>
+        <string>{{946,372},{105,104}}</string>
         <key>offset</key>
-        <string>{-1.00,0.50}</string>
+        <string>{-2.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0029</key>
       <dict>
         <key>frame</key>
-        <string>{{547,267},{104,103}}</string>
+        <string>{{1475,372},{103,104}}</string>
         <key>offset</key>
-        <string>{0.50,0.00}</string>
+        <string>{-2.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0030</key>
       <dict>
         <key>frame</key>
-        <string>{{817,160},{103,104}}</string>
+        <string>{{1159,374},{104,103}}</string>
         <key>offset</key>
-        <string>{0.00,0.50}</string>
+        <string>{-0.50,0.00}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
       </dict>
       <key>GameMove_0031</key>
       <dict>
         <key>frame</key>
-        <string>{{1550,14},{23,106}}</string>
+        <string>{{1370,373},{103,104}}</string>
         <key>offset</key>
-        <string>{-28.00,-0.50}</string>
+        <string>{-1.00,0.50}</string>
         <key>sourceSize</key>
-        <string>{107.00,107.00}</string>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0032</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1882,330},{23,106}}</string>
+        <key>offset</key>
+        <string>{-29.00,-0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0033</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1265,160},{104,105}}</string>
+        <key>offset</key>
+        <string>{-1.50,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0034</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1654,14},{102,105}}</string>
+        <key>offset</key>
+        <string>{-1.50,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0035</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1580,367},{102,104}}</string>
+        <key>offset</key>
+        <string>{-2.50,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0036</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1053,266},{104,104}}</string>
+        <key>offset</key>
+        <string>{-2.50,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0037</key>
+      <dict>
+        <key>frame</key>
+        <string>{{742,262},{105,106}}</string>
+        <key>offset</key>
+        <string>{-1.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0038</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1370,267},{103,104}}</string>
+        <key>offset</key>
+        <string>{0.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0039</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1581,121},{102,103}}</string>
+        <key>offset</key>
+        <string>{-2.50,0.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0040</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1684,333},{101,104}}</string>
+        <key>offset</key>
+        <string>{-2.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0041</key>
+      <dict>
+        <key>frame</key>
+        <string>{{587,160},{105,105}}</string>
+        <key>offset</key>
+        <string>{-2.00,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0042</key>
+      <dict>
+        <key>frame</key>
+        <string>{{694,160},{105,100}}</string>
+        <key>offset</key>
+        <string>{-2.00,1.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0043</key>
+      <dict>
+        <key>frame</key>
+        <string>{{732,374},{105,105}}</string>
+        <key>offset</key>
+        <string>{0.00,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0044</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1550,14},{102,105}}</string>
+        <key>offset</key>
+        <string>{0.50,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0045</key>
+      <dict>
+        <key>frame</key>
+        <string>{{635,267},{105,105}}</string>
+        <key>offset</key>
+        <string>{0.00,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0046</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1859,14},{83,104}}</string>
+        <key>offset</key>
+        <string>{-2.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0047</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1265,374},{103,106}}</string>
+        <key>offset</key>
+        <string>{-3.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0048</key>
+      <dict>
+        <key>frame</key>
+        <string>{{528,268},{105,104}}</string>
+        <key>offset</key>
+        <string>{-2.00,1.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0049</key>
+      <dict>
+        <key>frame</key>
+        <string>{{303,421},{106,106}}</string>
+        <key>offset</key>
+        <string>{-1.50,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0050</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1785,120},{98,104}}</string>
+        <key>offset</key>
+        <string>{-2.50,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0051</key>
+      <dict>
+        <key>frame</key>
+        <string>{{518,415},{105,105}}</string>
+        <key>offset</key>
+        <string>{2.00,1.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0052</key>
+      <dict>
+        <key>frame</key>
+        <string>{{1,529},{100,29}}</string>
+        <key>offset</key>
+        <string>{-1.50,2.00}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
+      </dict>
+      <key>GameMove_0053</key>
+      <dict>
+        <key>frame</key>
+        <string>{{411,421},{105,104}}</string>
+        <key>offset</key>
+        <string>{1.00,0.50}</string>
+        <key>sourceSize</key>
+        <string>{109.00,107.00}</string>
       </dict>
     </dict>
     <key>metadata</key>
@@ -308,7 +506,7 @@
       <key>textureFileName</key>
       <string>GameMove.png</string>
       <key>size</key>
-      <string>{2364,448}</string>
+      <string>{2264,562}</string>
     </dict>
     <key>displays</key>
     <dict>
@@ -351,6 +549,19 @@
         <key>end</key>
         <integer>2</integer>
       </dict>
+      <key>a8</key>
+      <dict>
+        <key>type</key>
+        <string>null</string>
+        <key>anchorX</key>
+        <real>0.00000</real>
+        <key>anchorY</key>
+        <real>1.00000</real>
+        <key>start</key>
+        <integer>3</integer>
+        <key>end</key>
+        <integer>3</integer>
+      </dict>
       <key>shuttlecock</key>
       <dict>
         <key>type</key>
@@ -360,9 +571,9 @@
         <key>anchorY</key>
         <real>0.04486</real>
         <key>start</key>
-        <integer>3</integer>
+        <integer>4</integer>
         <key>end</key>
-        <integer>3</integer>
+        <integer>4</integer>
       </dict>
       <key>GameMoveLayer</key>
       <dict>
@@ -398,20 +609,11 @@
         <key>rect</key>
         <string>0,0,1977.95,1272.00</string>
         <key>anchorX</key>
-        <real>0.50001</real>
+        <real>0.50653</real>
         <key>anchorY</key>
-        <real>0.50000</real>
+        <real>0.49540</real>
         <key>children</key>
         <dict>
-          <key>hero3</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>3</integer>
-            <key>frames</key>
-            <string>1721.70,176.90,0.00,2.00861,2.00854,0.00,3,0.00,0.00</string>
-          </dict>
           <key>shuttlecock</key>
           <dict>
             <key>class</key>
@@ -419,25 +621,7 @@
             <key>zIndex</key>
             <integer>4</integer>
             <key>frames</key>
-            <string>947.20,1066.10,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
-          </dict>
-          <key>hero2</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>2</integer>
-            <key>frames</key>
-            <string>989.00,186.30,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
-          </dict>
-          <key>hero1</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>1</integer>
-            <key>frames</key>
-            <string>271.30,173.85,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
+            <string>960.10,1060.25,0.00,1.00000,1.00000,1.00,4,0.00,0.00</string>
           </dict>
           <key>xinshou</key>
           <dict>
@@ -448,14 +632,54 @@
             <key>frames</key>
             <string>989.00,636.00,0.00,1.00000,1.00000,0.70,5,0.00,0.00</string>
           </dict>
-          <key>i142431</key>
+          <key>hero3</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>3</integer>
+            <key>frames</key>
+            <string>1734.60,171.05,0.00,2.00861,2.00854,0.00,3,0.00,0.00</string>
+          </dict>
+          <key>hero1</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>1</integer>
+            <key>frames</key>
+            <string>284.20,168.00,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
+          </dict>
+          <key>i9887</key>
           <dict>
             <key>class</key>
             <string>GameMoveLayer</string>
             <key>zIndex</key>
             <integer>0</integer>
             <key>frames</key>
-            <string>29.00,1236.00,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
+            <string>41.90,1230.15,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
+          </dict>
+          <key>hero2</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>1001.90,180.45,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
+          </dict>
+          <key>xinshouLable</key>
+          <dict>
+            <key>class</key>
+            <string>test</string>
+            <key>zIndex</key>
+            <integer>6</integer>
+            <key>frames</key>
+            <string>158.60,840.55,0.00,1.00000,1.00000,1.00,6,0.00,0.00,微软雅黑,80,#00FF00,center,1687,335</string>
+            <key>text</key>
+            <string>当毽子落在这俩个小朋友身上时，他们会自动把毽子踢给另外一个人</string>
+            <key>input</key>
+            <false/>
           </dict>
         </dict>
       </dict>
@@ -473,15 +697,6 @@
         <real>0.50000</real>
         <key>children</key>
         <dict>
-          <key>i142468</key>
-          <dict>
-            <key>class</key>
-            <string>a5</string>
-            <key>zIndex</key>
-            <integer>0</integer>
-            <key>frames</key>
-            <string>0.00,1272.00,0.00,20.82069,13.97783,1.00,0,0.00,0.00</string>
-          </dict>
           <key>Tile</key>
           <dict>
             <key>class</key>
@@ -504,6 +719,15 @@
             <key>input</key>
             <false/>
           </dict>
+          <key>i9924</key>
+          <dict>
+            <key>class</key>
+            <string>a5</string>
+            <key>zIndex</key>
+            <integer>0</integer>
+            <key>frames</key>
+            <string>0.00,1272.00,0.00,20.82069,13.97783,1.00,0,0.00,0.00</string>
+          </dict>
         </dict>
       </dict>
     </dict>
@@ -512,15 +736,15 @@
       <key>test</key>
       <dict>
         <key>start</key>
-        <integer>4</integer>
+        <integer>5</integer>
         <key>end</key>
-        <integer>31</integer>
+        <integer>53</integer>
         <key>size</key>
         <integer>110</integer>
         <key>chars</key>
-        <string>当毽子接近司马光时，玩家点击屏幕任意位置踢出做快速反应！</string>
+        <string>当毽子接近司马光时，玩家点击屏幕任意位置踢出做快速反应！落在这俩个小朋友身上他们会自动把给另外一人</string>
         <key>anchorX</key>
-        <real>-0.06542</real>
+        <real>-0.06422</real>
         <key>anchorY</key>
         <real>1.04673</real>
       </dict>
