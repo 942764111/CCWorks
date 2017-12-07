@@ -22,8 +22,8 @@
                 _GetPresentSTAKE : "",
                 _GetSTAKEBtns : [],
                 _GetPresentSTAKEBtn : null,
-                _GetSTAKETime : 30,
-                _GetOpeningTime : 12,
+                _GetSTAKETime : 10,
+                _GetOpeningTime : 5,
             }
             me.initBindinUIButton();
             me.initUIElement();
@@ -171,6 +171,7 @@
             function STAKETimeCallBack() {
                 if(me._Vessel._GetSTAKETime<=0){
                     uiTrack["time"].setVisible(false);
+                    me.ui["time"].fontSize=80;
                     me.ui.unschedule(STAKETimeCallBack)
                     me.ui.schedule(OpeningTimeCallBack,1)
                 }
