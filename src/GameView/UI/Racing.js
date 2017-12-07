@@ -43,7 +43,7 @@
                 uiTop = me.ui["top"],
                 uiTrack = me.ui["track"],
                 uiDesktop = me.ui["desktop"];
-            
+            //初始化UI按钮
             function initBindinUIButton() {
                 //上层
                 function _BindTopButton(){
@@ -63,7 +63,7 @@
                 function _BindDeskButton(){
                     var state,frame,frameToworldPos,test;
                     function frameCallBack() {
-                        if(!me._Vessel._SetSTAKEBtnsEnabled)return;
+                        if(!me._Vessel._SetFramesEnabled)return;
                         frame = this;
 
                         test = me._Vessel._GetPresentSTAKEBtn.parent.convertToWorldSpace(me._Vessel._GetPresentSTAKEBtn);
@@ -73,7 +73,7 @@
                         });
                         state.setLocalZOrder(9);
                         frameToworldPos = frame["img"].parent.convertToWorldSpace(frame["img"]);
-                        GN.Log(frameToworldPos);
+
                         var rand_x = GN.Num.randomNumber((frameToworldPos.x-frame["img"].width/2)+30,(frameToworldPos.x+frame["img"].width/2)-30)
                         var rand_y = GN.Num.randomNumber((frameToworldPos.y-frame["img"].height/2)+30,(frameToworldPos.y+frame["img"].height/2)-30)
                         state.runAction(cc.moveTo(0.5,rand_x,rand_y))
@@ -94,7 +94,7 @@
                         GV.UI.tip_NB.show('[参与人群]待开发。。');
                     })
                 }
-                //层
+                //下层
                 function _BindDownButton(){
                     function _GoldBack(selected){
                         me._Vessel._GetPresentSTAKE = selected["meid"];
@@ -125,6 +125,7 @@
                 _BindUserButton();
                 _BindDownButton();
             }
+            //初始化UI元素
             function initUIElement() {
                 function _initDownElement(){
                     for(var obj in GC.RACING_STAKE){
@@ -146,12 +147,18 @@
                 function _initTrackElement(){
                     me.ui["time"].text = GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
                     uiTrack["time"]["txt"].text = GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+               //call
+                    for(var i=0;i<10;i++){
+                        me._Vessel._GetCalls.push(uiTrack["car_"+(i+1)])
+                    }
                 }
                 function _initUserElement(){
 
                 }
                 function _initTopElement(){
-
+                    for(var i=0;i<10;i++){
+                        me._Vessel._GetBalls.push(uiTop["ball"]["index_"+(i+1)])
+                    }
                 }
 
                 _initDownElement();
@@ -163,11 +170,13 @@
             function initVessel() {
                 me._Vessel = {
                     _GetPresentSTAKE : "",
-                    _GetSTAKEBtns : [],
-                    _GetPresentSTAKEBtn : null,
-                    _GetSTAKETime : 2,
-                    _GetOpeningTime : 2,
-                    _SetSTAKEBtnsEnabled : true
+                    _GetSTAKEBtns : [],//押注按钮
+                    _GetPresentSTAKEBtn : null,//获取当前
+                    _GetSTAKETime : 2,//押注时间
+                    _GetOpeningTime : 2,//等待开奖时间
+                    _SetFramesEnabled : true,//设置桌面是否可以押注
+                    _GetBalls : [],//获取top所有得球
+                    _GetCalls : []//获取所有得车
                 }
             }
             switch(type){
@@ -189,22 +198,45 @@
         }
         ,runGame : function () {
             var me = this
+                , uiTop = me.ui["top"]
                 ,uiTrack = me.ui["track"];
             //封盘等待开奖
             function OpeningTimeCallBack() {
                 if(me._Vessel._GetOpeningTime<=0){
                     me.ui["time"].setVisible(false);
                     me.ui.unschedule(OpeningTimeCallBack)
-                    var sbg = new flax.ScrollingBG(me.ui["tarkmap1"]);
-                    //Following bgs is optional
-                    //下面添加的更多背景是可选的
-                    for(var i=0;i<5;i++){
-                        sbg.addSource(Racinghall.Racing, "tarkmap2");
+                    var BallToworldPos;
+                    function call() {
+                        function sortBall() {
+                            var sort = GN.Arr.upsetArr(me._Vessel._GetBalls);
+                            for(var i=0;i<sort.length;i++){
+                                sort[i]["mepos"] = sort[i].getPosition();
+                                sort[i].setPosition(uiTop["ball"]["index_"+(i+1)].getPosition())
+                                uiTop["ball"]["index_"+(i+1)].setPosition(sort[i]["mepos"])
+                            }
+                            
+                            function runCall() {
+                                for(var i=0;i<){
+
+                                }
+                            }
+                        }
+                        sortBall();
+
                     }
-                    sbg.startXScroll(500, false);
-                   // sbg._speedX = 50;
-                    sbg.y-=sbg.height;
-                    console.log(sbg.getPosition());
+                    me.ui.schedule(call,1)
+                   //  var sbg = new flax.ScrollingBG(me.ui["tarkmap1"]);
+                   //  //Following bgs is optional
+                   //  //下面添加的更多背景是可选的
+                   //  for(var i=0;i<30;i++){
+                   //      sbg.addSource(Racinghall.Racing, "tarkmap2");
+                   //  }
+                   //  sbg.startXScroll(500, false);
+                   // // sbg._speedX = 50;
+                   //  sbg.y-=sbg.height;
+                   //  console.log(sbg.getPosition());
+
+                    call();
                 }
                 me.ui["time"].text = GN.Str.stringFormat(LABLE.DDKJ,me._Vessel._GetOpeningTime);
                 me._Vessel._GetOpeningTime-=1;
@@ -214,7 +246,7 @@
                 if(me._Vessel._GetSTAKETime<=0){
                     uiTrack["time"].setVisible(false);
                     me.ui["time"].fontSize=80;
-                    me._Vessel._SetSTAKEBtnsEnabled = false;
+                    me._Vessel._SetFramesEnabled = false;
                     me.ui.unschedule(STAKETimeCallBack)
                     me.ui.schedule(OpeningTimeCallBack,1)
                 }
