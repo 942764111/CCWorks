@@ -12,9 +12,16 @@ var Racinghall = {
     Racing_png:"res/Racing.png"
 }
 
+var Submarine = {
+    Submarine:"res/submarine.plist",
+    Submarine_png:"res/submarine.png"
+}
+
+
 var res_Login = [];
 var res_hall = [];
 var res_Racing = [];
+var res_Submarine = [];
 
 for(var obj in resLogin){
     res_Login.push(resLogin[obj]);
@@ -26,6 +33,10 @@ for(var obj in reshall){
 
 for(var obj in Racinghall){
     res_Racing.push(Racinghall[obj]);
+}
+
+for(var obj in Submarine){
+    res_Submarine.push(Submarine[obj]);
 }
 
 

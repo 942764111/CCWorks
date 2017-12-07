@@ -74,6 +74,7 @@
                     case "nn":
                         break;
                     case "sg":
+                        GM.SceneMage.replaceScene("SubmarineScene");
                         break;
                 }
             })

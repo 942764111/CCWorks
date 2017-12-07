@@ -15,6 +15,7 @@
         showed : function() {
             var me = this;
             me.GameControl();
+
         }
         ,GameControl : function (state) {
             var me = this;
@@ -147,6 +148,8 @@
                 function _initTrackElement(){
                     me.ui["time"].text = GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
                     uiTrack["time"]["txt"].text = GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+
+
                //call
                     for(var i=0;i<10;i++){
                         me._Vessel._GetCalls.push(uiTrack["car_"+(i+1)])
@@ -157,6 +160,8 @@
                 }
                 function _initTopElement(){
                     for(var i=0;i<10;i++){
+                        uiTop["ball"]["index_"+(i+1)]["meid"] = i;
+                        uiTop["ball"]["index_"+(i+1)]["val"] = (i+1);
                         me._Vessel._GetBalls.push(uiTop["ball"]["index_"+(i+1)])
                     }
                 }
@@ -172,8 +177,8 @@
                     _GetPresentSTAKE : "",
                     _GetSTAKEBtns : [],//押注按钮
                     _GetPresentSTAKEBtn : null,//获取当前
-                    _GetSTAKETime : 2,//押注时间
-                    _GetOpeningTime : 2,//等待开奖时间
+                    _GetSTAKETime : 30,//押注时间
+                    _GetOpeningTime : 15,//等待开奖时间
                     _SetFramesEnabled : true,//设置桌面是否可以押注
                     _GetBalls : [],//获取top所有得球
                     _GetCalls : []//获取所有得车
@@ -204,39 +209,91 @@
             function OpeningTimeCallBack() {
                 if(me._Vessel._GetOpeningTime<=0){
                     me.ui["time"].setVisible(false);
-                    me.ui.unschedule(OpeningTimeCallBack)
-                    var BallToworldPos;
+                    me.ui.unschedule(OpeningTimeCallBack);
+
+                    var CallTopos,isScrollingCarMap = false,index= 0,maxindex = 6,runtime = 2,sortindex=3;
+                    function ScrollingCarMap(){
+                        if(isScrollingCarMap)return;
+                        isScrollingCarMap = true;
+                        var sbg = new flax.ScrollingBG(me.ui["tarkmap1"]);
+                        //Following bgs is optional
+                        //下面添加的更多背景是可选的
+                        for(var i=0;i<20;i++){
+                            sbg.addSource(Racinghall.Racing, "tarkmap2");
+                        }
+                        sbg.addSource(Racinghall.Racing, "tarkmap3");
+                        sbg.startXScroll(-600,false);
+
+                        function _onScrolledOver(){
+                            GN.Log("_onScrolledOver");
+                            me.ui.unschedule(call);
+                            var obj,runtime = 0;
+                            for(var i=0;i<me._Vessel._GetBalls.length;i++){
+                                obj = me._Vessel._GetCalls[me._Vessel._GetBalls[i]["meid"]];
+                                obj.stopAllActions();
+                                obj.play();
+                                obj.autoStopWhenOver = true;
+                                runtime = i+0.7>2?2:i+0.7;
+                                obj.runAction(cc.moveTo(runtime,(cc.winSize.width-obj.width)+40,obj.y));
+                            }
+
+                            me.ui.scheduleOnce(function(){
+                                var obj,index= 0,Mahjong;
+                                function createMahjong(obj,i){
+                                    Mahjong = me.createOneflaxSp("mj_"+obj["val"]);
+                                    Mahjong.x  = cc.winSize.width/2+i*100;
+                                    Mahjong.y  = cc.winSize.height/2+100;
+                                    me.ui.addChild(Mahjong,10);
+                                }
+                                for(var i=0;i<me._Vessel._GetBalls.length/2;i++){
+                                    obj = me._Vessel._GetBalls[index];
+                              //      createMahjong(obj,i);
+                                    index+=2;
+                                }
+
+                            },1.5)
+                        }
+                        sbg.onScrolledOver.add(_onScrolledOver, me);
+                    }
                     function call() {
+                        index+=1;
+                        sortindex = 3;
+                        ScrollingCarMap();
                         function sortBall() {
                             var sort = GN.Arr.upsetArr(me._Vessel._GetBalls);
                             for(var i=0;i<sort.length;i++){
                                 sort[i]["mepos"] = sort[i].getPosition();
-                                sort[i].setPosition(uiTop["ball"]["index_"+(i+1)].getPosition())
-                                uiTop["ball"]["index_"+(i+1)].setPosition(sort[i]["mepos"])
+                                sort[i].setPosition(uiTop["ball"]["pos_"+(i+1)].getPosition());
+                                runCall(me._Vessel._GetCalls[sort[i]["meid"]]);
                             }
-                            
-                            function runCall() {
-                                for(var i=0;i<){
-
+                            GN.Log("===================================");
+                            function runCall(obj) {
+                                obj.stop();
+                                if(sortindex>0){
+                                   // GN.Log(obj["name"]);
+                                    runtime = GN.Num.randomNumber(0.7,1.5);
+                                    if(index<maxindex/2){
+                                        CallTopos = 200+(50*sortindex);
+                                    }else{
+                                        CallTopos = 400+(50*sortindex);
+                                    }
+                                    obj.play();
+                                }else{
+                                    runtime = 2;
+                                    if(index<maxindex/2){
+                                        CallTopos = GN.Num.randomNumber(100,200);
+                                    }else{
+                                        CallTopos = GN.Num.randomNumber(200,400);
+                                    }
                                 }
+                                obj.stopAllActions();
+                                obj.runAction(cc.moveTo(runtime,CallTopos,obj.y));
+                                sortindex-=1;
                             }
                         }
                         sortBall();
-
                     }
-                    me.ui.schedule(call,1)
-                   //  var sbg = new flax.ScrollingBG(me.ui["tarkmap1"]);
-                   //  //Following bgs is optional
-                   //  //下面添加的更多背景是可选的
-                   //  for(var i=0;i<30;i++){
-                   //      sbg.addSource(Racinghall.Racing, "tarkmap2");
-                   //  }
-                   //  sbg.startXScroll(500, false);
-                   // // sbg._speedX = 50;
-                   //  sbg.y-=sbg.height;
-                   //  console.log(sbg.getPosition());
-
-                    call();
+                    me.ui.schedule(call,3);
                 }
                 me.ui["time"].text = GN.Str.stringFormat(LABLE.DDKJ,me._Vessel._GetOpeningTime);
                 me._Vessel._GetOpeningTime-=1;
@@ -260,7 +317,7 @@
         ,createOneflaxSp : function (assetID,property) {
             var me = this;
             var ui = flax.assetsManager.createDisplay(Racinghall.Racing, assetID,property);
-            me.ui.addChild(ui)
+            me.ui.addChild(ui,5)
             return ui;
         }
         ,close: function(){
