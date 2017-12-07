@@ -6,7 +6,7 @@
 
     var fun = GM.UIMage.UIBase.extend({
         _Vessel : null,//全局引用容器
-        _isGuide:false,
+        _isGuide:false,//新手引导开关    true为关   false为开
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -15,8 +15,7 @@
         },
         showed : function() {
             var me = this;
-            me.GameControl(GC.GAME_INIT)
-            me.GameControl(GC.GAME_RUN)
+            me.GameControl()
         }
         ,GameControl : function (state) {
             var me = this;
@@ -62,6 +61,7 @@
                     me.ui["shuttlecock"].setVisible(false);
                     me.ui["xstouch"].setVisible(false);
                     me.ui["xinshou"].setVisible(false);
+                    
                 }
                 function initshuttlecock() {
                 }
@@ -228,13 +228,13 @@
                                 fun&&fun();
                             },1)
                         }else{
-                            me.ui["xinshou"]["time"].text = index;
                             index-=1;
                         }
+                        me.ui["xinshou"]["time"].text = index;
                     }
                     me.ui.scheduleOnce(function () {
                         me.ui.schedule(schedCallBack,1)
-                    },1.5)
+                    },1)
                 }
                 xins();
             }
@@ -265,6 +265,7 @@
                 getActiveHero,
                 getClientHero = Heros["1"];
             function RandomObjAndPlay(MoveToObj) {
+                var Torot = 0;
                 function initElement() {
                     function RandomObj() {
                         var hero;
@@ -286,23 +287,26 @@
                     MoveToObj = MoveToObj?MoveToObj:RandomObj();
 
                     var AHworldpos =getActiveHero["pos"].parent.convertToWorldSpace(getActiveHero["pos"]);
+                    var MoveToObjWorldpos =MoveToObj["pos"].parent.convertToWorldSpace(MoveToObj["pos"]);
                     shuttlecock.setPosition(cc.p(AHworldpos.x,AHworldpos.y));
 
                     if(getActiveHero["id"]==Heros["2"]["id"]){
                         shuttlecock.setScale(0.6);
                     }
+                    //To  rot
+                    Torot = flax.getAngle(MoveToObj, shuttlecock)
+                    if(Torot>=250)
+                        Torot = GN.Num.randomNumber(280,360);
+                        else
+                        Torot = GN.Num.randomNumber(0,60);
 
-                    var rot = flax.getAngle(shuttlecock.getPosition(), MoveToObj);
-                    if(rot > 180) rot -= 360;
-                    rot = Math.max(-65, rot);
-                    rot = Math.min(65, rot);
-                    shuttlecock.setRotation(rot)
+                    shuttlecock.setRotation(180)
                 }
                 function PlayAction() {
                     //Action    parameter
                     function GetAction(){
                         function setRotateBy() {
-                            return cc.rotateBy(1.5,200);
+                            return cc.rotateTo(1.5,Torot);
                         }
                         function setBezierTo() {
                             var controlPoints;
@@ -332,7 +336,7 @@
                                                     me.playAttack(MoveToObj);
                                                 }
                                                     if(MoveToObj["id"]==getClientHero["id"]&&me._isGuide){
-                                                        clientPlay();
+                                                       // clientPlay();
                                                     }else if(!(MoveToObj["id"]==getClientHero["id"])){
                                                         playA();
                                                     }
@@ -352,6 +356,7 @@
                                                me.GuideManage(4,function () {
                                                    me.GuideManage(5,function () {
                                                        me.GuideManage(6,function(){
+                                                           me._isGuide = true
                                                            GM.SceneMage.replaceScene("GameMove");
                                                        })
                                                    })
@@ -415,20 +420,27 @@
                 PlayAction();
             }
             function clientPlay() {
+                var isTouchEnabled = true;
                 function CallBackEvents(touch,event) {
                     var pos = touch.getLocation(),self = this;
-                    function playHeroAdmin() {
-                        if (me._isGuide&&getClientHero["collide"] && flax.ifCollide(shuttlecock, getClientHero["collide"])) {
-                            me._Vessel._isWin = true;
+                     function playHeroAdmin() {
+                        if (me._isGuide) {
+                            if(getClientHero["collide"] && flax.ifCollide(shuttlecock, getClientHero["collide"])){
+                                me._Vessel._isWin = true;
+                            }
                             getClientHero.fps = 60;
                             me.playAttack(getClientHero);
-                            flax.inputManager.removeAllTouchListeners();
                         }
                     }
-                    playHeroAdmin();
+                     if(isTouchEnabled){
+                         isTouchEnabled = false;
+                         playHeroAdmin();
+                         me.ui.scheduleOnce(function () {
+                             isTouchEnabled = true;
+                         },1);
+                     }
                 }
                 me.ui.touch(BC.CUIType.FL,CallBackEvents,me);
-
             }
             function AIPlay() {
                 RandomObjAndPlay();
@@ -446,6 +458,7 @@
             if(me._isGuide){
                 me.ui.scheduleOnce(function () {
                     PlayShuttlecock();
+                    clientPlay();
                 },2)
                 GV.UI.tip_NB.show("游戏开始");
             } else{
@@ -453,9 +466,6 @@
                     RandomObjAndPlay(Heros["2"]);
                 })
             }
-
-
-          //  clientPlay();
         }
         ,debugDraw :function (hero,isVisible) {
             var me = this;
@@ -482,7 +492,6 @@
                 _Heros :{},
                 _isWin:false,
             }
-            me._isGuide = true
         }
     });
 
