@@ -3,6 +3,10 @@ var  resLogin = {
     login:"res/login.plist",
     login_png:"res/login.png"
 };
+var resGameMain= {
+    GameMain : "res/GameMain.json"
+}
+
 var reshall = {
     hall:"res/hall.plist",
     hall_png:"res/hall.png",
@@ -23,6 +27,7 @@ var res_Login = [];
 var res_hall = [];
 var res_Racing = [];
 var res_Submarine = [];
+var res_GameMain = [];
 
 for(var obj in resLogin){
     res_Login.push(resLogin[obj]);
@@ -38,6 +43,10 @@ for(var obj in Racinghall){
 
 for(var obj in Submarine){
     res_Submarine.push(Submarine[obj]);
+}
+
+for(var obj in resGameMain){
+    res_GameMain.push(resGameMain[obj]);
 }
 
 

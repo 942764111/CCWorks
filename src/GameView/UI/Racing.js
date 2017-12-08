@@ -64,7 +64,10 @@
                 function _BindDeskButton(){
                     var state,frame,frameToworldPos,test;
                     function frameCallBack() {
-                        if(!me._Vessel._SetFramesEnabled) GV.UI.tip_NB.show(LABLE.KJZ);return;
+                        if(!me._Vessel._SetFramesEnabled) {
+                            GV.UI.tip_NB.show(LABLE.KJZ);
+                            return;
+                        }
                         frame = this;
 
                         test = me._Vessel._GetPresentSTAKEBtn.parent.convertToWorldSpace(me._Vessel._GetPresentSTAKEBtn);
@@ -72,7 +75,6 @@
                             x:test.x,
                             y:test.y
                         });
-                        state.setLocalZOrder(9);
                         frameToworldPos = frame["img"].parent.convertToWorldSpace(frame["img"]);
 
                         var rand_x = GN.Num.randomNumber((frameToworldPos.x-frame["img"].width/2)+30,(frameToworldPos.x+frame["img"].width/2)-30)
@@ -179,8 +181,8 @@
                     _GetPresentSTAKE : "",
                     _GetSTAKEBtns : [],//押注按钮
                     _GetPresentSTAKEBtn : null,//获取当前
-                    _GetSTAKETime : 0,//押注时间
-                    _GetOpeningTime : 0,//等待开奖时间
+                    _GetSTAKETime : 10,//押注时间
+                    _GetOpeningTime : 5,//等待开奖时间
                     _SetFramesEnabled : true,//设置桌面是否可以押注
                     _GetBalls : [],//获取top所有得球
                     _GetCalls : []//获取所有得车
@@ -245,6 +247,9 @@
                                 function createMahjong(){
                                     if(index>8){
                                         me.ui.unschedule(createMahjong)
+                                        me.ui.scheduleOnce(function () {
+                                            GV.UI["close"].show();
+                                        },1)
                                         return;
                                     }
                                     var isCallFunc = false,Ballval;
@@ -329,10 +334,11 @@
                     me._Vessel._SetFramesEnabled = false;
                     me.ui.unschedule(STAKETimeCallBack)
                     me.ui.schedule(OpeningTimeCallBack,1)
+                }else{
+                    me.ui["time"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+                    uiTrack["time"]["txt"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+                    me._Vessel._GetSTAKETime-=1;
                 }
-                me.ui["time"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
-                uiTrack["time"]["txt"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
-                me._Vessel._GetSTAKETime-=1;
             }
             me.ui.schedule(STAKETimeCallBack,1)
         }

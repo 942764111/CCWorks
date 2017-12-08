@@ -64,7 +64,10 @@
                 function _BindDeskButton(){
                     var state,frame,frameToworldPos,test;
                     function frameCallBack() {
-                        if(!me._Vessel._SetFramesEnabled)return;
+                        if(!me._Vessel._SetFramesEnabled) {
+                            GV.UI.tip_NB.show(LABLE.KJZ);
+                            return;
+                        }
                         frame = this;
 
                         test = me._Vessel._GetPresentSTAKEBtn.parent.convertToWorldSpace(me._Vessel._GetPresentSTAKEBtn);
@@ -72,7 +75,6 @@
                             x:test.x,
                             y:test.y
                         });
-                        state.setLocalZOrder(9);
                         frameToworldPos = frame["img"].parent.convertToWorldSpace(frame["img"]);
 
                         var rand_x = GN.Num.randomNumber((frameToworldPos.x-frame["img"].width/2)+30,(frameToworldPos.x+frame["img"].width/2)-30)
@@ -142,6 +144,8 @@
                         frame["key"].setSource(Submarine.Submarine,"index"+i);
                         frame["sort"].setSource(Submarine.Submarine,"sort"+i);
                         uiDesktop["frame_"+i+"gold"].text = LABLE.DATETEST;
+                        frame["mjpos_1"].setVisible(false);
+                        frame["mjpos_2"].setVisible(false);
                         frame["sort"].setLocalZOrder(10);
                     }
                 }
@@ -206,6 +210,7 @@
         ,runGame : function () {
             var me = this
                 , uiTop = me.ui["top"]
+                ,uiDesktop = me.ui["desktop"]
                 ,uiTrack = me.ui["track"];
             //封盘等待开奖
             function OpeningTimeCallBack() {
@@ -240,19 +245,42 @@
                             }
 
                             me.ui.scheduleOnce(function(){
-                                var obj,index= 0,Mahjong;
-                                function createMahjong(obj,i){
-                                    Mahjong = me.createOneflaxSp("mj_"+obj["val"]);
-                                    Mahjong.x  = cc.winSize.width/2+i*100;
-                                    Mahjong.y  = cc.winSize.height/2+100;
-                                    me.ui.addChild(Mahjong,10);
+                                var index= 0,Mahjong,ToworldPos,frameindex = 1;
+                                function createMahjong(){
+                                    if(index>8){
+                                        me.ui.unschedule(createMahjong)
+                                        me.ui.scheduleOnce(function () {
+                                            GV.UI["close"].show();
+                                        },1)
+                                        return;
+                                    }
+                                    var isCallFunc = false,Ballval;
+                                    for(var i=0;i<2;i++){
+                                        Ballval = me._Vessel._GetBalls[index+i]["val"];
+                                        Mahjong = me.createOneflaxSp("mj_"+Ballval);
+                                        Mahjong.x  = -100+i*100;
+                                        Mahjong.y  = cc.winSize.height/2+250;
+                                        ToworldPos = uiDesktop["frame_"+frameindex]["mjpos_"+(i+1)].parent.convertToWorldSpace(uiDesktop["frame_"+frameindex]["mjpos_"+(i+1)]);
+                                        Mahjong.runAction(cc.sequence(cc.moveBy(0.5,cc.winSize.width/2+100,0),
+                                            cc.delayTime(1.5),
+                                            cc.spawn(
+                                                cc.moveTo(1,ToworldPos.x,ToworldPos.y),
+                                                cc.scaleTo(1,0.5,0.5)
+                                            ),
+                                            new cc.CallFunc(function () {
+                                                if(isCallFunc)return;
+                                                var getval = me._Vessel._GetBalls[index+0]["val"]+me._Vessel._GetBalls[index+1]["val"]
+                                                uiDesktop["frame_"+frameindex]["ds"].text = GN.Str.stringFormat(LABLE.DS,getval);
+                                                index+=2;
+                                                frameindex+=1;
+                                                isCallFunc = true;
+                                                me.ui.scheduleOnce(function () {
+                                                    createMahjong();
+                                                },1)
+                                            },Mahjong)))
+                                    }
                                 }
-                                for(var i=0;i<me._Vessel._GetBalls.length/2;i++){
-                                    obj = me._Vessel._GetBalls[index];
-                                   // createMahjong(obj,i);
-                                    index+=2;
-                                }
-
+                                createMahjong();
                             },1.5)
                         }
                         sbg.onScrolledOver.add(_onScrolledOver, me);
@@ -308,10 +336,12 @@
                     me._Vessel._SetFramesEnabled = false;
                     me.ui.unschedule(STAKETimeCallBack)
                     me.ui.schedule(OpeningTimeCallBack,1)
+                }else{
+                    me.ui["time"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+                    uiTrack["time"]["txt"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
+                    me._Vessel._GetSTAKETime-=1;
                 }
-                me.ui["time"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
-                uiTrack["time"]["txt"].text =  GN.Str.stringFormat(LABLE.S,me._Vessel._GetSTAKETime);
-                me._Vessel._GetSTAKETime-=1;
+
             }
             me.ui.schedule(STAKETimeCallBack,1)
         }

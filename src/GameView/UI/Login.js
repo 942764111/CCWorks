@@ -59,7 +59,7 @@
                     })
                     //快速登陆
                     Hero["ksdlbtn"].touch(BC.CUIType.FL,function () {
-                        GM.SceneMage.replaceScene("HallScene");
+                        GM.SceneMage.replaceScene("GameMainScene");
                         GN.Log("ksdlbtn");
                     })
                     //账号注册

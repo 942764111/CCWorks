@@ -23,6 +23,7 @@ cc.game.onStart = function(){
     flax.registerScene("HallScene", HallScene, res_hall);
     flax.registerScene("RacingScene", RacingScene, res_Racing);
     flax.registerScene("SubmarineScene", SubmarineScene, res_Submarine);
+    flax.registerScene("GameMainScene", GameMainScene, res_GameMain);
     flax.replaceScene("LoginScene");
 };
 cc.game.run();

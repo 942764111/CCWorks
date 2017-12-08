@@ -9,6 +9,7 @@
   <JsonList>
     <string>BJJS.json</string>
     <string>BJJS_item.json</string>
+    <string>GameMain.json</string>
   </JsonList>
   <CanvasSize>
     <Width>0</Width>
@@ -19,13 +20,16 @@
   <ResRelativePath />
   <imageFileList />
   <imagePngList>
-    <string>弹出框2.png</string>
-    <string>弹出框2.1.png</string>
-    <string>庄家收益：.png</string>
-    <string>我的收益：.png</string>
-    <string>关闭.png</string>
-    <string>闲家收益排名：.png</string>
+    <string>GameMain/北京赛车.png</string>
+    <string>GameMain/北京赛车 (2).png</string>
+    <string>GameMain/棋牌场.png</string>
+    <string>GameMain/时间牌.png</string>
+    <string>GameMain/飞艇.png</string>
+    <string>GameMain/飞艇幸运.png</string>
+    <string>GameMain/时时彩票.png</string>
+    <string>GameMain/时时彩.png</string>
+    <string>GameMain/底图.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>BJJS.json</CurrentUIJson>
+  <CurrentUIJson>GameMain.json</CurrentUIJson>
 </UIProject>

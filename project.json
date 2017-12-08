@@ -76,10 +76,13 @@
     "src/GameView/Scene/RacingScene.js",
     "src/GameView/Scene/test.js",
     "src/GameView/Scene/SubmarineScene.js",
+    "src/GameView/Scene/GameMainScene.js",
     "src/GameView/UI/Login.js",
     "src/GameView/UI/hall.js",
     "src/GameView/UI/Racing.js",
-    "src/GameView/UI/Submarine.js"
+    "src/GameView/UI/GameMain.js",
+    "src/GameView/UI/Submarine.js",
+    "src/GameView/UI/close.js"
   ]
   
 }
