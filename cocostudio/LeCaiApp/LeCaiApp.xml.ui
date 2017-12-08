@@ -20,6 +20,7 @@
   <ResRelativePath />
   <imageFileList />
   <imagePngList>
+    <string>GameMain/底图.png</string>
     <string>GameMain/北京赛车.png</string>
     <string>GameMain/北京赛车 (2).png</string>
     <string>GameMain/棋牌场.png</string>
@@ -28,7 +29,6 @@
     <string>GameMain/飞艇幸运.png</string>
     <string>GameMain/时时彩票.png</string>
     <string>GameMain/时时彩.png</string>
-    <string>GameMain/底图.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>GameMain.json</CurrentUIJson>

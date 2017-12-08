@@ -11,6 +11,7 @@
   "designWidth": 640,
   "textures": [],
   "texturesPng": [
+    "GameMain/底图.png",
     "GameMain/北京赛车.png",
     "GameMain/北京赛车 (2).png",
     "GameMain/棋牌场.png",
@@ -18,8 +19,7 @@
     "GameMain/飞艇.png",
     "GameMain/飞艇幸运.png",
     "GameMain/时时彩票.png",
-    "GameMain/时时彩.png",
-    "GameMain/底图.png"
+    "GameMain/时时彩.png"
   ],
   "version": "1.6.0.0",
   "widgetTree": {
