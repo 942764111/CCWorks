@@ -140,6 +140,7 @@
                     me.ui["xinshouLable2"].text ="点击任意位置继续";
                 }else{
                     me.ui["xinshouLable2"].text ="";
+                    me.ui["xinshouLable2"].stopAllActions();
                 }
             }
             function showTouchAdmin(isshow) {
@@ -173,8 +174,8 @@
                     showTouch(true);
                     touchLayer();
                 }
-                me.ui.schedule(scheduleCallBack,1.5)
-                me.ui.scheduleOnce(scheduleOnceCallBack,8)
+                me.ui.schedule(scheduleCallBack,1)
+                me.ui.scheduleOnce(scheduleOnceCallBack,3.5)
 
             }
             function Three() {
@@ -186,7 +187,7 @@
                     showTouch(true);
                     touchLayer();
                 }
-                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+                me.ui.scheduleOnce(scheduleOnceCallBack2,2)
 
             }
             function For() {
@@ -198,7 +199,7 @@
                     showTouchAdmin(true);
                     touchLayer();
                 }
-                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+                me.ui.scheduleOnce(scheduleOnceCallBack2,2)
 
             }
             function Five() {
@@ -210,17 +211,19 @@
                     showTouch(true);
                     touchLayer();
                 }
-                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+                me.ui.scheduleOnce(scheduleOnceCallBack2,2)
             }
             function Six() {
                 me.ui["xinshou"].setVisible(true);
                 function xins() {
                     var index = 3;
-                    me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                    me.ui["xinshouLable2"].setVisible(true);
+                    me.ui["xinshouLable2"].setString(GC["GUIDE"][GUIDEindex]["title"]);
                     me.ui["xinshou"]["time"].text = index;
                     function schedCallBack() {
                         if(index<=0){
-                            me.ui["xinshouLable"].text = "游戏开始";
+                            me.ui["xinshou"]["time"].text = "";
+                            me.ui["xinshouLable2"].text = "游戏开始";
                             me.ui.unschedule(schedCallBack);
                             me.ui.scheduleOnce(function () {
                                 overGuide();
@@ -229,8 +232,9 @@
                             },1)
                         }else{
                             index-=1;
+                            me.ui["xinshou"]["time"].text = index;
                         }
-                        me.ui["xinshou"]["time"].text = index;
+
                     }
                     me.ui.scheduleOnce(function () {
                         me.ui.schedule(schedCallBack,1)

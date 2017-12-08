@@ -920,67 +920,27 @@
         <real>0.49686</real>
         <key>children</key>
         <dict>
-          <key>i121557</key>
+          <key>shuttlecock</key>
           <dict>
             <key>class</key>
-            <string>GameMoveLayer</string>
+            <string>shuttlecock</string>
             <key>zIndex</key>
-            <integer>0</integer>
+            <integer>4</integer>
             <key>frames</key>
-            <string>45.70,1232.00,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
-          </dict>
-          <key>hero2</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>2</integer>
-            <key>frames</key>
-            <string>1005.70,182.30,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
-          </dict>
-          <key>hero1</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>1</integer>
-            <key>frames</key>
-            <string>288.00,169.85,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
+            <string>898.45,1124.25,80.00,0.99996,0.99995,1.00,4,80.00,80.00</string>
           </dict>
           <key>xinshouLable</key>
           <dict>
             <key>class</key>
             <string>test</string>
             <key>zIndex</key>
-            <integer>6</integer>
+            <integer>8</integer>
             <key>frames</key>
-            <string>324.75,767.90,0.00,1.00000,1.00000,1.00,6,0.00,0.00,微软雅黑,80,#FFFFFF,center,1362,281</string>
+            <string>158.90,710.70,0.00,1.00000,1.00000,1.00,8,0.00,0.00,微软雅黑,80,#00FF00,center,1694,240</string>
             <key>text</key>
             <string/>
             <key>input</key>
             <false/>
-          </dict>
-          <key>xinshouLable2</key>
-          <dict>
-            <key>class</key>
-            <string>test</string>
-            <key>zIndex</key>
-            <integer>7</integer>
-            <key>frames</key>
-            <string>184.50,1133.55,0.00,1.00000,1.00000,1.00,7,0.00,0.00,微软雅黑,80,#00FF00,center,1694,240</string>
-            <key>text</key>
-            <string/>
-            <key>input</key>
-            <false/>
-          </dict>
-          <key>hero3</key>
-          <dict>
-            <key>class</key>
-            <string>a1</string>
-            <key>zIndex</key>
-            <integer>3</integer>
-            <key>frames</key>
-            <string>1738.40,172.90,0.00,2.00861,2.00854,0.00,3,0.00,0.00</string>
           </dict>
           <key>xinshou</key>
           <dict>
@@ -991,23 +951,63 @@
             <key>frames</key>
             <string>989.00,636.00,0.00,1.00000,1.00000,0.70,5,0.00,0.00</string>
           </dict>
-          <key>shuttlecock</key>
-          <dict>
-            <key>class</key>
-            <string>shuttlecock</string>
-            <key>zIndex</key>
-            <integer>4</integer>
-            <key>frames</key>
-            <string>898.45,1124.25,80.00,0.99996,0.99995,1.00,4,80.00,80.00</string>
-          </dict>
           <key>xstouch</key>
           <dict>
             <key>class</key>
             <string>点击</string>
             <key>zIndex</key>
-            <integer>8</integer>
+            <integer>7</integer>
             <key>frames</key>
-            <string>1308.45,512.55,0.00,1.00000,1.00000,1.00,8,0.00,0.00</string>
+            <string>1308.45,512.55,0.00,1.00000,1.00000,1.00,7,0.00,0.00</string>
+          </dict>
+          <key>hero3</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>3</integer>
+            <key>frames</key>
+            <string>1738.40,172.90,0.00,2.00861,2.00854,0.00,3,0.00,0.00</string>
+          </dict>
+          <key>hero2</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>2</integer>
+            <key>frames</key>
+            <string>1005.70,182.30,0.00,1.28448,1.28424,0.00,2,0.00,0.00</string>
+          </dict>
+          <key>xinshouLable2</key>
+          <dict>
+            <key>class</key>
+            <string>test</string>
+            <key>zIndex</key>
+            <integer>6</integer>
+            <key>frames</key>
+            <string>158.90,1133.55,0.00,1.00000,1.00000,1.00,6,0.00,0.00,微软雅黑,80,#00FF00,center,1694,240</string>
+            <key>text</key>
+            <string/>
+            <key>input</key>
+            <false/>
+          </dict>
+          <key>i4614</key>
+          <dict>
+            <key>class</key>
+            <string>GameMoveLayer</string>
+            <key>zIndex</key>
+            <integer>0</integer>
+            <key>frames</key>
+            <string>45.70,1232.00,0.00,1.00000,1.00000,1.00,0,0.00,0.00</string>
+          </dict>
+          <key>hero1</key>
+          <dict>
+            <key>class</key>
+            <string>a1</string>
+            <key>zIndex</key>
+            <integer>1</integer>
+            <key>frames</key>
+            <string>288.00,169.85,0.00,1.78448,1.78378,0.00,1,0.00,0.00</string>
           </dict>
         </dict>
       </dict>
@@ -1025,15 +1025,6 @@
         <real>0.50000</real>
         <key>children</key>
         <dict>
-          <key>index_1</key>
-          <dict>
-            <key>class</key>
-            <string>a5</string>
-            <key>zIndex</key>
-            <integer>0</integer>
-            <key>frames</key>
-            <string>0.00,1272.00,0.00,20.82069,13.97783,0.70,0,0.00,0.00</string>
-          </dict>
           <key>time</key>
           <dict>
             <key>class</key>
@@ -1046,6 +1037,15 @@
             <string/>
             <key>input</key>
             <false/>
+          </dict>
+          <key>index_1</key>
+          <dict>
+            <key>class</key>
+            <string>a5</string>
+            <key>zIndex</key>
+            <integer>0</integer>
+            <key>frames</key>
+            <string>0.00,1272.00,0.00,20.82069,13.97783,0.70,0,0.00,0.00</string>
           </dict>
         </dict>
       </dict>
@@ -1063,16 +1063,7 @@
         <real>0.65131</real>
         <key>children</key>
         <dict>
-          <key>i121679</key>
-          <dict>
-            <key>class</key>
-            <string>光</string>
-            <key>zIndex</key>
-            <integer>0</integer>
-            <key>frames</key>
-            <string>null|||||||||66.65,180.05,0.00,0.55879,0.55879,1.00,0,0.00,0.00|50.00,196.10,0.00,0.88278,0.88278,0.78,0,0.00,0.00|33.35,212.10,0.00,1.20679,1.20679,0.56,0,0.00,0.00|16.70,228.15,0.00,1.53075,1.53075,0.34,0,0.00,0.00|0.00,244.20,0.00,1.85474,1.85474,0.12,0,0.00,0.00</string>
-          </dict>
-          <key>i121619</key>
+          <key>i4676</key>
           <dict>
             <key>class</key>
             <string>手</string>
@@ -1080,6 +1071,15 @@
             <integer>0</integer>
             <key>frames</key>
             <string>109.20,163.05,0.00,1.00000,1.00000,1.00,0,0.00,0.00|106.55,165.15,0.00,1.00000,1.00000,1.00,0,0.00,0.00|103.90,167.20,0.00,1.00000,1.00000,1.00,0,0.00,0.00|101.30,169.30,0.00,1.00000,1.00000,1.00,0,0.00,0.00|98.65,171.40,0.00,1.00000,1.00000,1.00,0,0.00,0.00|96.00,173.45,0.00,1.00000,1.00000,1.00,0,0.00,0.00|93.35,175.55,0.00,1.00000,1.00000,1.00,0,0.00,0.00|90.75,177.65,0.00,1.00000,1.00000,1.00,0,0.00,0.00|88.10,179.70,0.00,1.00000,1.00000,1.00,0,0.00,0.00|85.45,181.80,0.00,1.00000,1.00000,1.00,1,0.00,0.00||||</string>
+          </dict>
+          <key>i4740</key>
+          <dict>
+            <key>class</key>
+            <string>光</string>
+            <key>zIndex</key>
+            <integer>0</integer>
+            <key>frames</key>
+            <string>null|||||||||66.65,180.05,0.00,0.55879,0.55879,1.00,0,0.00,0.00|50.00,196.10,0.00,0.88278,0.88278,0.78,0,0.00,0.00|33.35,212.10,0.00,1.20679,1.20679,0.56,0,0.00,0.00|16.70,228.15,0.00,1.53075,1.53075,0.34,0,0.00,0.00|0.00,244.20,0.00,1.85474,1.85474,0.12,0,0.00,0.00</string>
           </dict>
         </dict>
       </dict>
