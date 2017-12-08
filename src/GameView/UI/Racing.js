@@ -64,7 +64,7 @@
                 function _BindDeskButton(){
                     var state,frame,frameToworldPos,test;
                     function frameCallBack() {
-                        if(!me._Vessel._SetFramesEnabled)return;
+                        if(!me._Vessel._SetFramesEnabled) GV.UI.tip_NB.show(LABLE.KJZ);return;
                         frame = this;
 
                         test = me._Vessel._GetPresentSTAKEBtn.parent.convertToWorldSpace(me._Vessel._GetPresentSTAKEBtn);
@@ -141,8 +141,10 @@
                         frame = uiDesktop["frame_"+i]
                         frame["key"].setSource(Racinghall.Racing,"index"+i);
                         frame["sort"].setSource(Racinghall.Racing,"sort"+i);
-                        uiDesktop["frame_"+i+"gold"].text = 99999;
+                        uiDesktop["frame_"+i+"gold"].text = LABLE.DATETEST;
                         frame["sort"].setLocalZOrder(10);
+                        frame["mjpos_1"].setVisible(false);
+                        frame["mjpos_2"].setVisible(false);
                     }
                 }
                 function _initTrackElement(){
@@ -177,8 +179,8 @@
                     _GetPresentSTAKE : "",
                     _GetSTAKEBtns : [],//押注按钮
                     _GetPresentSTAKEBtn : null,//获取当前
-                    _GetSTAKETime : 30,//押注时间
-                    _GetOpeningTime : 15,//等待开奖时间
+                    _GetSTAKETime : 0,//押注时间
+                    _GetOpeningTime : 0,//等待开奖时间
                     _SetFramesEnabled : true,//设置桌面是否可以押注
                     _GetBalls : [],//获取top所有得球
                     _GetCalls : []//获取所有得车
@@ -204,6 +206,7 @@
         ,runGame : function () {
             var me = this
                 , uiTop = me.ui["top"]
+                ,uiDesktop = me.ui["desktop"]
                 ,uiTrack = me.ui["track"];
             //封盘等待开奖
             function OpeningTimeCallBack() {
@@ -238,19 +241,39 @@
                             }
 
                             me.ui.scheduleOnce(function(){
-                                var obj,index= 0,Mahjong;
-                                function createMahjong(obj,i){
-                                    Mahjong = me.createOneflaxSp("mj_"+obj["val"]);
-                                    Mahjong.x  = cc.winSize.width/2+i*100;
-                                    Mahjong.y  = cc.winSize.height/2+100;
-                                    me.ui.addChild(Mahjong,10);
+                                var index= 0,Mahjong,ToworldPos,frameindex = 1;
+                                function createMahjong(){
+                                    if(index>8){
+                                        me.ui.unschedule(createMahjong)
+                                        return;
+                                    }
+                                    var isCallFunc = false,Ballval;
+                                    for(var i=0;i<2;i++){
+                                        Ballval = me._Vessel._GetBalls[index+i]["val"];
+                                        Mahjong = me.createOneflaxSp("mj_"+Ballval);
+                                        Mahjong.x  = -100+i*100;
+                                        Mahjong.y  = cc.winSize.height/2+250;
+                                        ToworldPos = uiDesktop["frame_"+frameindex]["mjpos_"+(i+1)].parent.convertToWorldSpace(uiDesktop["frame_"+frameindex]["mjpos_"+(i+1)]);
+                                        Mahjong.runAction(cc.sequence(cc.moveBy(0.5,cc.winSize.width/2+100,0),
+                                            cc.delayTime(1.5),
+                                            cc.spawn(
+                                                cc.moveTo(1,ToworldPos.x,ToworldPos.y),
+                                                cc.scaleTo(1,0.5,0.5)
+                                            ),
+                                            new cc.CallFunc(function () {
+                                                if(isCallFunc)return;
+                                                var getval = me._Vessel._GetBalls[index+0]["val"]+me._Vessel._GetBalls[index+1]["val"]
+                                                uiDesktop["frame_"+frameindex]["ds"].text = GN.Str.stringFormat(LABLE.DS,getval);
+                                                index+=2;
+                                                frameindex+=1;
+                                                isCallFunc = true;
+                                                 me.ui.scheduleOnce(function () {
+                                                     createMahjong();
+                                                 },1)
+                                        },Mahjong)))
+                                    }
                                 }
-                                for(var i=0;i<me._Vessel._GetBalls.length/2;i++){
-                                    obj = me._Vessel._GetBalls[index];
-                              //      createMahjong(obj,i);
-                                    index+=2;
-                                }
-
+                                createMahjong();
                             },1.5)
                         }
                         sbg.onScrolledOver.add(_onScrolledOver, me);

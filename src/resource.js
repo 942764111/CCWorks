@@ -5,13 +5,14 @@ var  resLogin = {
 };
 var reshall = {
     hall:"res/hall.plist",
-    hall_png:"res/hall.png"
+    hall_png:"res/hall.png",
+    BJJS:"res/BJJS.json",
+    BJJS_item:"res/BJJS_item.json"
 }
 var Racinghall = {
     Racing:"res/Racing.plist",
     Racing_png:"res/Racing.png"
 }
-
 var Submarine = {
     Submarine:"res/submarine.plist",
     Submarine_png:"res/submarine.png"

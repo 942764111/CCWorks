@@ -141,7 +141,7 @@
                         frame = uiDesktop["frame_"+i]
                         frame["key"].setSource(Submarine.Submarine,"index"+i);
                         frame["sort"].setSource(Submarine.Submarine,"sort"+i);
-                        uiDesktop["frame_"+i+"gold"].text = 99999;
+                        uiDesktop["frame_"+i+"gold"].text = LABLE.DATETEST;
                         frame["sort"].setLocalZOrder(10);
                     }
                 }
