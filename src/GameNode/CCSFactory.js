@@ -150,7 +150,7 @@
 
 GN.Log = function (log) {
     if(BC.Debug)return;
-    console.log(log);
+    cc.log(log);
 };
 GN.ErrorLog = function (log) {
     if(BC.Debug)return;

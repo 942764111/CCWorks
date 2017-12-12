@@ -17,6 +17,7 @@
             var me = this;
             me.GameControl()
         }
+        //游戏主控制器
         ,GameControl : function (state) {
             var me = this;
             switch (state||'0'){
@@ -37,12 +38,15 @@
                     break
             }
         }
+        //初始化
         ,init : function(type){
             var me = this;
             function variables() {
                 me._Vessel = {
                     _Heros :{},
-                    _isWin:false
+                    _isWin:false,
+                    _Score:0,
+                    _Action_time:1.8
                 }
 
             }
@@ -56,37 +60,31 @@
                         obj["id"] = data["id"];
                         Heros[data["id"]] = obj;
                         obj.gotoAndPlay("idle");
-                        me.debugDraw(obj,false);
+                        me.Toos("debugDraw")(obj,false)
                     }
+
+                    
+                }
+                function initUI() {
                     me.ui["shuttlecock"].setVisible(false);
                     me.ui["xstouch"].setVisible(false);
                     me.ui["xinshou"].setVisible(false);
-                    
-                }
-                function initshuttlecock() {
+
+                    me.ui["score"]["txt"].text = me._Vessel["_Score"];
                 }
                 initHero();
-                initshuttlecock();
-            }
-            function initPhysics() {
-                flax.createPhysicsWorld({x:0, y:0});
-                flax.startPhysicsWorld();
-
-                me.ui.createPhysics(flax.physicsTypeStatic);
-                me.ui.addPhysicsShape("downBar", 1, 0.3, 0.5);
-
-                me.ui.getCollider("downBar").debugDraw();
+                initUI();
             }
             switch (type){
                 case 'variables':break;
                 case 'Sprite': initSpriteElement();break;
                 default :
                     variables();
-                   // initPhysics();
                     initSpriteElement();
                     break;
             }
         }
+        //新手引导
         ,GuideManage : function (GUIDEindex,fun) {
             var me = this,
                 GUIDEindex = GUIDEindex,
@@ -194,9 +192,10 @@
                 me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
                 me.ui["xinshouLable"].setVisible(true)
                 showMask(Heros[1],true);
+                showTouchAdmin(true);
                 function scheduleOnceCallBack2() {
                     me.ui.unschedule(scheduleOnceCallBack2)
-                    showTouchAdmin(true);
+                    showTouch(true);
                     touchLayer();
                 }
                 me.ui.scheduleOnce(scheduleOnceCallBack2,2)
@@ -223,7 +222,7 @@
                     function schedCallBack() {
                         if(index<=0){
                             me.ui["xinshou"]["time"].text = "";
-                            me.ui["xinshouLable2"].text = "游戏开始";
+                            me.ui["xinshouLable2"].text = "";
                             me.ui.unschedule(schedCallBack);
                             me.ui.scheduleOnce(function () {
                                 overGuide();
@@ -262,6 +261,7 @@
                     break;
             }
         }
+        //运行中
         ,RunGame : function () {
             var me = this,
                 Heros = me._Vessel["_Heros"],
@@ -284,14 +284,13 @@
                                 getActiveHero.fps = 60;
                             }
 
-                            me.playAttack(getActiveHero);
+                            me.Toos("playAttack")(getActiveHero);
 
                             me.ui["shuttlecock"].setVisible(true);
                         }
                     MoveToObj = MoveToObj?MoveToObj:RandomObj();
 
                     var AHworldpos =getActiveHero["pos"].parent.convertToWorldSpace(getActiveHero["pos"]);
-                    var MoveToObjWorldpos =MoveToObj["pos"].parent.convertToWorldSpace(MoveToObj["pos"]);
                     shuttlecock.setPosition(cc.p(AHworldpos.x,AHworldpos.y));
 
                     if(getActiveHero["id"]==Heros["2"]["id"]){
@@ -309,26 +308,28 @@
                 function PlayAction() {
                     //Action    parameter
                     function GetAction(){
-                        function setRotateBy() {
-                            return cc.rotateTo(1.5,Torot);
+                        function setRotateBy(time) {
+                            return cc.rotateTo(time,Torot);
                         }
-                        function setBezierTo() {
+                        function setBezierTo(time) {
                             var controlPoints;
                             var raworldpos =MoveToObj["pos"].parent.convertToWorldSpace(MoveToObj["pos"]);
                             var AHworldpos =getActiveHero["pos"].parent.convertToWorldSpace(getActiveHero["pos"]);
-                                controlPoints = [cc.p(AHworldpos.x,cc.winSize.height),
-                                    cc.p(Math.abs(AHworldpos.x+raworldpos.x)/2, cc.winSize.height),
+                                var getbezierHeight = GN.Num.randomNumber(cc.winSize.height-200,cc.winSize.height+100)
+                                controlPoints = [cc.p(AHworldpos.x,getbezierHeight),
+                                    cc.p(Math.abs(AHworldpos.x+raworldpos.x)/2, getbezierHeight),
                                     cc.p(raworldpos.x, raworldpos.y)]
-                            return cc.bezierTo(1.5, controlPoints)
+                            return cc.bezierTo(time, controlPoints)
                         }
-                        function setScaleTo() {
+                        function setScaleTo(time) {
                             if(MoveToObj["id"]==Heros["2"]["id"]){
-                                return cc.scaleTo(1.5,0.6);
+                                return cc.scaleTo(time,0.6);
                             }
-                            return cc.scaleTo(1.5,1);
+                            return cc.scaleTo(time,1);
                         }
                         function setDelayTime() {
-                            return cc.delayTime(0.1);
+                            var time = getActiveHero["id"]==getClientHero["id"]?0.1:0;
+                            return cc.delayTime(time);
                         }
                         function setCallFunc(type) {
                             switch(type){
@@ -337,10 +338,10 @@
                                         function CallBack() {
                                             if(MoveToObj["collide"]&& flax.ifCollide(shuttlecock,MoveToObj["collide"])){
                                                 function playA() {
-                                                    me.playAttack(MoveToObj);
+                                                    me.Toos("playAttack")(MoveToObj);
                                                 }
                                                     if(MoveToObj["id"]==getClientHero["id"]&&me._isGuide){
-                                                       // clientPlay();
+                                                     //is 是司马光
                                                     }else if(!(MoveToObj["id"]==getClientHero["id"])){
                                                         playA();
                                                     }
@@ -374,7 +375,7 @@
                                                        ,cc.rotateTo(0.1,65)
                                                    )
                                                );
-                                               GV.UI.tip_NB.show("游戏失败..请等待");
+                                               GV.UI.tip_NB.show("游戏结束");
                                                me.ui.scheduleOnce(function () {
                                                    GM.SceneMage.replaceScene("GameMove");
                                                },3)
@@ -400,9 +401,9 @@
 
                         }
                         return{
-                            "rotateBy":setRotateBy(),
-                            "BezierTo":setBezierTo(),
-                            "scaleTo":setScaleTo(),
+                            "rotateBy":setRotateBy(me._Vessel["_Action_time"]),
+                            "BezierTo":setBezierTo(me._Vessel["_Action_time"]),
+                            "scaleTo":setScaleTo(me._Vessel["_Action_time"]),
                             "delayTime":setDelayTime(),
                             "playOverCall":setCallFunc("Over"),
                             "playActionCall":setCallFunc("Action")
@@ -431,9 +432,10 @@
                         if (me._isGuide) {
                             if(getClientHero["collide"] && flax.ifCollide(shuttlecock, getClientHero["collide"])){
                                 me._Vessel._isWin = true;
+                                me.Toos("setScore")();
                             }
                             getClientHero.fps = 60;
-                            me.playAttack(getClientHero);
+                            me.Toos("playAttack")(getClientHero);
                         }
                     }
                      if(isTouchEnabled){
@@ -471,24 +473,51 @@
                 })
             }
         }
-        ,debugDraw :function (hero,isVisible) {
-            var me = this;
-            hero["collide"].setVisible(isVisible);
-            hero["pos"].setVisible(isVisible);
+        //工具类
+        ,Toos : function (Type) {
+            var me = this
+                ,Heros = me._Vessel["_Heros"];
+            function debugDraw(hero,isVisible) {
+                hero["collide"].setVisible(isVisible);
+                hero["pos"].setVisible(isVisible);
+            }
+            function playAttack(hero,fun) {
+                hero.gotoAndPlay("attack");
+                debugDraw(hero,false);
+                hero.onAnimationOver.add(function (sprite) {
+                    if(hero["id"]=="1"){
+                        this.fps = 30;
+                    }
+                    this.gotoAndPlay("idle");
+                    debugDraw(this,false);
+                    fun&&fun();
+                }, hero);
+            }
+            function setScore() {
+                me._Vessel["_Score"]+=1;
+                me.ui["score"]["txt"].text = me._Vessel["_Score"];
+                setAverageTime();
+            }
+            function setAverageTime() {
+                if(me._Vessel["_Action_time"]<=0.8) return;
+                if(me._Vessel["_Score"]%2==0)
+                 me._Vessel["_Action_time"] = me._Vessel["_Action_time"]<=0.8?0.8:me._Vessel["_Action_time"]-=0.05
+                    Heros["1"].fps+=0.2
+                    Heros["2"].fps+=0.2
+                    Heros["3"].fps+=0.2
+            }
+            switch(Type){
+                case "playAttack":
+                    return playAttack;
+                case "debugDraw":
+                    return debugDraw;
+                case "setScore":
+                    return setScore;
+                case "setAverageTime":
+                    return setAverageTime;
+            }
         }
-        ,playAttack : function (hero,fun) {
-            var me = this;
-            hero.gotoAndPlay("attack");
-            me.debugDraw(hero,false);
-            hero.onAnimationOver.add(function (sprite) {
-                if(hero["id"]=="1"){
-                    this.fps = 30;
-                }
-                this.gotoAndPlay("idle");
-                me.debugDraw(this,false);
-                fun&&fun();
-            }, hero);
-        }
+        //析构
         ,close: function(){
             var me = this;
             me._clipper = null;
