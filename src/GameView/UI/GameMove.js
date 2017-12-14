@@ -7,6 +7,7 @@
     var fun = GM.UIMage.UIBase.extend({
         _Vessel : null,//全局引用容器
         _isGuide:false,//新手引导开关    true为关   false为开
+        _Overindex:0,
         ctor: function(json,id,type){
             this._super(json,id,type);
         },
@@ -31,6 +32,7 @@
                     break;
                 case GC.GAME_OVER:
                     flax.inputManager.removeAllTouchListeners();
+                    me._Overindex+=1;
                     break;
                 default:
                     me.init();
@@ -66,11 +68,18 @@
                     
                 }
                 function initUI() {
+                    //毽子
                     me.ui["shuttlecock"].setVisible(false);
+                    //毽子相关
                     me.ui["xstouch"].setVisible(false);
                     me.ui["xinshou"].setVisible(false);
-
+                    //分数
                     me.ui["score"]["txt"].text = me._Vessel["_Score"];
+                    //指针
+                    for(var i=0;i<3;i++) {
+                        me.ui["zz_" + (i + 1)].setVisible(false);
+                        me.ui["zz_" + (i + 1)].setLocalZOrder(1050);
+                    }
                 }
                 initHero();
                 initUI();
@@ -149,10 +158,25 @@
                     me.ui["xstouch"].stop();
                 }
             }
+            function showHeroPointer(Heroid) {
+                if(Heroid){
+                    me.ui["zz_"+Heroid].setVisible(true);
+                    me.ui["zz_"+Heroid].runAction(cc.repeatForever(cc.sequence(
+                        cc.moveBy(0.5,0,30),cc.moveBy(0.5,0,-30))
+                    ));
+                }else{
+                    for(var i=0;i<3;i++) {
+                        me.ui["zz_" + (i + 1)].setVisible(false);
+                        me.ui["zz_" + (i + 1)].stopAllActions();
+                    }
+                }
+
+            }
             function overGuide() {
                 showTouch(false);
                 showMask(null,false);
                 showTouchAdmin(false);
+                showHeroPointer();
                 me.ui["xinshouLable"].text = ""
             }
             //执行步揍方法
@@ -180,6 +204,8 @@
                 me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
                 me.ui["xinshouLable"].setVisible(true)
                 showMask(Heros[2],true);
+                showHeroPointer(2);
+                showHeroPointer(3);
                 function scheduleOnceCallBack2() {
                     me.ui.unschedule(scheduleOnceCallBack2)
                     showTouch(true);
@@ -193,6 +219,7 @@
                 me.ui["xinshouLable"].setVisible(true)
                 showMask(Heros[1],true);
                 showTouchAdmin(true);
+                showHeroPointer(1);
                 function scheduleOnceCallBack2() {
                     me.ui.unschedule(scheduleOnceCallBack2)
                     showTouch(true);
@@ -214,6 +241,7 @@
             }
             function Six() {
                 me.ui["xinshou"].setVisible(true);
+                showHeroPointer();
                 function xins() {
                     var index = 3;
                     me.ui["xinshouLable2"].setVisible(true);
@@ -241,6 +269,17 @@
                 }
                 xins();
             }
+            function Seven() {
+                me.ui["xinshouLable"].text =GC["GUIDE"][GUIDEindex]["title"]
+                me.ui["xinshouLable"].setVisible(true)
+                showMask(Heros[1],true);
+                showTouchAdmin(true);
+                function scheduleOnceCallBack2() {
+                    me.ui.unschedule(scheduleOnceCallBack2)
+                    touchLayer();
+                }
+                me.ui.scheduleOnce(scheduleOnceCallBack2,1)
+            }
             switch(GUIDEindex){
                 case 1:
                     break;
@@ -259,6 +298,9 @@
                 case 6:
                     Six();
                     break;
+                case 7:
+                    Seven();
+                    break;
             }
         }
         //运行中
@@ -267,6 +309,7 @@
                 Heros = me._Vessel["_Heros"],
                 shuttlecock = me.ui["shuttlecock"],
                 getActiveHero,
+                ishint = false,
                 getClientHero = Heros["1"];
             function RandomObjAndPlay(MoveToObj) {
                 var Torot = 0;
@@ -341,7 +384,11 @@
                                                     me.Toos("playAttack")(MoveToObj);
                                                 }
                                                     if(MoveToObj["id"]==getClientHero["id"]&&me._isGuide){
-                                                     //is 是司马光
+
+                                                        if(me._Overindex<2&&!ishint){
+                                                            flax.inputManager.removeAllTouchListeners();
+                                                        }
+
                                                     }else if(!(MoveToObj["id"]==getClientHero["id"])){
                                                         playA();
                                                     }
@@ -368,17 +415,33 @@
                                                })
 
                                            }else{
-                                               me.GameControl(GC.GAME_OVER);
-                                               shuttlecock.runAction(
-                                                   cc.spawn(
-                                                       cc.moveBy(0.1,0,-(Math.abs(shuttlecock.y-getClientHero.y))+10)
-                                                       ,cc.rotateTo(0.1,65)
-                                                   )
-                                               );
-                                               GV.UI.tip_NB.show("游戏结束");
-                                               me.ui.scheduleOnce(function () {
-                                                   GM.SceneMage.replaceScene("GameMove");
-                                               },3)
+                                               if(me._Overindex<2&&!ishint){
+                                                   flax.inputManager.removeAllTouchListeners();
+                                                   ishint = true;
+                                                   MoveToObj.stop();
+                                                   shuttlecock.stopAllActions();
+                                                   me.GuideManage(7,function () {
+                                                       MoveToObj.play();
+                                                       cc.director.resume();
+                                                       me.Toos("setScore")();
+                                                       getClientHero.fps = 60;
+                                                       me.Toos("playAttack")(getClientHero);
+                                                       clientPlay();
+                                                       AIPlay();
+                                                   })
+                                               }else{
+                                                   me.GameControl(GC.GAME_OVER);
+                                                   shuttlecock.runAction(
+                                                       cc.spawn(
+                                                           cc.moveBy(0.1,0,-(Math.abs(shuttlecock.y-getClientHero.y))+10)
+                                                           ,cc.rotateTo(0.1,65)
+                                                       )
+                                                   );
+                                                   GV.UI.tip_NB.show("游戏结束");
+                                                   me.ui.scheduleOnce(function () {
+                                                       GM.SceneMage.replaceScene("GameMove");
+                                                   },3)
+                                               }
                                            }
                                        }else{
                                            if(!me._isGuide){
@@ -388,6 +451,7 @@
                                                    MoveToObj.play();
                                                    cc.director.resume();
                                                    RandomObjAndPlay(Heros["1"]);
+
                                                })
                                            }else {
                                                AIPlay();
@@ -446,7 +510,8 @@
                          },1);
                      }
                 }
-                me.ui.touch(BC.CUIType.FL,CallBackEvents,me);
+
+                me.ui.touch(BC.CUIType.FL, CallBackEvents, me);
             }
             function AIPlay() {
                 RandomObjAndPlay();
